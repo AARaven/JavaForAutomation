@@ -2,12 +2,11 @@ package Collections.CustomLinkedList;
 
 class CustomNode <T> {
 
-    T value;
-    CustomNode nextNode;
-    CustomNode firstNode;
-    CustomNode lastNode;
+    protected T nodeValue;
+    protected CustomNode nextNode;
+
 
     CustomNode(T value) {
-        this.value = value;
+        this.nodeValue = value;
     }
 }

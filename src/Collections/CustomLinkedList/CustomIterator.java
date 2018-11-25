@@ -1,8 +1,7 @@
 package Collections.CustomLinkedList;
 
-interface IteratorForLinkedList<E> {
+interface CustomIterator<E> {
 
     boolean hasNext();
     E next();
-    void remove();
 }

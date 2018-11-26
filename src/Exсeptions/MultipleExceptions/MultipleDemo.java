@@ -20,9 +20,9 @@ public class MultipleDemo {
         throwThird();
     }
 
-    static void throwMultipleExClass() throws MultipleException {
-        throw new MultipleException(new FirstException("first"),new SecondException("second"),new ThirdException("third"));
-    }
+//    static void throwMultipleExClass() throws MultipleException {
+//        throw new MultipleException(new FirstException("first"),new SecondException("second"),new ThirdException("third"));
+//    }
 
     public static void main(String[] args) {
 

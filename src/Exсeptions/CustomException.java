@@ -22,7 +22,6 @@ public class CustomException extends Exception {
     }
 
     public static void main(String[] args) {
-
         try {
             throw new CustomException("Something wrong ...");
         } catch (CustomException e) {

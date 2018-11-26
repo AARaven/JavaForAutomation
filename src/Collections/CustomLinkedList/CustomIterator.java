@@ -1,7 +1,7 @@
 package Collections.CustomLinkedList;
 
-interface CustomIterator<E> {
+interface CustomIterator {
 
     boolean hasNext();
-    E next();
+    void next();
 }

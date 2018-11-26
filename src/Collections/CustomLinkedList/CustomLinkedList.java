@@ -2,9 +2,9 @@ package Collections.CustomLinkedList;
 
 public class CustomLinkedList<T> implements CustomIterator {
 
-    private CustomNode firstNode;
-    private CustomNode lastNode;
-    private int positionCount;
+    public CustomNode firstNode;
+    public CustomNode lastNode;
+    public int positionCount;
 
     public void addElement(T value) {
         CustomNode nodeLink = new CustomNode(value);
@@ -50,14 +50,18 @@ public class CustomLinkedList<T> implements CustomIterator {
         this.positionCount = 0;
     }
 
-    @Override
-    public boolean hasNext() {
-        return this.lastNode.nextNode != null;
+    public int size() {
+        return this.positionCount;
     }
 
     @Override
-    public Object next() {
-        return this.lastNode.nextNode.nodeValue;
+    public boolean hasNext() {
+        return this.firstNode != null;
+    }
+
+    @Override
+    public void next() {
+        this.firstNode = this.firstNode.nextNode;
     }
 
     public void forEachRemaining() {
@@ -67,6 +71,14 @@ public class CustomLinkedList<T> implements CustomIterator {
             currentNode = currentNode.nextNode;
         }
     }
+//// TODO: create reverse method!
+//    public void reverseElements() {
+//        CustomNode nodeCurrent = this.firstNode;
+//        CustomNode nodePrev = null;
+//        while (nodePrev.nextNode != null) {
+//
+//        }
+//    }
 
     public static void main(String[] args) {
         CustomLinkedList<String> linkedList = new CustomLinkedList<>();
@@ -80,7 +92,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         String fifthValue = "fifthValue";
 
         linkedList.addElement(firstValue);
-        System.out.println(linkedList.positionCount);
+        System.out.println("Size : "+linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -88,7 +100,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
         linkedList.addElement(secondValue);
-        System.out.println(linkedList.positionCount);
+        System.out.println("Size : "+linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -96,7 +108,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
         linkedList.addElement(thirdValue);
-        System.out.println(linkedList.positionCount);
+        System.out.println("Size : "+linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -104,7 +116,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
         linkedList.addElement(fourthValue);
-        System.out.println(linkedList.positionCount);
+        System.out.println("Size : "+linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -112,7 +124,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
         linkedList.addElement(fifthValue);
-        System.out.println(linkedList.positionCount);
+        System.out.println("Size : "+linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -120,7 +132,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
         linkedList.removeElement(fifthValue);
-        System.out.println(linkedList.positionCount);
+        System.out.println("Size : "+linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -128,7 +140,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
         linkedList.removeElement(fourthValue);
-        System.out.println(linkedList.positionCount);
+        System.out.println("Size : "+linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -136,7 +148,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
         linkedList.removeElement(thirdValue);
-        System.out.println(linkedList.positionCount);
+        System.out.println("Size : "+linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -144,7 +156,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
         linkedList.removeElement(secondValue);
-        System.out.println(linkedList.positionCount);
+        System.out.println("Size : "+linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -154,6 +166,15 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.removeElement(firstValue);
 
         linkedList.forEachRemaining();
+
+
+//        // test iterator:
+//        for (int i = 0; i < linkedList.size(); i++) {
+//            if (linkedList.hasNext()) {
+//                System.out.println(linkedList.firstNode.nodeValue);
+//                linkedList.next();
+//            }
+//        }
 
     }
 }

@@ -2,9 +2,8 @@ package Collections.CustomLinkedList;
 
 class CustomNode <T> {
 
-    protected T nodeValue;
-    protected CustomNode nextNode;
-
+    T nodeValue;
+    CustomNode nextNode;
 
     CustomNode(T value) {
         this.nodeValue = value;

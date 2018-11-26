@@ -72,13 +72,9 @@ public class CustomLinkedList<T> implements CustomIterator {
         }
     }
 //// TODO: create reverse method!
-//    public void reverseElements() {
-//        CustomNode nodeCurrent = this.firstNode;
-//        CustomNode nodePrev = null;
-//        while (nodePrev.nextNode != null) {
-//
-//        }
-//    }
+    public void reverseElements() {
+
+    }
 
     public static void main(String[] args) {
         CustomLinkedList<String> linkedList = new CustomLinkedList<>();
@@ -168,13 +164,13 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
 
-//        // test iterator:
-//        for (int i = 0; i < linkedList.size(); i++) {
-//            if (linkedList.hasNext()) {
-//                System.out.println(linkedList.firstNode.nodeValue);
-//                linkedList.next();
-//            }
-//        }
+        // test iterator:
+        for (int i = 0; i < linkedList.size(); i++) {
+            if (linkedList.hasNext()) {
+                System.out.println(linkedList.firstNode.nodeValue);
+                linkedList.next();
+            }
+        }
 
     }
 }

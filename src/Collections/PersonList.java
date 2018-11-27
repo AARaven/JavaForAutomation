@@ -8,9 +8,18 @@ public class PersonList implements Comparable<PersonList>{
     private String name;
     private String[] names = {"SID","JOEY","PAUL","CHRIS","JIM","CRAIG","SHAWN","MICK","COREY"};
     private int randomIndex = ((int) (Math.random() * 9));
+    Random rand = new Random();
 
-    PersonList() {
-        this.age = randomIndex * 5;
+    public int getAge() {
+        return age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public PersonList() {
+        this.age = (rand.nextInt(20) * 2);
         this.name = this.names[this.randomIndex];
     }
 
@@ -31,13 +40,13 @@ public class PersonList implements Comparable<PersonList>{
         return new ArrayList<PersonList>(list);
     }
 
-    private static boolean equaliserOfTwoListPerson(List<PersonList> list1, List<PersonList> list2) {
+    public static boolean equaliserOfTwoListPerson(List<PersonList> list1, List<PersonList> list2) {
 
 //// TODO: refactor this method with overrides equals()
      return false;
     }
 
-    private boolean equals(PersonList p) {
+    public boolean equals(PersonList p) {
         return super.equals(p.name);
     }
 

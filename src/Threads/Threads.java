@@ -4,9 +4,7 @@ import java.util.Arrays;
 
 public class Threads implements Runnable {
     @Override
-    public void run() {
-
-    }
+    public void run() {}
 
     public static void main(String[] args) throws Exception {
 

@@ -19,7 +19,8 @@ public class Persons {
             System.out.println("\n"+"The stream :"+"\n");
             Collection<String> pers = persons.stream()
                     .filter(p -> (20 < p.getAge())&&(p.getAge() < 30))
-                    .map(PersonList::getName).map(String::toUpperCase)
+                    .map(PersonList::getName)
+                    .map(String::toUpperCase)
                     .distinct()
                     .sorted(Comparator.comparing(String::length))
                     .collect(Collectors.toCollection(ArrayList::new));

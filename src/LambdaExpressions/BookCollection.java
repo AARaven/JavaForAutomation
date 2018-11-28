@@ -3,6 +3,7 @@ package LambdaExpressions;
 import ObjectBasics.AuthorAndBook.Author;
 import ObjectBasics.AuthorAndBook.Book;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class BookCollection {
 
@@ -30,20 +31,21 @@ public class BookCollection {
         Book refactoring = new Book("'Refactoring: Improving the Design of Existing Code'", fowler, 36.50);
         books.add(refactoring);
 
-        books.stream()//total price:
+        books.stream()
                 .max(Comparator.comparing(Book::getPrice))
                 .get().getBookDetails();
 
-        books.stream()
+        String authorTitleBook = books.stream()
                 .filter(book -> book.getAuthor().equals(eckel))
-                .map(book -> book.getTitle().concat(" "))
-                .forEachOrdered(System.out::print);//how to add author?
+                .map(Book::getTitle)
+                .collect(Collectors.joining(" "));
 
-        System.out.println("\n");
+        System.out.println(authorTitleBook);
+        System.out.println();
 
         books.stream()
-                .sorted(Comparator.comparing(book -> book.getAuthor().getAuthorDetails()))
-                .distinct().map(book -> book.getTitle().concat(" ").concat(book.getAuthor().getAuthorDetails()))
+                .sorted(Comparator.comparing(book -> book.getAuthor().getAuthorFullname()))
+                .distinct().map(book -> book.getAuthor().getAuthorFullname().concat(" ").concat(book.getTitle()))
                 .forEach(System.out::println);
 
         double price = books.stream().mapToDouble(Book::getPrice).sum();

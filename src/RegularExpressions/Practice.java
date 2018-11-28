@@ -12,7 +12,7 @@ public class Practice {
         Pattern firstPattern = Pattern.compile("(\\b[a-z]\\w+)");
         Matcher firstMatcher = firstPattern.matcher("Word cAT DATA A site Java tExt");
         System.out.println();
-        System.out.println(firstMatcher.replaceAll(" ").replaceAll("\\s* "," "));
+        System.out.println(firstMatcher.replaceAll("*").replaceAll("\\s* "," "));
 
         //ex2
         String secondEx = "2057";//2013 - 5043
@@ -34,30 +34,20 @@ public class Practice {
 
         //ex5
         String fifthEx = "Regular regular popular expressions entered popular use from 1968 1968 1968";
-        Pattern fifthPattern = Pattern.compile("(\\b[r]\\w+)|(\\b\\d\\w*?![1968])");
+        Pattern fifthPattern = Pattern.compile("(\\b[r]\\w*)|(\\b\\d+\\Z)");
         Matcher fifthMatcher = fifthPattern.matcher(fifthEx);
-        System.out.println(fifthMatcher.replaceAll(" ").replaceAll("\\s* "," "));
+        System.out.println(fifthMatcher.replaceAll("*").replaceAll("\\s* "," "));
 
         //ex6
         String sixthEx = "11122333";
-        Pattern sixthPattern = Pattern.compile("(\\d{2}(?!\\d))");
-//        Pattern sixthPattern = Pattern.compile("");
+        Pattern sixthPattern = Pattern.compile("(.)\\1");
         Matcher sixthMatcher = sixthPattern.matcher(sixthEx);
         System.out.println(sixthMatcher.replaceAll("*"));
 
         //ex7
         String seventhEx = "password wword word Heeeeeeello";
-        Pattern seventhPattern = Pattern.compile("^$");
+        Pattern seventhPattern = Pattern.compile("(.)\\1\\w*|\\b[pH]\\w*");
         Matcher seventhMatcher = seventhPattern.matcher(seventhEx);
         System.out.println(seventhMatcher.replaceAll("*"));
-
-
-
-
-
-
-
-
-
     }
 }

@@ -28,9 +28,8 @@ public class Book {
 
         System.out.print("The title the book is : " +title +"\n");
         System.out.print("The author the book is : " +author.getAuthorDetails()+"\n");
-        System.out.print("The price the book is : " +price +"\n\n");
+        System.out.print(String.format("The price the book is : %.2f"+"\n\n",price));
     }
-
 
     public static void main(String[] args) {
 

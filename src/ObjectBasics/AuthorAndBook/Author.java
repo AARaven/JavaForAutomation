@@ -12,17 +12,19 @@ public class Author {
 
     }
 
-
     public String getAuthorDetails() {
 
         return firstName+" "+lastName;
 
     }
 
-
     public static void main(String[] args) {
 
         Author au = new Author("Russel", "Winderand");
         au.getAuthorDetails();
+    }
+
+    public boolean equals() {
+        return this.getAuthorDetails().equals(getAuthorDetails());
     }
 }

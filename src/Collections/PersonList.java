@@ -6,7 +6,7 @@ public class PersonList implements Comparable<PersonList>{
 
     private int age;
     private String name;
-    private String[] names = {"SID","JOEY","PAUL","CHRIS","JIM","CRAIG","SHAWN","MICK","COREY"};
+    private String[] names = {"Sid","Joey","Paul","Chris","Jim","Craig","Shawn","Mick","Corey"};
     private int randomIndex = ((int) (Math.random() * 9));
     Random rand = new Random();
 

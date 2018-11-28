@@ -34,9 +34,9 @@ public class Practice {
 
         //ex5
         String fifthEx = "Regular regular popular expressions entered popular use from 1968 1968 1968";
-        Pattern fifthPattern = Pattern.compile("(\\b[r]\\w*)|(\\b\\d+\\Z)");
+        Pattern fifthPattern = Pattern.compile("(\\b[r]\\w+\\b)|(\\b\\S+\\b)(?=.*\\2)");
         Matcher fifthMatcher = fifthPattern.matcher(fifthEx);
-        System.out.println(fifthMatcher.replaceAll("*").replaceAll("\\s* "," "));
+        System.out.println(fifthMatcher.replaceAll("").replaceAll("\\s* "," "));
 
         //ex6
         String sixthEx = "11122333";

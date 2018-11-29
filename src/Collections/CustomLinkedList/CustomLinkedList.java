@@ -71,9 +71,8 @@ public class CustomLinkedList<T> implements CustomIterator {
             currentNode = currentNode.nextNode;
         }
     }
-//// TODO: create reverse method!
-    public void reverseElements() {
 
+    public void reverseElements() {
     }
 
     public static void main(String[] args) {

@@ -6,11 +6,20 @@ public class PersonList implements Comparable<PersonList>{
 
     private int age;
     private String name;
-    private String[] names = {"SID","JOEY","PAUL","CHRIS","JIM","CRAIG","SHAWN","MICK","COREY"};
+    private String[] names = {"Sid","Joey","Paul","Chris","Jim","Craig","Shawn","Mick","Corey"};
     private int randomIndex = ((int) (Math.random() * 9));
+    private Random rand = new Random();
 
-    PersonList() {
-        this.age = randomIndex * 5;
+    public int getAge() {
+        return age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public PersonList() {
+        this.age = (rand.nextInt(20) * 2);
         this.name = this.names[this.randomIndex];
     }
 
@@ -31,14 +40,27 @@ public class PersonList implements Comparable<PersonList>{
         return new ArrayList<PersonList>(list);
     }
 
-    private static boolean equaliserOfTwoListPerson(List<PersonList> list1, List<PersonList> list2) {
-
-//// TODO: refactor this method with overrides equals()
-     return false;
+    public static boolean equaliserOfTwoListPerson(List<PersonList> list1, List<PersonList> list2) {
+        if (list1.size() == list2.size()) {
+            return list1.equals(list2);
+        } else {
+            return false;
+        }
     }
 
-    private boolean equals(PersonList p) {
-        return super.equals(p.name);
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof PersonList) {
+            PersonList personList = (PersonList) obj;
+            if (this.getName().equals(personList.getName())) {
+                return true;
+            }
+            if (this.getAge() == personList.getAge()) {
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 
     @Override
@@ -50,24 +72,23 @@ public class PersonList implements Comparable<PersonList>{
 
         List<PersonList> persons = new ArrayList<>();
         List<PersonList> sortPer;
+        PersonList persona = new PersonList();
+        PersonList per = new PersonList();
 
-        for (int i = 0; i < 9; i++) {
-            persons.add(new PersonList());
-        }
+        for (int i = 0; i < 9; i++) persons.add(new PersonList());
 
         System.out.println("Arraylist : "+"\n");
-        for (PersonList p : persons) {
-            System.out.println(p);
-        }
+
+        for (PersonList p : persons) System.out.println(p);
 
         //without comparator:
         System.out.println("\n"+"Sort without comparator : "+"\n");
         Collections.sort(persons);
-        for (PersonList p : persons) {
-            System.out.println(p);
-        }
+
+        for (PersonList p : persons) System.out.println(p);
 
         System.out.println("\n"+"With comparator: "+"\n");
+
         Collections.sort(persons, new Comparator<PersonList>() {
             @Override
             public int compare(PersonList p1, PersonList p2) {
@@ -76,24 +97,22 @@ public class PersonList implements Comparable<PersonList>{
             }
         });
 
-        for (PersonList p : persons) {
-            System.out.println(p);
-        }
+        for (PersonList p : persons) System.out.println(p);
 
         System.out.println("\n\n\n");
         System.out.println("Unique method :");
         sortPer = fromListToUniqueNameList(persons);
-        for (PersonList p : sortPer) {
-            System.out.println(p);
-        }
+
+        for (PersonList p : sortPer) System.out.println(p);
+
+//        sortPer.add(persona);
+//        persons.add(per);
 
         System.out.println("\n"+"Equals of Two : ");
         System.out.println(equaliserOfTwoListPerson(persons,sortPer));
 
         System.out.println("Equalized array list now : "+"\n");
         Collections.sort(persons);
-        for (PersonList p : persons) {
-            System.out.println(p);
-        }
+        for (PersonList p : persons) System.out.println(p);
     }
 }

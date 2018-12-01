@@ -2,162 +2,184 @@ package JavaFundamentals;
 
 import java.util.Scanner;
 
-/*---------------------------------------------------  
-    Java Fundamentals Practice #1 : Find the minimum
-    Create the following methods:
----------------------------------------------------------------------------------------------------
---> The method that takes 2 integer arguments and returns the lowest;
---> The method that takes 3 integer arguments and returns the lowest ( using the first method);
---> The method that takes 4 integer arguments and returns the lowest ( using previous method);
---------------------------------------------------------------------------------------------------*/
+/**
+ * ---------------------------------------------------------------------------------------------------
+ * Java Fundamentals Practice #1 : Find the minimum                                                  *
+ * Create the following methods:                                                                     *
+ * ---------------------------------------------------------------------------------------------------
+ * --> The method that takes 2 integer arguments and returns the lowest;                             *
+ * --> The method that takes 3 integer arguments and returns the lowest ( using the first method);   *
+ * --> The method that takes 4 integer arguments and returns the lowest ( using previous method);    *
+ * --------------------------------------------------------------------------------------------------
+ */
 
 public class FindTheMinimum {
+    private int first;
+    private int second;
+    private int third;
+    private int fourth;
+    private boolean condition;
+    private String userInput;
 
-    int firstVal = 0;
-    int secondVal = 0;
-    int thirdVal = 0;
-    int fourthVal = 0;
+    // TODO: refactor!!!
 
-    public int equalizerLowerOfTwo(int first, int second) {
-
-        firstVal = first;
-        secondVal = second;
-
-        int result;
-
-            if (firstVal < secondVal) {
-                result = firstVal;
-                return result;
-            } else if (firstVal > secondVal) {
-                result = secondVal;
-                return result;
-            } else {
-                result = firstVal;
-                return result;
-            }
+    int minimumReturner(int first, int second) {
+        this.first = first;
+        this.second = second;
+        return (this.first < this.second) ? this.first : this.second;
     }
 
+    int minimumReturner(int first, int second, int third) {
+        this.first = first;
+        this.second = second;
+        this.third = third;
 
-    public int equalizerLowerOfTree(int first, int second, int third) {
-
-        firstVal = first;
-        secondVal = second;
-        thirdVal = third;
-
-        int result;
-
-            if (equalizerLowerOfTwo(firstVal,secondVal) < thirdVal) {
-                result = equalizerLowerOfTwo(firstVal,secondVal);
-                return result;
-            } else if (equalizerLowerOfTwo(firstVal,secondVal) > thirdVal) {
-                result = thirdVal;
-                return result;
-            } else {
-                result = thirdVal;
-                return result;
-            }
+        return ((this.minimumReturner(this.first, this.second)) < this.third) ?
+                (this.minimumReturner(this.first, this.second)) : this.third;
     }
 
+    int minimumReturner(int first, int second, int third, int fourth) {
+        this.first = first;
+        this.second = second;
+        this.third = third;
 
-    public int equalizerLowerOfFour(int first, int second, int third, int fourth) {
-
-        firstVal = first;
-        secondVal = second;
-        thirdVal = third;
-        fourthVal = fourth;
-
-        int result;
-
-            if (equalizerLowerOfTree(firstVal, secondVal, thirdVal) < fourthVal) {
-                result = equalizerLowerOfTree(firstVal, secondVal, thirdVal);
-                return result;
-            } else if (equalizerLowerOfTree(firstVal, secondVal, thirdVal) > fourthVal) {
-                result = fourthVal;
-                return result;
-            } else {
-                result = fourthVal;
-                return result;
-            }
+        return ((this.minimumReturner(this.first, this.second, this.third)) < fourth ?
+                (this.minimumReturner(this.first, this.second, this.third)) : fourth);
     }
 
-        public static void main (String[]args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
-            int a,b,c,d;
+        FindTheMinimum finder = new FindTheMinimum();
+        Scanner scanner = new Scanner(System.in);
+        finder.setCondition(true);
 
-            FindTheMinimum task = new FindTheMinimum();
-            Scanner userInput = new Scanner(System.in);
 
-            while (true) {
+        while (finder.isCondition()) {
+            System.out.print("\f");
+            finder.showMenu();
+            finder.setUserInput(scanner);
 
-                System.out.println("*******************************************");
-                System.out.println("* 1 - To find the lower of two values.    *");
-                System.out.println("* 2 - To find the lower of three values.  *");
-                System.out.println("* 3 - To find the lower of four values.   *");
-                System.out.println("* 4 - Exit.                               *");
-                System.out.println("*******************************************");
-                System.out.println();
+            try {
+                switch (finder.getUserInput()) {
+                    case ("1"):
+                        System.out.println("Please enter the two values for find minor.");
 
-                int checkUserInput = userInput.nextInt();
+                        finder.setUserInput(scanner);
+                        finder.setFirst(finder.getUserInput());
+                        finder.setUserInput(scanner);
+                        finder.setSecond(finder.getUserInput());
 
-                switch (checkUserInput) {
+                        System.out.println("\n" + "The minimum value is : " + finder.minimumReturner
+                                (finder.getFirst(), finder.getSecond()));
 
-                    case 1:
-
-                        System.out.println();
-                        System.out.println("Enter the 2 values : ");
-                        a = userInput.nextInt();
-                        b = userInput.nextInt();
-                        System.out.println();
-                        System.out.print("The lower is : ");
-                        System.out.println(task.equalizerLowerOfTwo(a,b));
-                        System.out.println();
-                        System.out.println("Press 'ENTER' for continue...");
+                        System.out.println("please press 'ENTER' to continue.");
                         System.in.read();
                         break;
+                    case ("2"):
+                        System.out.println("Please enter the three values for find minor.");
 
-                    case 2:
+                        finder.setUserInput(scanner);
+                        finder.setFirst(finder.getUserInput());
+                        finder.setUserInput(scanner);
+                        finder.setSecond(finder.getUserInput());
+                        finder.setUserInput(scanner);
+                        finder.setThird(finder.getUserInput());
 
-                        System.out.println();
-                        System.out.println("Enter the 3 values : ");
-                        a = userInput.nextInt();
-                        b = userInput.nextInt();
-                        c = userInput.nextInt();
-                        System.out.println();
-                        System.out.print("The lower is : ");
-                        System.out.println(task.equalizerLowerOfTree(a, b, c));
-                        System.out.println();
-                        System.out.println("Press 'ENTER' for continue...");
+                        System.out.println("\n" + "The minimum value is : " + finder.minimumReturner
+                                (finder.getFirst(), finder.getSecond(), finder.getThird()));
+
+                        System.out.println("please press 'ENTER' to continue.");
                         System.in.read();
                         break;
+                    case ("3"):
+                        System.out.println("Please enter the four values for find minor.");
 
-                    case 3:
+                        finder.setUserInput(scanner);
+                        finder.setFirst(finder.getUserInput());
+                        finder.setUserInput(scanner);
+                        finder.setSecond(finder.getUserInput());
+                        finder.setUserInput(scanner);
+                        finder.setThird(finder.getUserInput());
+                        finder.setUserInput(scanner);
+                        finder.setFourth(finder.getUserInput());
 
-                        System.out.println();
-                        System.out.println("Enter the 4 values : ");
-                        a = userInput.nextInt();
-                        b = userInput.nextInt();
-                        c = userInput.nextInt();
-                        d = userInput.nextInt();
-                        System.out.println();
-                        System.out.print("The lower is : ");
-                        System.out.println(task.equalizerLowerOfFour(a, b, c, d));
-                        System.out.println();
-                        System.out.println("Press 'ENTER' for continue...");
+                        System.out.println("\n" + "The minimum value is : " + finder.minimumReturner
+                                (finder.getFirst(), finder.getSecond(), finder.getThird(), finder.getFourth()));
+
+                        System.out.println("please press 'ENTER' to continue.");
                         System.in.read();
                         break;
-
-                    case 4:
-
+                    case ("4"):
                         System.out.println("Exiting...");
                         System.exit(0);
-
-                    default:
-
-                        System.out.println();
-                        System.out.println("Incorrect values...");
-                        System.out.println();
                         break;
+                    default:
+                        System.out.println("Incorrect input...");
+                        System.out.println("please press 'ENTER' to continue.");
+                        System.in.read();
                 }
+            } catch (Exception e) {
+                System.out.println("Incorrect value...Exiting");
+                finder.setCondition(false);
+                System.gc();
             }
         }
     }
+
+    private int getFirst() {
+        return first;
+    }
+
+    private void setFirst(String first) {
+        this.first = Integer.parseInt(first);
+    }
+
+    private int getSecond() {
+        return second;
+    }
+
+    private void setSecond(String second) {
+        this.second = Integer.parseInt(second);
+    }
+
+    private int getThird() {
+        return third;
+    }
+
+    private void setThird(String third) {
+        this.third = Integer.parseInt(third);
+    }
+
+    private int getFourth() {
+        return this.fourth;
+    }
+
+    private void setFourth(String fourth) {
+        this.fourth = Integer.parseInt(fourth);
+    }
+
+    private String getUserInput() {
+        return this.userInput;
+    }
+
+    private void setUserInput(Scanner scanner) {
+        this.userInput = scanner.nextLine();
+    }
+
+    private void setCondition(boolean condition) {
+        this.condition = condition;
+    }
+
+    private boolean isCondition() {
+        return condition;
+    }
+
+    private void showMenu() {
+        System.out.println("*******************************************");
+        System.out.println("* 1 - To find the lower of two values.    *");
+        System.out.println("* 2 - To find the lower of three values.  *");
+        System.out.println("* 3 - To find the lower of four values.   *");
+        System.out.println("* 4 - Exit.                               *");
+        System.out.println("*******************************************" + "\n");
+    }
+}

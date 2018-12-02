@@ -2,22 +2,16 @@ package ObjectBasics.AuthorAndBook;
 
 public class Author {
 
-    String firstName;
-    String lastName;
+    private String firstName;
+    private String lastName;
 
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public String getAuthorFullname() {
-        return firstName+" "+lastName;
-    }
-
-    public static void main(String[] args) {
-
-        Author au = new Author("Russel", "Winderand");
-        au.getAuthorFullname();
+    public String getAuthorFullName() {
+        return firstName + " " + lastName;
     }
 
     @Override
@@ -27,13 +21,10 @@ public class Author {
             if (!this.firstName.equals(author.firstName)) {
                 return false;
             }
-            if (!this.lastName.equals(author.lastName)) {
-                return false;
-            }
+            return this.lastName.equals(author.lastName);
 
         } else {
             return false;
         }
-        return true;
     }
 }

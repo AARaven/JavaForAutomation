@@ -5,6 +5,18 @@ import java.util.Scanner;
 
 public class TasksJavaFundamentalsAllInOne {
 
+    void showMainMenu() {
+        System.out.println("\f");
+        System.out.println("*********************************************");
+        System.out.println("* 1 - FindTheMinimum.                       *");
+        System.out.println("* 2 - SearchElement.                        *");
+        System.out.println("* 3 - SortArray.                            *");
+        System.out.println("* 4 - CountElementsOccurrencesInAString.    *");
+        System.out.println("* 5 - Hanoi's Towers.                       *");
+        System.out.println("* 6 - Exit.                                 *");
+        System.out.println("*********************************************" + "\n");
+    }
+
     public static void main(String[] args) throws Exception {
 
         FindTheMinimum taskFirst = new FindTheMinimum();
@@ -12,29 +24,21 @@ public class TasksJavaFundamentalsAllInOne {
         SortArray taskThird = new SortArray();
         CountElementsString taskFour = new CountElementsString();
         TowersOfHanoi towers = new TowersOfHanoi();
+        TasksJavaFundamentalsAllInOne allInOne = new TasksJavaFundamentalsAllInOne();
 
-        Scanner userInput = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         MainMenu:
         // to return into mainloop
 
         while (true) {
 
-            System.out.println("\f");
-
-            System.out.println("*********************************************");
-            System.out.println("* 1 - FindTheMinimum.                       *");
-            System.out.println("* 2 - SearchElement.                        *");
-            System.out.println("* 3 - SortArray.                            *");
-            System.out.println("* 4 - CountElementsOccurrencesInAString.    *");
-            System.out.println("* 5 - Hanoi's Towers.                       *");
-            System.out.println("* 6 - Exit.                                 *");
-            System.out.println("*********************************************" + "\n");
+            allInOne.showMainMenu();
 
 
-            int checkUserInputMainPage = userInput.nextInt();
+            int checkscannerMainPage = scanner.nextInt();
 
-            switch (checkUserInputMainPage) {
+            switch (checkscannerMainPage) {
 
                 case 1:
 
@@ -54,16 +58,16 @@ public class TasksJavaFundamentalsAllInOne {
 
                         int a, b, c, d;
 
-                        int checkUserInputFirstPage = userInput.nextInt();
+                        int checkscannerFirstPage = scanner.nextInt();
 
-                        switch (checkUserInputFirstPage) {
+                        switch (checkscannerFirstPage) {
 
                             case 1:
 
                                 System.out.println();
                                 System.out.println("Enter the 2 values : ");
-                                a = userInput.nextInt();
-                                b = userInput.nextInt();
+                                a = scanner.nextInt();
+                                b = scanner.nextInt();
                                 System.out.println();
                                 System.out.print("The lower is : ");
                                 System.out.println(taskFirst.minimumReturner(a, b));
@@ -76,9 +80,9 @@ public class TasksJavaFundamentalsAllInOne {
 
                                 System.out.println();
                                 System.out.println("Enter the 3 values : ");
-                                a = userInput.nextInt();
-                                b = userInput.nextInt();
-                                c = userInput.nextInt();
+                                a = scanner.nextInt();
+                                b = scanner.nextInt();
+                                c = scanner.nextInt();
                                 System.out.println();
                                 System.out.print("The lower is : ");
                                 System.out.println(taskFirst.minimumReturner(a, b, c));
@@ -91,10 +95,10 @@ public class TasksJavaFundamentalsAllInOne {
 
                                 System.out.println();
                                 System.out.println("Enter the 4 values : ");
-                                a = userInput.nextInt();
-                                b = userInput.nextInt();
-                                c = userInput.nextInt();
-                                d = userInput.nextInt();
+                                a = scanner.nextInt();
+                                b = scanner.nextInt();
+                                c = scanner.nextInt();
+                                d = scanner.nextInt();
                                 System.out.println();
                                 System.out.print("The lower is : ");
                                 System.out.println(taskFirst.minimumReturner(a, b, c, d));
@@ -139,7 +143,7 @@ public class TasksJavaFundamentalsAllInOne {
                         System.out.println("******************************************");
                         System.out.println();
 
-                        int checkUserInputSecondPage = userInput.nextInt();
+                        int checkscannerSecondPage = scanner.nextInt();
                         int arraySize;
                         int consoleArraySize;
 
@@ -148,142 +152,47 @@ public class TasksJavaFundamentalsAllInOne {
                         long startTimeTwo;
                         long endTimeTwo;
 
-                        switch (checkUserInputSecondPage) {
+                        switch (checkscannerSecondPage) {
 
                             case 1:
 
-                                System.out.println();
-                                System.out.println("Enter the size of array : ");
-                                consoleArraySize = userInput.nextInt();
-                                System.out.println();
-                                System.out.println("Enter " + consoleArraySize + " values of the array");
-
-                                int userArray[] = new int[consoleArraySize];
-
-                                taskSecond.lengthUserArray = userArray.length;
-                                taskSecond.userArr = userArray;
-
-                                for (int i = 0; i < consoleArraySize; i++) {
-                                    userArray[i] = userInput.nextInt();
-                                }
-
+                                System.out.print("Enter the size of array : ");
+                                taskThird.setArrayLength(scanner);
+                                System.out.println("Enter the " + taskThird.getUserArray().length + " elements of array : ");
+                                taskThird.setArgumentsArray(scanner);
                                 break;
 
                             case 2:
 
-                                System.out.println();
-                                System.out.print("User Array elements: ");
-                                System.out.println();
-
-                                for (int i = 0; i < taskSecond.userArr.length; i++) {
-                                    System.out.print(" " + taskSecond.userArr[i]);
-                                }
-
-                                System.out.println();
-                                System.out.println();
-                                System.out.println("Press 'ENTER' for continue...");
+                                System.out.println("User Array elements: ");
+                                taskThird.getArgumentsArray();
+                                System.out.println("\n" + "Press 'ENTER' for continue...");
                                 System.in.read();
                                 break;
 
                             case 3:
 
-                                System.out.println();
-                                System.out.println(" *****************************************");
-                                System.out.println(" * What's element need to find ?         *");
-                                System.out.println(" *****************************************");
-                                System.out.println();
+                                taskSecond.showTypeSearchMenu();
 
-                                int consoleNumberToSearch = userInput.nextInt();
-
-                                System.out.println();
-                                System.out.println(" *****************************************");
-                                System.out.println(" * What's method you need to use ?       *");
-                                System.out.println(" *****************************************");
-                                System.out.println(" * 1 - One by one.                       *");
-                                System.out.println(" * 2 - Binary.                           *");
-                                System.out.println(" *****************************************");
-                                System.out.println();
-
-                                int choiceUserInputTypeOfSearch = userInput.nextInt();
+                                int choiceUserInputTypeOfSearch = scanner.nextInt();
 
                                 switch (choiceUserInputTypeOfSearch) {
 
                                     case 1:
 
-                                        int countMatch = 0;
-
-                                        arraySize = taskSecond.userArr.length;
-                                        startTimeOne = System.nanoTime();
-
-                                        for (int i = 0; i < arraySize; i++) {
-                                            if (taskSecond.userArr[i] == consoleNumberToSearch) {
-                                                countMatch++;
-                                                System.out.println();
-                                                System.out.println("The 'Ony by One' search method : ");
-                                                System.out.println(consoleNumberToSearch + " Is a " + (i + 1) + " element in array. ");
-                                            }
-                                        }
-
-                                        if (countMatch == 0) {
-                                            System.out.println();
-                                            System.out.println("The element is not found in array.");
-                                            System.out.println();
-                                        }
-
-                                        endTimeOne = System.nanoTime();
-
-                                        long executionTimeOne = endTimeOne - startTimeOne;
-
-                                        System.out.println("The execution time method is : " + executionTimeOne);
-                                        System.out.println();
-                                        System.out.println("Press 'ENTER' for continue...");
-                                        System.in.read();
+                                        taskSecond.showElementSearchMenu();
+                                        taskSecond.setUserInput(scanner);
+                                        int elementOne = taskSecond.oneByOneSearch(taskSecond.getUserInput());
+                                        System.out.println("\n" + "Your number is " + elementOne + " element of array.");
                                         break;
 
                                     case 2:
 
-                                        int beginArray = 0;
-                                        int endArray = taskSecond.userArr.length - 1;
-                                        int middleArray = (endArray + beginArray) / 2;
-
-                                        Arrays.sort(taskSecond.userArr);
-
-                                        System.out.print("User Array elements after sort method : ");
-
-                                        for (int i = 0; i < taskSecond.userArr.length; i++) {
-                                            System.out.print(" " + taskSecond.userArr[i]);
-                                        }
-
-                                        startTimeTwo = System.nanoTime();
-
-                                        while (taskSecond.userArr[middleArray] != consoleNumberToSearch && beginArray <= endArray) {
-
-                                            if (taskSecond.userArr[middleArray] > consoleNumberToSearch) {
-                                                endArray = middleArray - 1;
-                                            } else {
-                                                beginArray = middleArray + 1;
-                                            }
-                                            middleArray = (endArray + beginArray) / 2;
-                                        }
-
-                                        System.out.println();
-                                        System.out.println("The binary search method : ");
-
-                                        if (beginArray <= endArray) {
-                                            System.out.println(consoleNumberToSearch + " Is " + ++middleArray + " element in array");
-
-                                        } else {
-                                            System.out.println("Element is not found in array");
-                                        }
-
-                                        endTimeTwo = System.nanoTime();
-
-                                        long executionTimeTwo = endTimeTwo - startTimeTwo;
-
-                                        System.out.println("The execution time is : " + executionTimeTwo);
-                                        System.out.println();
-                                        System.out.println("Press 'ENTER' for continue...");
-                                        System.in.read();
+                                        taskSecond.showElementSearchMenu();
+                                        taskSecond.setUserInput(scanner);
+                                        taskSecond.sortBubbleSort(taskSecond.getUserArray());
+                                        int elementTwo = taskSecond.binarySearch(taskSecond.getUserInput());
+                                        System.out.println("\n" + "Your number is " + elementTwo + " element of array.");
                                         break;
 
                                     default:
@@ -332,100 +241,53 @@ public class TasksJavaFundamentalsAllInOne {
                         System.out.println(" ******************************************");
                         System.out.println();
 
-                        int checkUserInputThirdPage = userInput.nextInt();
+                        int checkscannerThirdPage = scanner.nextInt();
 
-                        switch (checkUserInputThirdPage) {
+                        switch (checkscannerThirdPage) {
 
                             case 1:
-
                                 System.out.print("Enter the size of array : ");
-
-                                int consoleArraySize = userInput.nextInt();
-                                int userArray[] = new int[consoleArraySize];
-                                int lengthArray = userArray.length;
-                                taskThird.userArr = userArray;
-
-                                System.out.println("Enter the " + lengthArray + " elements of array : ");
-
-                                for (int i = 0; i < consoleArraySize; i++) {
-                                    userArray[i] = userInput.nextInt();
-                                    System.out.print("");
-                                }
-
+                                taskThird.setArrayLength(scanner);
+                                System.out.println("Enter the " + taskThird.getUserArray().length + " elements of array : ");
+                                taskThird.setArgumentsArray(scanner);
+                                System.out.println("Array is upload :");
                                 break;
 
                             case 2:
 
-                                System.out.println();
-                                System.out.print("User Array elements: ");
-
-                                for (int i = 0; i < taskThird.userArr.length; i++) {
-                                    System.out.print(" " + taskThird.userArr[i]);
-                                }
-
-                                System.out.println();
-                                System.out.println("Press 'ENTER' for continue...");
+                                System.out.println("User Array elements: ");
+                                taskThird.getArgumentsArray();
+                                System.out.println("\n" + "Press 'ENTER' for continue...");
                                 System.in.read();
                                 break;
 
                             case 3:
 
-                                System.out.println();
-                                System.out.println(" *****************************************");
-                                System.out.println(" * What's kind of sort you want to use?  *");
-                                System.out.println(" *****************************************");
-                                System.out.println(" * 1 - Bubble sort.                      *");
-                                System.out.println(" * 2 - Insertion sort.                   *");
-                                System.out.println(" *****************************************");
-                                System.out.println();
+                                taskThird.showSecondaryMenu();
 
-                                int checkUserInputTypeOfSort = userInput.nextInt();
+                                int checkscannerTypeOfSort = scanner.nextInt();
 
-                                switch (checkUserInputTypeOfSort) {
+                                switch (checkscannerTypeOfSort) {
 
                                     case 1:
 
-                                        int temp = 0;
-
-                                        for (int i = 0; i < taskThird.userArr.length; i++) {
-                                            for (int j = 1; j <= (taskThird.userArr.length - 1); j++) {
-                                                if (taskThird.userArr[j - 1] > taskThird.userArr[j]) {
-                                                    temp = taskThird.userArr[j - 1];
-                                                    taskThird.userArr[j - 1] = taskThird.userArr[j];
-                                                    taskThird.userArr[j] = temp;
-                                                }
-                                            }
-                                        }
-                                        System.out.println();
-                                        System.out.println("Completed...");
-                                        System.out.println();
+                                        taskThird.sortBubbleSort(taskThird.getUserArray());
+                                        System.out.println("\n" + "Completed..." + "\n");
                                         System.out.println("Press 'ENTER' for continue...");
                                         System.in.read();
                                         break;
 
                                     case 2:
 
-                                        for (int i = 1; i < taskThird.userArr.length; i++) {
-                                            int tempI = taskThird.userArr[i];
-                                            int j = i - 1;
-                                            while ((j >= 0) && taskThird.userArr[j] > tempI) {
-                                                taskThird.userArr[j + 1] = taskThird.userArr[j];
-                                                j--;
-                                            }
-                                            taskThird.userArr[j + 1] = tempI;
-                                        }
-                                        System.out.println();
-                                        System.out.println("Completed...");
-                                        System.out.println();
+                                        taskThird.sortInsertionSort(taskThird.getUserArray());
+                                        System.out.println("\n" + "Completed..." + "\n");
                                         System.out.println("Press 'ENTER' for continue...");
                                         System.in.read();
                                         break;
 
                                     default:
 
-                                        System.out.println();
-                                        System.out.println("Incorrect input...");
-                                        System.out.println();
+                                        System.out.println("Incorrect input..." + "\n");
                                         System.out.println("Press 'ENTER' for continue...");
                                         System.in.read();
                                         break;
@@ -470,16 +332,16 @@ public class TasksJavaFundamentalsAllInOne {
                         System.out.println("*******************************************");
                         System.out.println();
 
-                        String checkUserInputFourthPage = userInput.nextLine();
+                        String checkscannerFourthPage = scanner.nextLine();
 
-                        switch (checkUserInputFourthPage) {
+                        switch (checkscannerFourthPage) {
 
                             case ("1"):
 
                                 System.out.println();
                                 System.out.println("Enter the String : ");
 
-                                taskFour.myString = userInput.nextLine();
+                                taskFour.myString = scanner.nextLine();
                                 taskFour.myChar = taskFour.myString;
                                 break;
 
@@ -512,7 +374,7 @@ public class TasksJavaFundamentalsAllInOne {
                                 System.out.println("What's char you'll be find?");
                                 System.out.println();
 
-                                char myCharInputForFind = userInput.nextLine().charAt(0);
+                                char myCharInputForFind = scanner.nextLine().charAt(0);
 
                                 System.out.println();
 
@@ -568,27 +430,24 @@ public class TasksJavaFundamentalsAllInOne {
                         System.out.println("*********************************************************");
                         System.out.println();
 
-                        int checkUserInputFifthPage = userInput.nextInt();
+                        int checkscannerFifthPage = scanner.nextInt();
 
-                        switch (checkUserInputFifthPage) {
+                        switch (checkscannerFifthPage) {
 
                             case 1:
 
                                 System.out.println();
                                 System.out.println("Enter the number of disks : ");
                                 System.out.println();
-                                towers.setNumberDisksHanoisTowers(userInput.nextInt());
+                                towers.setNumberDisks(scanner.nextInt());
                                 System.out.println();
 
                                 break;
 
                             case 2:
 
-                                towers.resultOfCalculation = (int) (Math.pow(2, towers.numberDisks) - 1);
-                                System.out.println();
                                 System.out.print("Steps : ");
-                                System.out.println(towers.resultOfCalculation);
-                                System.out.println();
+                                towers.resultOfCalculation();
                                 System.out.println("Press 'ENTER' for continue...");
                                 System.in.read();
 

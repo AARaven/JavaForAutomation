@@ -4,8 +4,7 @@ import java.util.Scanner;
 
 public class DogsDemo  {
 
-    public static void createMainMenu() {
-
+    protected static void createMainMenu() {
         System.out.println("\f");
         System.out.println("********************************************");
         System.out.println("* 1 - Dogs creator.                        *");
@@ -15,8 +14,7 @@ public class DogsDemo  {
 
     }
 
-    public static void createDogCreaterMenu() {
-
+    protected static void createDogCreaterMenu() {
         System.out.println("\f");
         System.out.println("***********************************************");
         System.out.println("*                Dogs creator                 *");
@@ -27,8 +25,7 @@ public class DogsDemo  {
 
     }
 
-    public static void createDogSortMenu() {
-
+    protected static void createDogSortMenu() {
         System.out.println("\f");
         System.out.println("***********************************************");
         System.out.println("*                Dogs sorting                 *");
@@ -39,8 +36,7 @@ public class DogsDemo  {
         System.out.println("***********************************************"+"\n");
     }
 
-    public static void createDogCreaterMenuNext() {
-
+    protected static void createDogCreaterMenuNext() {
         System.out.println("\f");
         System.out.println("***********************************************");
         System.out.println("*                Dogs creator                 *");
@@ -51,8 +47,7 @@ public class DogsDemo  {
 
     }
 
-    public static void createDogRandomizerMenu() {
-
+    protected static void createDogRandomizerMenu() {
         System.out.println("\f");
         System.out.println("\n"+"********************************************");
         System.out.println("*            *Dogs randomizer*             *");
@@ -63,39 +58,33 @@ public class DogsDemo  {
         System.out.println("********************************************"+"\n");
     }
 
-    public static void pleasePressEnter() throws Exception {
-
+    protected static void pleasePressEnter() throws Exception {
         System.out.print("\n"+"Please press 'ENTER' to continue..."+ "\n");
         System.in.read();
     }
 
-    public static void complitedString() {
-
+    protected static void completedString() {
         System.out.print("\n"+"Completed..."+ "\n");
     }
 
-    public static void createDogArray(Dog[] dogs,int numberOfDogs) {
-
+    protected static void createDogArray(Dog[] dogs,int numberOfDogs) {
         for (int i = 0; i < numberOfDogs; i++) {
            dogs[i] = new Dog();
         }
     }
 
-    public static void getDogDetailsArray(Dog[] dogs, int numberOfDogs) {
-
+    protected static void getDogDetailsArray(Dog[] dogs, int numberOfDogs) {
         for (int i = 0; i < numberOfDogs; i++) {
             System.out.print("\n"+"The " + (i + 1) + " dog in array : ");
             dogs[i].getDogDetails();
         }
     }
 
-    public static void incorrectInput() {
-
+    protected static void incorrectInput() {
         System.out.print("\n" +"Incorrect input..." +"\n");
     }
 
-    public static void exit() {
-
+    protected static void exit() {
         System.out.print("\n"+"Exiting..."+"\n");
         System.exit(0);
     }
@@ -158,7 +147,7 @@ public class DogsDemo  {
 
                     createDogArray(myDogs,numberOfDogs);
 
-                    complitedString();
+                    completedString();
                     pleasePressEnter();
 
                     Dog.sortDogsByName(myDogs);
@@ -178,7 +167,7 @@ public class DogsDemo  {
                             case ("1"):
 
                                 Dog.sortDogsByName(myDogs);
-                                complitedString();
+                                completedString();
                                 pleasePressEnter();
                                 Dog.getDogDetailsArray(myDogs,numberOfDogs);
 
@@ -187,7 +176,7 @@ public class DogsDemo  {
                             case ("2"):
 
                                 Dog.sortDogsBySize(myDogs);
-                                complitedString();
+                                completedString();
                                 pleasePressEnter();
                                 Dog.getDogDetailsArray(myDogs,numberOfDogs);
 

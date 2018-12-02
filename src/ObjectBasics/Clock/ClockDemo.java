@@ -6,24 +6,24 @@ public class ClockDemo {
 
     private static void pleasePressEnter() throws Exception {
 
-        System.out.print("\n"+"\n"+"Please press 'ENTER' to continue ... "+"\n");
+        System.out.print("\n" + "\n" + "Please press 'ENTER' to continue ... " + "\n");
         System.in.read();
 
     }
 
     public static void incorrectInputExeption() throws Exception {
 
-        System.out.print("\n"+"Incorrect input ... " + "\n");
+        System.out.print("\n" + "Incorrect input ... " + "\n");
         pleasePressEnter();
     }
 
     public static void exitClock() {
 
-        System.out.print("\n"+"Exiting ..."+"\n");
+        System.out.print("\n" + "Exiting ..." + "\n");
         System.exit(0);
     }
 
-    private static void getClockTimer(String[] strings,Clock clock) {
+    private static void getClockTimer(String[] strings, Clock clock) {
 
         for (String string : strings) {
             Clock.getTime(clock);
@@ -44,19 +44,19 @@ public class ClockDemo {
 
         String[] clockArr = new String[10];
 
-        getClockTimer(clockArr,firstClock);
+        getClockTimer(clockArr, firstClock);
 
         pleasePressEnter();
 
         Clock.getTime(firstClock);
 
-        System.out.print("\n"+"Enter the parameters for secondClock : " + "\n");
+        System.out.print("\n" + "Enter the parameters for secondClock : " + "\n");
 
         Clock secondClock = new Clock(userInput.nextInt(), userInput.nextInt(), userInput.nextInt());
 
         Clock.getTime(secondClock);
 
-        System.out.print("\n"+"Adding a time from secondClock to firstClock : ");
+        System.out.print("\n" + "Adding a time from secondClock to firstClock : ");
 
         firstClock.addClock(secondClock);
 
@@ -65,13 +65,11 @@ public class ClockDemo {
         Clock.getTime(firstClock);
 
         System.out.print("\n");
-        System.out.print("\n"+"Difference a time between secondClock and firstClock : " +"\n");
+        System.out.print("\n" + "Difference a time between secondClock and firstClock : " + "\n");
 
         Clock.getTime(firstClock.subtractClock(secondClock));
 
         exitClock();
-
-
 
 
     }

@@ -2,12 +2,15 @@ package JavaFundamentals;
 
 import java.util.Scanner;
 
-/*---------------------------------------------------  
- Java Fundamentals Practice #4 : Count elements occurrences in a String 
- Implement a program that request an input of 1 symbol form the consoles and counts a number 
- occurrences of this symbol in a pre-created text and prints it to the console.
- The text may be hard-coded as a String in your code.
---------------------------------------------------------------------------------------------------*/
+/**
+ * ---------------------------------------------------------------------------------
+ * <p>Java Fundamentals Practice #4 : Count elements occurrences in a String </p>
+ * ---------------------------------------------------------------------------------
+ * <p>Implement a program that request an input of 1 symbol form the consoles</p> <p> and counts a number
+ * occurrences of this symbol in a pre-created text</p> <p>and prints it to the console.</p>
+ * <p>The text may be hard-coded as a String in your code.</p>
+ * ----------------------------------------------------------------------------------
+ */
 
 public class CountElementsString {
 
@@ -49,14 +52,14 @@ public class CountElementsString {
 
                     char holeChar = ' ';
 
-                        for (int i = 0; i < myString.length(); i++) {
-                            if (myChar.charAt(i) == holeChar) {
-                                System.out.print(holeChar);
-                            }
-                            System.out.print(" " + "{" + myChar.charAt(i) + "}");
+                    for (int i = 0; i < myString.length(); i++) {
+                        if (myChar.charAt(i) == holeChar) {
+                            System.out.print(holeChar);
                         }
+                        System.out.print(" " + "{" + myChar.charAt(i) + "}");
+                    }
 
-                     myCharArray = ((String) myChar).toCharArray();
+                    myCharArray = ((String) myChar).toCharArray();
 
                     System.out.println();
                     System.out.println("Press 'ENTER' for continue...");
@@ -75,11 +78,11 @@ public class CountElementsString {
 
                     char myCharInputForFind = userInput.nextLine().charAt(0);
 
-                        for (int i = 0; i < myCharArray.length; i++) {
-                            if (myCharArray[i] == myCharInputForFind) {
-                                countMatch++;
-                            }
+                    for (int i = 0; i < myCharArray.length; i++) {
+                        if (myCharArray[i] == myCharInputForFind) {
+                            countMatch++;
                         }
+                    }
 
                     System.out.println("We identify " + countMatch + " matches");
                     System.out.println();

@@ -44,8 +44,8 @@ public class BookCollection {
         System.out.println();
 
         books.stream()
-                .sorted(Comparator.comparing(book -> book.getAuthor().getAuthorFullname()))
-                .distinct().map(book -> book.getAuthor().getAuthorFullname().concat(" ").concat(book.getTitle()))
+                .sorted(Comparator.comparing(book -> book.getAuthor().getAuthorFullName()))
+                .distinct().map(book -> book.getAuthor().getAuthorFullName().concat(" ").concat(book.getTitle()))
                 .forEach(System.out::println);
 
         double price = books.stream().mapToDouble(Book::getPrice).sum();

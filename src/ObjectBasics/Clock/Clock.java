@@ -136,40 +136,41 @@ public class Clock {
         int tempMinutes = minutes + clock.minutes;
         int tempSec = seconds + clock.seconds;
 
-        if ((tempSec) > 59 ) {
-            seconds = tempSec%60;
+        if ((tempSec) > 59) {
+            seconds = tempSec % 60;
             minutes += tempSec / 60;
             if (tempMinutes > 59) {
-                minutes = tempMinutes%60;
-                hours += tempMinutes/60;
+                minutes = tempMinutes % 60;
+                hours += tempMinutes / 60;
                 if (tempHour > 23) {
-                    hours = tempHour%60;
+                    hours = tempHour % 60;
                 }
             }
         }
     }
-        public static String stringReturnClock (Clock clock){
 
-            return String.format("%02d:%02d:%02d", clock.getHours(), clock.getMinutes(), clock.getSeconds());
-        }
+    public static String stringReturnClock(Clock clock) {
 
-        public static void getTime (Clock clock){
-            System.out.print("Time of clock : " + String.format("%02d:%02d:%02d", clock.getHours(), clock.getMinutes(), clock.getSeconds()));
-        }
-
-        public void tickDown () {
-            this.seconds--;
-        }
-
-        public Clock subtractClock (Clock clock){
-
-            int Hours = clock.hours - hours;
-            int Minutes = clock.minutes - minutes;
-            int Sec = clock.seconds - seconds;
-
-            return new Clock(Hours, Minutes, Sec);
-        }
+        return String.format("%02d:%02d:%02d", clock.getHours(), clock.getMinutes(), clock.getSeconds());
     }
+
+    public static void getTime(Clock clock) {
+        System.out.print("Time of clock : " + String.format("%02d:%02d:%02d", clock.getHours(), clock.getMinutes(), clock.getSeconds()));
+    }
+
+    public void tickDown() {
+        this.seconds--;
+    }
+
+    public Clock subtractClock(Clock clock) {
+
+        int Hours = clock.hours - hours;
+        int Minutes = clock.minutes - minutes;
+        int Sec = clock.seconds - seconds;
+
+        return new Clock(Hours, Minutes, Sec);
+    }
+}
 
 
 

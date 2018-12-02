@@ -3,14 +3,16 @@ package JavaFundamentals;
 import java.util.Scanner;
 
 /**
- * ---------------------------------------------------------------------------------------------------
- * Java Fundamentals Practice #1 : Find the minimum                                                  *
- * Create the following methods:                                                                     *
- * ---------------------------------------------------------------------------------------------------
- * --> The method that takes 2 integer arguments and returns the lowest;                             *
- * --> The method that takes 3 integer arguments and returns the lowest ( using the first method);   *
- * --> The method that takes 4 integer arguments and returns the lowest ( using previous method);    *
- * --------------------------------------------------------------------------------------------------
+ * ---------------------------------------------------------------------------------------
+ * <p>Java Fundamentals Practice #1 : Find the minimum</p>
+ * <p>Create the following methods:</p>
+ * <p>
+ * ---------------------------------------------------------------------------------------
+ * <p>--> The method that takes 2 integer arguments and returns the lowest; </p>
+ * <p>--> The method that takes 3 integer arguments and returns the lowest ( using the first method);</p>
+ * <p>--> The method that takes 4 integer arguments and returns the lowest ( using previous method);</p>
+ * <p>
+ * ---------------------------------------------------------------------------------------
  */
 
 public class FindTheMinimum {

@@ -1,35 +1,37 @@
 package ObjectBasics.Dogs;
 
 import java.text.Collator;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class Dog {
 
-     public int age;
-     public String name;
-     public String size;
+    private int age;
+    private String name;
+    private String size;
+
+    private int randomIndexName = (int) ((Math.random() * 10) - 1);
+    private int randomIndexSize = (int) (Math.random() * 3);
+    private int randomAge = (int) (((Math.random() * 10) * 2) + 1);
+
+    private String nameGenerator[] = {"Puppy", "Scooby-doo", "Rex", "Rambo", "Scotty",
+            "Goofy", "Snuppy", "Dr. Sheldon", "Penny"};
+
+    private String sizeGenerator[] = {"Big", "Medium", "Small"};
+
+    private String randomName = nameGenerator[randomIndexName];
+    private String randomOfSize = sizeGenerator[randomIndexSize];
 
     static Scanner scan = new Scanner(System.in);
 
-     int randomIndexName = (int) ((Math.random() * 10) - 1);
-     int randomIndexSize = (int) (Math.random() * 3);
-     int randomAge = (int) (((Math.random() * 10) * 2) + 1);
 
-     String nameGenerator[] = {"Puppy","Scooby-doo","Rex","Rambo","Scotty",
-                               "Goofy","Snuppy","Dr. Sheldon","Penny"};
 
-     String sizeGenerator[] = {"Big", "Medium", "Small"};
-
-     String randomName = nameGenerator[randomIndexName];
-     String randomOfSize = sizeGenerator[randomIndexSize];
-
-    public  String getRandomName() {
+    public String getRandomName() {
         return randomName;
     }
 
-    public  String getRandomOfSize() {
+    public String getRandomOfSize() {
         return randomOfSize;
-
     }
 
     public void setAge(int age) {
@@ -44,7 +46,7 @@ public class Dog {
         this.size = size;
     }
 
-    public Dog(String[] args) {
+    Dog(String[] args) {
 
         for (String s : args) {
 
@@ -57,52 +59,35 @@ public class Dog {
         }
     }
 
-    public Dog() {
-
+    Dog() {
         this.name = randomName;
         this.size = randomOfSize;
         this.age = randomAge;
     }
 
-    public void getDogDetails() {
-
-        System.out.print("\n"+"\n"+"{"+"The name is : "
-                    +name +"}"+"\t"+"{"+"The size is :" +
-                " " +size +"}"+"\t"+"{"+"The age is :" +
-                " " +age +"}"+"\n");
-
+    void getDogDetails() {
+        System.out.print("\n" + "\n" + "{" + "The name is : "
+                + name + "}" + "\t" + "{" + "The size is :" +
+                " " + size + "}" + "\t" + "{" + "The age is :" +
+                " " + age + "}" + "\n");
     }
 
 
-    public static void sortDogsByName(Dog[] dogs) {
-
-        Arrays.sort(dogs, new Comparator<Dog>() {
-            @Override
-            public int compare(Dog o1, Dog o2) {
-                return Collator.getInstance().compare(o1.name,o2.name);
-            }
-        });
+    static void sortDogsByName(Dog[] dogs) {
+        Arrays.sort(dogs, (o1, o2) -> Collator.getInstance().compare(o1.name, o2.name));
     }
 
-    public static void sortDogsBySize(Dog[] dogs) {
-
-        Arrays.sort(dogs, new Comparator<Dog>() {
-            @Override
-            public int compare(Dog o1, Dog o2) {
-                return Collator.getInstance().compare(o1.size,o2.size);
-            }
-        });
+    static void sortDogsBySize(Dog[] dogs) {
+        Arrays.sort(dogs, (o1, o2) -> Collator.getInstance().compare(o1.size, o2.size));
     }
 
-    public static void createDogArray(Dog[] dogs,int numberOfDogs) {
-
+    private static void createDogArray(Dog[] dogs, int numberOfDogs) {
         for (int i = 0; i < numberOfDogs; i++) {
             dogs[i] = new Dog();
         }
     }
 
-    public static void getDogDetailsArray(Dog[] dogs, int numberOfDogs) {
-
+    static void getDogDetailsArray(Dog[] dogs, int numberOfDogs) {
         for (int i = 0; i < numberOfDogs; i++) {
             dogs[i].getDogDetails();
         }
@@ -110,7 +95,7 @@ public class Dog {
 
     public static void incorrectInput() {
 
-        System.out.print("\n" +"Incorrect input..." +"\n");
+        System.out.print("\n" + "Incorrect input..." + "\n");
     }
 
     public static void main(String[] args) {
@@ -123,16 +108,15 @@ public class Dog {
 
         Dog myDogs[] = new Dog[numberOfDogs];
 
-        createDogArray(myDogs,numberOfDogs);
+        createDogArray(myDogs, numberOfDogs);
 
-        getDogDetailsArray(myDogs,numberOfDogs);
+        getDogDetailsArray(myDogs, numberOfDogs);
 
         sortDogsByName(myDogs);
-        getDogDetailsArray(myDogs,numberOfDogs);
+        getDogDetailsArray(myDogs, numberOfDogs);
 
         sortDogsBySize(myDogs);
-        getDogDetailsArray(myDogs,numberOfDogs);
-
+        getDogDetailsArray(myDogs, numberOfDogs);
     }
 }
 

@@ -26,15 +26,11 @@ public class Book {
 
     public void getBookDetails() {
 
-        System.out.print("The title the book is : " + this.title + "\n");
-        System.out.print("The author the book is : " + this.author.getAuthorFullName() + "\n");
-        System.out.print(String.format("The price the book is : %.2f" + "\n\n", price));
-    }
-
-    protected static void main(String[] args) {
-
-        Author exampleAuthor = new Author("Russel", "Winderand");
-        Book exampleBook = new Book("Developing Java Software", exampleAuthor, 79.75);
-        exampleBook.getBookDetails();
+        System.out.print("The title the book is : " +
+                this.title + "\n");
+        System.out.print("The author the book is : " +
+                this.author.getAuthorFullName() + "\n");
+        System.out.print(String.format("The price the book is : %.2f" +
+                "\n\n", price));
     }
 }

@@ -67,11 +67,11 @@ class Cylinder extends Circle {
 
     @Override
     public String toString() {
-        return String.format("\n"+"The base-radius of cylinder is : %.1f"+"\n"
-                +"The height of cylinder is : %.1f"+"\n"
-                +"The colour of cylinder is : %s"+"\n"
-                +"The surface-area of cylinder is : %.1f"+"\n"
-                +"The volume of cylinder is : %.1f"+"\n"
-                ,this.getRadius(),this.getHeight(),this.getColour(),this.getArea(),this.getVolume());
+        return String.format("\n" + "The base-radius of cylinder is : %.1f" + "\n"
+                        + "The height of cylinder is : %.1f" + "\n"
+                        + "The colour of cylinder is : %s" + "\n"
+                        + "The surface-area of cylinder is : %.1f" + "\n"
+                        + "The volume of cylinder is : %.1f" + "\n"
+                , this.getRadius(), this.getHeight(), this.getColour(), this.getArea(), this.getVolume());
     }
 }

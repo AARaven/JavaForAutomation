@@ -58,7 +58,8 @@ public class MovablePoint implements MovableInterface {
 
     @Override
     public String toString() {
-        return String.format("The point x with coordinates : %d and point y with coordinates : %d .",x,y);
+        return String.format("The point x with coordinates : " +
+                "%d and point y with coordinates : %d .", x, y);
     }
 
     @Override

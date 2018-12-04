@@ -25,7 +25,6 @@ public class Dog {
     static Scanner scan = new Scanner(System.in);
 
 
-
     public String getRandomName() {
         return randomName;
     }
@@ -72,7 +71,6 @@ public class Dog {
                 " " + age + "}" + "\n");
     }
 
-
     static void sortDogsByName(Dog[] dogs) {
         Arrays.sort(dogs, (o1, o2) -> Collator.getInstance().compare(o1.name, o2.name));
     }
@@ -94,7 +92,6 @@ public class Dog {
     }
 
     public static void incorrectInput() {
-
         System.out.print("\n" + "Incorrect input..." + "\n");
     }
 
@@ -103,13 +100,11 @@ public class Dog {
         Scanner userInput = new Scanner(System.in);
 
         System.out.print("What's number a dogs ");
-
         int numberOfDogs = userInput.nextInt();
 
         Dog myDogs[] = new Dog[numberOfDogs];
 
         createDogArray(myDogs, numberOfDogs);
-
         getDogDetailsArray(myDogs, numberOfDogs);
 
         sortDogsByName(myDogs);

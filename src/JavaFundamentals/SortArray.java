@@ -40,14 +40,6 @@ public class SortArray {
         System.out.println(" *****************************************" + "\n");
     }
 
-    private int getUserInput() {
-        return this.userInput;
-    }
-
-    private void setUserInput(Scanner scanner) {
-        this.userInput = scanner.nextInt();
-    }
-
     public static void main(String[] args) throws Exception {
 
         SortArray sortArray = new SortArray();
@@ -132,6 +124,14 @@ public class SortArray {
                 System.gc();
             }
         }
+    }
+
+    private int getUserInput() {
+        return this.userInput;
+    }
+
+    private void setUserInput(Scanner scanner) {
+        this.userInput = scanner.nextInt();
     }
 
     protected int[] sortBubbleSort(int[] ints) {

@@ -12,11 +12,13 @@ public class Practice {
         Pattern firstPattern = Pattern.compile("(\\b[a-z]\\w+)");
         Matcher firstMatcher = firstPattern.matcher("Word cAT DATA A site Java tExt");
         System.out.println();
-        System.out.println(firstMatcher.replaceAll("*").replaceAll("\\s* "," "));
+        System.out.println(firstMatcher.replaceAll("*").replaceAll("\\s* ", " "));
 
         //ex2
         String secondEx = "2057";//2013 - 5043
-        Pattern secondPattern = Pattern.compile("(^[2][0][1-9][3-9])|(^[3-4][0-9][0-9][0-9])|(^[5][0][0-4][0-3]|^[2][1-9][0-9][0-9])");
+        Pattern secondPattern = Pattern.compile
+                ("(^[2][0][1-9][3-9])|(^[3-4][0-9][0-9][0-9])|(^[5][0][0-4][0-3]|^[2][1-9][0-9][0-9])");
+
         Matcher secondMatcher = secondPattern.matcher("5044");
         System.out.println(secondMatcher.replaceAll("This is a valid number"));
 
@@ -36,7 +38,7 @@ public class Practice {
         String fifthEx = "Regular regular popular expressions entered popular use from 1968 1968 1968";
         Pattern fifthPattern = Pattern.compile("(\\b[r]\\w+\\b)|(\\b\\S+\\b)(?=.*\\2)");
         Matcher fifthMatcher = fifthPattern.matcher(fifthEx);
-        System.out.println(fifthMatcher.replaceAll("").replaceAll("\\s* "," "));
+        System.out.println(fifthMatcher.replaceAll("").replaceAll("\\s* ", " "));
 
         //ex6
         String sixthEx = "11122333";

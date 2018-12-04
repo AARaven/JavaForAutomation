@@ -8,8 +8,8 @@ class Circle {
     protected Colour colour;
 
     protected enum Colour {
-        BLACK("Black colour"),RED("Red colour"), YELLOW("Yellow colour"),DEFAULT("Default colour"),
-        WHITE("White colour"), GREEN("Green colour"),PURPLE("Purple colour"),ORANGE("Orange colour");
+        BLACK("Black colour"), RED("Red colour"), YELLOW("Yellow colour"), DEFAULT("Default colour"),
+        WHITE("White colour"), GREEN("Green colour"), PURPLE("Purple colour"), ORANGE("Orange colour");
 
         protected String choiceColour;
 
@@ -38,7 +38,7 @@ class Circle {
 
     Circle(double radius, Colour colour) {
         this.radius = radius;
-        this.colour = Colour.valueOf(colour.name()) ;
+        this.colour = Colour.valueOf(colour.name());
     }
 
     protected double getRadius() {
@@ -46,7 +46,7 @@ class Circle {
     }
 
     protected double getArea() {
-        return (PI *(Math.pow(this.getRadius(),2)));
+        return (PI * (Math.pow(this.getRadius(), 2)));
     }
 
     protected String getColour() {
@@ -63,11 +63,7 @@ class Circle {
 
     @Override
     public String toString() {
-        return String.format("\n"+"The radius of circle is : %.1f" + "\n" + "The colour of circle is : %s"+"\n"+"The area of circle is : %.1f"+"\n", radius,colour.choiceColour,getArea());
-    }
-
-    public static void main(String[] args) {
-        Circle circle = new Circle();
-        circle.setColour(Colour.YELLOW);
+        return String.format("\n" + "The radius of circle is : %.1f" + "\n" + "The colour of circle is : %s" +
+                "\n" + "The area of circle is : %.1f" + "\n", radius, colour.choiceColour, getArea());
     }
 }

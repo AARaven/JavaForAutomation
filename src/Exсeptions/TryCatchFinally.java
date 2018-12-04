@@ -12,7 +12,7 @@ public class TryCatchFinally {
             throw new StackOverflowError("STACK OVER FLOW!");
         } catch (StackOverflowError e) {
             System.out.println(e);
-        }finally {
+        } finally {
             System.out.println("DETECTED");
         }
 

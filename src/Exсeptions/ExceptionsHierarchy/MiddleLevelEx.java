@@ -1,6 +1,6 @@
 package Exсeptions.ExceptionsHierarchy;
 
-public class MiddleLevelEx extends BaseLevelEx{
+public class MiddleLevelEx extends BaseLevelEx {
 
     String message;
 

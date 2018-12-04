@@ -14,7 +14,8 @@ public class CustomException extends Exception {
 
     @Override
     public String toString() {
-        return String.format("This is a custom exception : %s.", super.getClass());
+        return String.format("This is a custom exception : %s.",
+                super.getClass());
     }
 
     public String getMessage() {

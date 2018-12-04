@@ -4,7 +4,7 @@ public class DemoClass {
 
     public static void main(String[] args) {
 
-        System.out.print("\n"+"The demo_class"+"\n");
+        System.out.print("\n" + "The demo_class" + "\n");
 
         Circle circle = new Circle();
         System.out.print(circle.toString());
@@ -21,10 +21,10 @@ public class DemoClass {
         Cylinder cylinder1 = new Cylinder(3);
         System.out.print(cylinder1.toString());
 
-        Cylinder cylinder2 = new Cylinder(6,4);
+        Cylinder cylinder2 = new Cylinder(6, 4);
         System.out.print(cylinder2.toString());
 
-        Cylinder cylinder3 = new Cylinder(2,5, Cylinder.Colour.PURPLE);
+        Cylinder cylinder3 = new Cylinder(2, 5, Cylinder.Colour.PURPLE);
         System.out.print(cylinder3.toString());
     }
 }

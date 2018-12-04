@@ -3,7 +3,7 @@ package InheritanceAndPolymorphism.Shapes;
 class Circle extends Shape {
 
     private double radius;
-    private static final double DEFAULT_RADIUS =1.0;
+    private static final double DEFAULT_RADIUS = 1.0;
 
     protected Circle() {
         this.radius = DEFAULT_RADIUS;

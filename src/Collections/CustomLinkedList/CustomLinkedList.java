@@ -67,7 +67,7 @@ public class CustomLinkedList<T> implements CustomIterator {
     public void forEachRemaining() {
         CustomNode currentNode = this.firstNode;
         while (currentNode != null) {
-            System.out.println("Element of list : " +currentNode.nodeValue);
+            System.out.println("Element of list : " + currentNode.nodeValue);
             currentNode = currentNode.nextNode;
         }
     }
@@ -87,7 +87,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         String fifthValue = "fifthValue";
 
         linkedList.addElement(firstValue);
-        System.out.println("Size : "+linkedList.positionCount);
+        System.out.println("Size : " + linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -95,7 +95,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
         linkedList.addElement(secondValue);
-        System.out.println("Size : "+linkedList.positionCount);
+        System.out.println("Size : " + linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -103,7 +103,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
         linkedList.addElement(thirdValue);
-        System.out.println("Size : "+linkedList.positionCount);
+        System.out.println("Size : " + linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -111,7 +111,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
         linkedList.addElement(fourthValue);
-        System.out.println("Size : "+linkedList.positionCount);
+        System.out.println("Size : " + linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -119,7 +119,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
         linkedList.addElement(fifthValue);
-        System.out.println("Size : "+linkedList.positionCount);
+        System.out.println("Size : " + linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -127,7 +127,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
         linkedList.removeElement(fifthValue);
-        System.out.println("Size : "+linkedList.positionCount);
+        System.out.println("Size : " + linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -135,7 +135,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
         linkedList.removeElement(fourthValue);
-        System.out.println("Size : "+linkedList.positionCount);
+        System.out.println("Size : " + linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -143,7 +143,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
         linkedList.removeElement(thirdValue);
-        System.out.println("Size : "+linkedList.positionCount);
+        System.out.println("Size : " + linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -151,7 +151,7 @@ public class CustomLinkedList<T> implements CustomIterator {
         linkedList.forEachRemaining();
 
         linkedList.removeElement(secondValue);
-        System.out.println("Size : "+linkedList.positionCount);
+        System.out.println("Size : " + linkedList.positionCount);
         System.out.println(linkedList.firstNode.nodeValue);
         System.out.println(linkedList.lastNode.nodeValue);
         System.out.println(linkedList.lastNode.nextNode);
@@ -162,7 +162,6 @@ public class CustomLinkedList<T> implements CustomIterator {
 
         linkedList.forEachRemaining();
 
-
         // test iterator:
         for (int i = 0; i < linkedList.size(); i++) {
             if (linkedList.hasNext()) {
@@ -170,6 +169,5 @@ public class CustomLinkedList<T> implements CustomIterator {
                 linkedList.next();
             }
         }
-
     }
 }

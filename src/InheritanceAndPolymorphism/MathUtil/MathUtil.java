@@ -5,11 +5,11 @@ class MathUtil {
     //for integers :
     static int minAtArray(int[] ints) {
         int min = ints[0];
-            for (int i = 0; i < ints.length - 1; i++) {
-                if (ints[i] < min) {
-                    min = ints[i];
-                }
+        for (int i = 0; i < ints.length - 1; i++) {
+            if (ints[i] < min) {
+                min = ints[i];
             }
+        }
         return min;
     }
 
@@ -77,16 +77,15 @@ class MathUtil {
         }
 
         if (verCount == 0) {
-            System.out.printf("\n"+"The integer argument %d is not found in the array."
-                            + "\n", var);
+            System.out.printf("\n" + "The integer argument %d is not found in the array."
+                    + "\n", var);
             return 0;
 
         } else if (verNextCount == 0) {
-                System.out.printf("\n"+"The next max value for %d is not found in the array."
-                                + "\n"+"%d - max value in this array."+"\n", var,var);
+            System.out.printf("\n" + "The next max value for %d is not found in the array."
+                    + "\n" + "%d - max value in this array." + "\n", var, var);
             return 0;
-            }
-
+        }
         return var;
     }
 
@@ -121,13 +120,12 @@ class MathUtil {
         }
 
         if (verCount == 0) {
-                             System.out.printf("\n"+"The double argument %.2f is not found in the array."
-                                        + "\n", var);
+            System.out.printf("\n" + "The double argument %.2f is not found in the array."
+                    + "\n", var);
             return 0;
-
         } else if (verNextCount == 0) {
-                             System.out.printf("\n"+"The next max value for %.2f is not found in the array."
-                                        + "\n"+"%.2f - max value in this array."+"\n", var,var);
+            System.out.printf("\n" + "The next max value for %.2f is not found in the array."
+                    + "\n" + "%.2f - max value in this array." + "\n", var, var);
             return 0;
         }
         return var;
@@ -140,7 +138,7 @@ class MathUtil {
         for (int i = 1; i <= var2; i++) {
             powerTemp = powerTemp * var;
         }
-    return powerTemp;
+        return powerTemp;
     }
 
     //for doubles :

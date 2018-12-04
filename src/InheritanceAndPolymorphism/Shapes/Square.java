@@ -1,6 +1,6 @@
 package InheritanceAndPolymorphism.Shapes;
 
-class Square extends Rectangle{
+class Square extends Rectangle {
 
     protected Square() {
         this.width = DEFAULT_WIDTH;

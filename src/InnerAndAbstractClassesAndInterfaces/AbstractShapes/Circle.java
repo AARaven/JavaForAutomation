@@ -2,7 +2,7 @@ package InnerAndAbstractClassesAndInterfaces.AbstractShapes;
 
 class Circle extends Shape {
 
-    private static final double DEFAULT_RADIUS =1.0;
+    private static final double DEFAULT_RADIUS = 1.0;
     private static final int DEFAULT_X = 1;
     private static final int DEFAULT_Y = 1;
     private double radius;
@@ -39,7 +39,8 @@ class Circle extends Shape {
     }
 
     boolean isInside(double x, double y) {
-        if ((Math.pow((x - this.x_coordinate), 2) + (Math.pow((y - this.y_coordinate), 2))) <= (Math.pow(this.radius, 2))) {
+        if ((Math.pow((x - this.x_coordinate), 2) +
+                (Math.pow((y - this.y_coordinate), 2))) <= (Math.pow(this.radius, 2))) {
             return true;
         } else {
             return false;
@@ -48,7 +49,8 @@ class Circle extends Shape {
 
     @Override
     void printLengthOfCircumference() {
-        System.out.printf("The length of circumference is : %.1f"+"\n",(2 * Math.PI * this.radius));
+        System.out.printf("The length of circumference is : %.1f" +
+                "\n", (2 * Math.PI * this.radius));
     }
 
     @Override

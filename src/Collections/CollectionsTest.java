@@ -1,13 +1,17 @@
 package Collections;
 
 import sun.awt.util.IdentityLinkedList;
-import java.util.*;
 
-public class CollectionsTest  {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Queue;
+
+public class CollectionsTest {
 
     private int age;
     private String name;
-    private String[] names = {"SID","JOEY","PAUL","CHRIS","JIM","CRAIG","SHAWN","MICK","COREY"};
+    private String[] names = {"SID", "JOEY", "PAUL", "CHRIS", "JIM", "CRAIG", "SHAWN", "MICK", "COREY"};
     private int randIndex = (int) (Math.random() * 10 - 1);
     private String randomName = names[randIndex];
 
@@ -35,7 +39,7 @@ public class CollectionsTest  {
 
         for (int i = 0; i < 9; i++) arrayList.add(new CollectionsTest());
 
-        System.out.println("Array list contains objects of class CollectionTest :"+"\n");
+        System.out.println("Array list contains objects of class CollectionTest :" + "\n");
 
         for (CollectionsTest c : arrayList) System.out.println(c);
 
@@ -56,19 +60,19 @@ public class CollectionsTest  {
         queue.add(joey);
 
         //hashmap
-        hashMap.put(9,"New York" );
-        hashMap.put(7,"London" );
-        hashMap.put(8,"Paris" );
+        hashMap.put(9, "New York");
+        hashMap.put(7, "London");
+        hashMap.put(8, "Paris");
 
 
-        System.out.println("Queue :"+"\n");
+        System.out.println("Queue :" + "\n");
 
         for (CollectionsTest c : queue) System.out.println(c);
 
-        System.out.println("\n"+hashMap.containsKey(7));
+        System.out.println("\n" + hashMap.containsKey(7));
         System.out.println(hashMap.size());
-        System.out.println("\n"+"Clone this hashmap : "+hashMap.clone());
-        System.out.println("HashMap values : "+"\n");
+        System.out.println("\n" + "Clone this hashmap : " + hashMap.clone());
+        System.out.println("HashMap values : " + "\n");
         System.out.println(hashMap.values());
 
         hashSet.add(mick);
@@ -78,7 +82,7 @@ public class CollectionsTest  {
         hashSet.add(shawn);
 
         System.out.println(hashSet.contains(joey));
-        System.out.println("\n"+"HashSet :"+"\n");
+        System.out.println("\n" + "HashSet :" + "\n");
 
         for (CollectionsTest c : hashSet) System.out.println(c);
     }

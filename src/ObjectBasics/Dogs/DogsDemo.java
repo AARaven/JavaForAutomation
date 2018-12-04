@@ -2,7 +2,7 @@ package ObjectBasics.Dogs;
 
 import java.util.Scanner;
 
-public class DogsDemo  {
+public class DogsDemo {
 
     protected static void createMainMenu() {
         System.out.println("\f");
@@ -10,7 +10,7 @@ public class DogsDemo  {
         System.out.println("* 1 - Dogs creator.                        *");
         System.out.println("* 2 - Dogs randomaizer.                    *");
         System.out.println("* 3 - Exit.                                *");
-        System.out.println("********************************************"+"\n");
+        System.out.println("********************************************" + "\n");
 
     }
 
@@ -21,7 +21,7 @@ public class DogsDemo  {
         System.out.println("***********************************************");
         System.out.println("*     Enter the numbers                       *");
         System.out.println("*                           of dogs :         *");
-        System.out.println("***********************************************"+"\n");
+        System.out.println("***********************************************" + "\n");
 
     }
 
@@ -33,7 +33,7 @@ public class DogsDemo  {
         System.out.println("*     1 - By name.                            *");
         System.out.println("*     2 - By size.                            *");
         System.out.println("*     3 - Exit.                               *");
-        System.out.println("***********************************************"+"\n");
+        System.out.println("***********************************************" + "\n");
     }
 
     protected static void createDogCreaterMenuNext() {
@@ -43,57 +43,56 @@ public class DogsDemo  {
         System.out.println("***********************************************");
         System.out.println("*     Enter the parameters of dogs :          *");
         System.out.println("*{Name :}{Size :(Big,Medium,Small)}{Age : <20}*");
-        System.out.println("***********************************************"+"\n");
+        System.out.println("***********************************************" + "\n");
 
     }
 
     protected static void createDogRandomizerMenu() {
         System.out.println("\f");
-        System.out.println("\n"+"********************************************");
+        System.out.println("\n" + "********************************************");
         System.out.println("*            *Dogs randomizer*             *");
-        System.out.println("********************************************"+"\n");
+        System.out.println("********************************************" + "\n");
         System.out.println("*            What's number a dogs?         *");
         System.out.println("*                                          *");
         System.out.println("*             Enter the value :            *");
-        System.out.println("********************************************"+"\n");
+        System.out.println("********************************************" + "\n");
     }
 
     protected static void pleasePressEnter() throws Exception {
-        System.out.print("\n"+"Please press 'ENTER' to continue..."+ "\n");
+        System.out.print("\n" + "Please press 'ENTER' to continue..." + "\n");
         System.in.read();
     }
 
     protected static void completedString() {
-        System.out.print("\n"+"Completed..."+ "\n");
+        System.out.print("\n" + "Completed..." + "\n");
     }
 
-    protected static void createDogArray(Dog[] dogs,int numberOfDogs) {
+    protected static void createDogArray(Dog[] dogs, int numberOfDogs) {
         for (int i = 0; i < numberOfDogs; i++) {
-           dogs[i] = new Dog();
+            dogs[i] = new Dog();
         }
     }
 
     protected static void getDogDetailsArray(Dog[] dogs, int numberOfDogs) {
         for (int i = 0; i < numberOfDogs; i++) {
-            System.out.print("\n"+"The " + (i + 1) + " dog in array : ");
+            System.out.print("\n" + "The " + (i + 1) + " dog in array : ");
             dogs[i].getDogDetails();
         }
     }
 
     protected static void incorrectInput() {
-        System.out.print("\n" +"Incorrect input..." +"\n");
+        System.out.print("\n" + "Incorrect input..." + "\n");
     }
 
     protected static void exit() {
-        System.out.print("\n"+"Exiting..."+"\n");
+        System.out.print("\n" + "Exiting..." + "\n");
         System.exit(0);
     }
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
 
         Scanner userInput = new Scanner(System.in);
-
         System.out.print("What's number a dogs ");
 
         MainMenuLabel:
@@ -110,14 +109,14 @@ public class DogsDemo  {
 
                     while (true) {
 
-                    createDogCreaterMenu();
+                        createDogCreaterMenu();
 
-                    int numberOfDogs = userInput.nextInt();
+                        int numberOfDogs = userInput.nextInt();
 
-                    createDogCreaterMenuNext();
+                        createDogCreaterMenuNext();
 
-                    Dog createDogs[] = new Dog[numberOfDogs];
-                    String[] myInput = new String[3];
+                        Dog createDogs[] = new Dog[numberOfDogs];
+                        String[] myInput = new String[3];
 
 
                         for (int i = 0; i < numberOfDogs; i++) {
@@ -136,7 +135,7 @@ public class DogsDemo  {
                         pleasePressEnter();
 
                         continue MainMenuLabel;
-            }
+                    }
                 case ("2"):
 
                     createDogRandomizerMenu();
@@ -145,16 +144,16 @@ public class DogsDemo  {
 
                     Dog myDogs[] = new Dog[numberOfDogs];
 
-                    createDogArray(myDogs,numberOfDogs);
+                    createDogArray(myDogs, numberOfDogs);
 
                     completedString();
                     pleasePressEnter();
 
                     Dog.sortDogsByName(myDogs);
-                    getDogDetailsArray(myDogs,numberOfDogs);
+                    getDogDetailsArray(myDogs, numberOfDogs);
 
                     Dog.sortDogsBySize(myDogs);
-                    getDogDetailsArray(myDogs,numberOfDogs);
+                    getDogDetailsArray(myDogs, numberOfDogs);
 
                     while (true) {
 
@@ -169,8 +168,7 @@ public class DogsDemo  {
                                 Dog.sortDogsByName(myDogs);
                                 completedString();
                                 pleasePressEnter();
-                                Dog.getDogDetailsArray(myDogs,numberOfDogs);
-
+                                Dog.getDogDetailsArray(myDogs, numberOfDogs);
                                 break;
 
                             case ("2"):
@@ -178,18 +176,16 @@ public class DogsDemo  {
                                 Dog.sortDogsBySize(myDogs);
                                 completedString();
                                 pleasePressEnter();
-                                Dog.getDogDetailsArray(myDogs,numberOfDogs);
-
-
+                                Dog.getDogDetailsArray(myDogs, numberOfDogs);
                                 break;
 
                             case ("3"):
 
                                 exit();
 
-                                default:
+                            default:
 
-                                    incorrectInput();
+                                incorrectInput();
                         }
                     }
 

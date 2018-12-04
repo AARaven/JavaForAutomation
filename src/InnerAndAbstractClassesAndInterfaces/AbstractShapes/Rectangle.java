@@ -39,7 +39,7 @@ class Rectangle extends Shape {
     }
 
     protected double getArea() {
-        return (this.length*this.width);
+        return (this.length * this.width);
     }
 
     protected boolean isInside(double x, double y) {

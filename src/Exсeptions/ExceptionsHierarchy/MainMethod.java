@@ -7,7 +7,7 @@ public class MainMethod {
         LowLevelEx lower = new LowLevelEx();
 
         try {
-            ((BaseLevelEx)lower).throwEx();
+            ((BaseLevelEx) lower).throwEx();
         } catch (BaseLevelEx baseLevelEx) {
             baseLevelEx.printStackTrace();
         }

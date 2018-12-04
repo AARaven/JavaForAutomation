@@ -1,11 +1,10 @@
 package JavaFundamentals;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class TasksJavaFundamentalsAllInOne {
 
-    void showMainMenu() {
+    private void showMainMenu() {
         System.out.println("\f");
         System.out.println("*********************************************");
         System.out.println("* 1 - FindTheMinimum.                       *");
@@ -34,76 +33,69 @@ public class TasksJavaFundamentalsAllInOne {
         while (true) {
 
             allInOne.showMainMenu();
+            allInOne.setUserInput(scanner);
 
-
-            int checkscannerMainPage = scanner.nextInt();
-
-            switch (checkscannerMainPage) {
+            switch (allInOne.getUserInput()) {
 
                 case 1:
 
                     while (true) {
 
-                        System.out.println("\f");
+                        taskFirst.showMenu();
+                        taskFirst.setUserInput(scanner);
 
-                        System.out.println();
-                        System.out.println("*******************************************");
-                        System.out.println("* 1 - To find the lower of two values.    *");
-                        System.out.println("* 2 - To find the lower of three values.  *");
-                        System.out.println("* 3 - To find the lower of four values.   *");
-                        System.out.println("* 4 - Back to main.                       *");
-                        System.out.println("* 5 - Exit.                               *");
-                        System.out.println("*******************************************");
-                        System.out.println();
-
-                        int a, b, c, d;
-
-                        int checkscannerFirstPage = scanner.nextInt();
-
-                        switch (checkscannerFirstPage) {
+                        switch (taskFirst.getUserInput()) {
 
                             case 1:
 
-                                System.out.println();
-                                System.out.println("Enter the 2 values : ");
-                                a = scanner.nextInt();
-                                b = scanner.nextInt();
-                                System.out.println();
-                                System.out.print("The lower is : ");
-                                System.out.println(taskFirst.minimumReturner(a, b));
-                                System.out.println();
-                                System.out.println("Press 'ENTER' for continue...");
+                                System.out.println("Please enter the two values for find minor.");
+
+                                taskFirst.setUserInput(scanner);
+                                taskFirst.setFirst(taskFirst.getUserInput());
+                                taskFirst.setUserInput(scanner);
+                                taskFirst.setSecond(taskFirst.getUserInput());
+
+                                System.out.println("\n" + "The minimum value is : " + taskFirst.minimumReturner
+                                        (taskFirst.getFirst(), taskFirst.getSecond()));
+
+                                System.out.println("please press 'ENTER' to continue.");
                                 System.in.read();
                                 break;
 
                             case 2:
+                                System.out.println("Please enter the three values for find minor.");
 
-                                System.out.println();
-                                System.out.println("Enter the 3 values : ");
-                                a = scanner.nextInt();
-                                b = scanner.nextInt();
-                                c = scanner.nextInt();
-                                System.out.println();
-                                System.out.print("The lower is : ");
-                                System.out.println(taskFirst.minimumReturner(a, b, c));
-                                System.out.println();
-                                System.out.println("Press 'ENTER' for continue...");
+                                taskFirst.setUserInput(scanner);
+                                taskFirst.setFirst(taskFirst.getUserInput());
+                                taskFirst.setUserInput(scanner);
+                                taskFirst.setSecond(taskFirst.getUserInput());
+                                taskFirst.setUserInput(scanner);
+                                taskFirst.setThird(taskFirst.getUserInput());
+
+                                System.out.println("\n" + "The minimum value is : " + taskFirst.minimumReturner
+                                        (taskFirst.getFirst(), taskFirst.getSecond(), taskFirst.getThird()));
+
+                                System.out.println("please press 'ENTER' to continue.");
                                 System.in.read();
                                 break;
 
                             case 3:
 
-                                System.out.println();
-                                System.out.println("Enter the 4 values : ");
-                                a = scanner.nextInt();
-                                b = scanner.nextInt();
-                                c = scanner.nextInt();
-                                d = scanner.nextInt();
-                                System.out.println();
-                                System.out.print("The lower is : ");
-                                System.out.println(taskFirst.minimumReturner(a, b, c, d));
-                                System.out.println();
-                                System.out.println("Press 'ENTER' for continue...");
+                                System.out.println("Please enter the four values for find minor.");
+
+                                taskFirst.setUserInput(scanner);
+                                taskFirst.setFirst(taskFirst.getUserInput());
+                                taskFirst.setUserInput(scanner);
+                                taskFirst.setSecond(taskFirst.getUserInput());
+                                taskFirst.setUserInput(scanner);
+                                taskFirst.setThird(taskFirst.getUserInput());
+                                taskFirst.setUserInput(scanner);
+                                taskFirst.setFourth(taskFirst.getUserInput());
+
+                                System.out.println("\n" + "The minimum value is : " + taskFirst.minimumReturner
+                                        (taskFirst.getFirst(), taskFirst.getSecond(), taskFirst.getThird(), taskFirst.getFourth()));
+
+                                System.out.println("please press 'ENTER' to continue.");
                                 System.in.read();
                                 break;
 
@@ -119,9 +111,8 @@ public class TasksJavaFundamentalsAllInOne {
 
                             default:
 
-                                System.out.println("Incorrect values...");
-                                System.out.println();
-                                System.out.println("Press 'ENTER' for continue...");
+                                System.out.println("Incorrect input...");
+                                System.out.println("please press 'ENTER' to continue.");
                                 System.in.read();
                                 break;
                         }
@@ -132,7 +123,6 @@ public class TasksJavaFundamentalsAllInOne {
                     while (true) {
 
                         System.out.println("\f");
-
                         System.out.println();
                         System.out.println("******************************************");
                         System.out.println("* 1 - Configure array.                   *");
@@ -143,16 +133,9 @@ public class TasksJavaFundamentalsAllInOne {
                         System.out.println("******************************************");
                         System.out.println();
 
-                        int checkscannerSecondPage = scanner.nextInt();
-                        int arraySize;
-                        int consoleArraySize;
+                        int checkScanner = scanner.nextInt();
 
-                        long startTimeOne;
-                        long endTimeOne;
-                        long startTimeTwo;
-                        long endTimeTwo;
-
-                        switch (checkscannerSecondPage) {
+                        switch (checkScanner) {
 
                             case 1:
 
@@ -173,7 +156,6 @@ public class TasksJavaFundamentalsAllInOne {
                             case 3:
 
                                 taskSecond.showTypeSearchMenu();
-
                                 int choiceUserInputTypeOfSearch = scanner.nextInt();
 
                                 switch (choiceUserInputTypeOfSearch) {
@@ -183,7 +165,8 @@ public class TasksJavaFundamentalsAllInOne {
                                         taskSecond.showElementSearchMenu();
                                         taskSecond.setUserInput(scanner);
                                         int elementOne = taskSecond.oneByOneSearch(taskSecond.getUserInput());
-                                        System.out.println("\n" + "Your number is " + elementOne + " element of array.");
+                                        System.out.println("\n" + "Your number is " +
+                                                elementOne + " element of array.");
                                         break;
 
                                     case 2:
@@ -192,14 +175,14 @@ public class TasksJavaFundamentalsAllInOne {
                                         taskSecond.setUserInput(scanner);
                                         taskSecond.sortBubbleSort(taskSecond.getUserArray());
                                         int elementTwo = taskSecond.binarySearch(taskSecond.getUserInput());
-                                        System.out.println("\n" + "Your number is " + elementTwo + " element of array.");
+                                        System.out.println("\n" + "Your number is " +
+                                                elementTwo + " element of array.");
                                         break;
 
                                     default:
 
-                                        System.out.println("Incorrect value...");
-                                        System.out.println();
-                                        System.out.println("Press 'ENTER' for continue...");
+                                        System.out.println("Incorrect value..." + "\n");
+                                        System.out.println("Press 'ENTER' for continue..." + "\n");
                                         System.in.read();
                                         break;
                                 }
@@ -230,16 +213,13 @@ public class TasksJavaFundamentalsAllInOne {
                     while (true) {
 
                         System.out.println("\f");
-
-                        System.out.println();
                         System.out.println(" ******************************************");
                         System.out.println(" * 1 - Configure array.                   *");
                         System.out.println(" * 2 - Output array.                      *");
                         System.out.println(" * 3 - Sorting the array.                 *");
                         System.out.println(" * 4 - Back to main.                       *");
                         System.out.println(" * 5 - Exit.                              *");
-                        System.out.println(" ******************************************");
-                        System.out.println();
+                        System.out.println(" ******************************************" + "\n");
 
                         int checkscannerThirdPage = scanner.nextInt();
 
@@ -320,74 +300,37 @@ public class TasksJavaFundamentalsAllInOne {
 
                     while (true) {
 
-                        System.out.println("\f");
+                        taskFour.showMenu();
+                        taskFour.setUserInput(scanner.nextLine());
 
-                        System.out.println();
-                        System.out.println("*******************************************");
-                        System.out.println("* 1 - To create a String.                 *");
-                        System.out.println("* 2 - To show the String as array.        *");
-                        System.out.println("* 3 - To find the matches.                *");
-                        System.out.println("* 4 - Back to main.                       *");
-                        System.out.println("* 5 - Exit.                               *");
-                        System.out.println("*******************************************");
-                        System.out.println();
-
-                        String checkscannerFourthPage = scanner.nextLine();
-
-                        switch (checkscannerFourthPage) {
+                        switch (taskFour.getUserInput()) {
 
                             case ("1"):
 
+                                System.out.println("Enter the String");
                                 System.out.println();
-                                System.out.println("Enter the String : ");
-
-                                taskFour.myString = scanner.nextLine();
-                                taskFour.myChar = taskFour.myString;
+                                taskFour.setUserString(scanner.nextLine());
+                                taskFour.setMyCharArray(taskFour.getUserString().toCharArray());
                                 break;
 
                             case ("2"):
 
-                                char holeChar = ' ';
-
-                                System.out.println();
-
-                                for (int i = 0; i < taskFour.myString.length(); i++) {
-                                    if (taskFour.myChar.charAt(i) == holeChar) {
-                                        System.out.print(holeChar);
-                                    }
-                                    System.out.print(" " + "{" + taskFour.myChar.charAt(i) + "}");
-                                }
-
-                                taskFour.myCharArray = ((String) taskFour.myChar).toCharArray();
-
-                                System.out.println();
-                                System.out.println();
-                                System.out.println("Press 'ENTER' for continue...");
+                                taskFour.getChars(taskFour.getMyCharArray());
+                                System.out.println("\n" + "Press 'ENTER' for continue...");
                                 System.in.read();
                                 break;
 
                             case ("3"):
 
+                                System.out.println("\n" + "What's char you'll be find?" + "\n");
+                                taskFour.setMyChar(scanner.nextLine().charAt(0));
+
                                 int countMatch = 0;
+                                for (char c : taskFour.getMyCharArray())
+                                    if (c == taskFour.getMyChar()) countMatch++;
 
-                                System.out.println();
-                                System.out.println("What's char you'll be find?");
-                                System.out.println();
-
-                                char myCharInputForFind = scanner.nextLine().charAt(0);
-
-                                System.out.println();
-
-                                for (int i = 0; i < taskFour.myCharArray.length; i++) {
-                                    if (taskFour.myCharArray[i] == myCharInputForFind) {
-                                        countMatch++;
-                                    }
-                                }
-
-                                System.out.println();
-                                System.out.println("We identify " + countMatch + " matches");
-                                System.out.println();
-                                System.out.println("Press 'ENTER' for continue...");
+                                System.out.println("\n" + "We identify " + countMatch + " matches" + "\n");
+                                System.out.println("Press 'ENTER' for continue..." + "\n");
                                 System.in.read();
                                 break;
 
@@ -397,20 +340,8 @@ public class TasksJavaFundamentalsAllInOne {
 
                             case ("5"):
 
-                                System.out.println();
-                                System.out.println("Exiting...");
+                                System.out.println("\n" + "Exiting...");
                                 System.exit(0);
-
-                            /*default:
-
-                                ???
-
-                                System.out.println();
-                                System.out.println("Incorrect input...");
-                                System.out.println();
-                                System.out.println("Press 'ENTER' for continue...");
-                                System.in.read();
-                                break;*/
                         }
                     }
 
@@ -502,5 +433,15 @@ public class TasksJavaFundamentalsAllInOne {
                     break;
             }
         }
+    }
+
+    private int userInput;
+
+    private void setUserInput(Scanner scanner) {
+        this.userInput = scanner.nextInt();
+    }
+
+    private int getUserInput() {
+        return this.userInput;
     }
 }

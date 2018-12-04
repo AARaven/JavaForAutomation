@@ -4,9 +4,8 @@ import java.util.Scanner;
 
 public class TurtleGraphicsDemo {
 
-    static String incorrectInputString = "Incorrect input ...Please try again...";
-
     static void showTitleMenu() {
+        System.out.println("\f");
         System.out.println("*********************************************");
         System.out.println("* 1 - Play with turtle.                     *");
         System.out.println("* 2 - Exit.                                 *");
@@ -20,8 +19,6 @@ public class TurtleGraphicsDemo {
         TurtleGraphics turtle = new TurtleGraphics(20, 20, '.', 'x', 'o');
 
         while (true) {
-
-            System.out.println("\f");
 
             showTitleMenu();
 
@@ -107,7 +104,7 @@ public class TurtleGraphicsDemo {
 
                         } catch (Exception e) {
                             e.getMessage();
-                            System.err.println(incorrectInputString);
+                            System.err.println("Incorrect input ...Please try again...");
                         }
                     }
 

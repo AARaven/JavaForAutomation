@@ -15,17 +15,10 @@ class TurtleGraphics {
 
     private Position position;
 
-    enum Direction{
+    enum Direction {
 
-         u{ }
-
-        ,d{ }
-
-        ,r{ }
-
-        ,l{ }
-
-        ,c{ },;
+        u {}, d {}, r {}, l {}, c {},
+        ;
 
         String direction;
 
@@ -57,9 +50,9 @@ class TurtleGraphics {
                 if (this.position.getY_position() < this.board.length - 1) {
                     this.position.setY_position(this.position.getY_position() + 1);
                     break;
-                }else if(this.position.getY_position() == this.board.length - 1)
+                } else if (this.position.getY_position() == this.board.length - 1)
                     System.out.println("Out of range!... please re-change your direction");
-                    break;
+                break;
 
             case l:
 
@@ -99,7 +92,7 @@ class TurtleGraphics {
         this.position = new Position();
     }
 
-    TurtleGraphics(int heightBoard,int widthBoard, char cellChar, char penChar, char coloredCellChar) {
+    TurtleGraphics(int heightBoard, int widthBoard, char cellChar, char penChar, char coloredCellChar) {
         this.board = new char[heightBoard][widthBoard];
         this.cellChar = cellChar;
         this.penChar = penChar;
@@ -111,7 +104,7 @@ class TurtleGraphics {
     void clearBoard() {
 
         for (int i = 0; i < this.board.length; i++) {
-            for (int j = 0; j <this.board.length; j++) {
+            for (int j = 0; j < this.board.length; j++) {
                 this.board[i][j] = this.cellChar;
             }
             System.out.println();
@@ -140,28 +133,10 @@ class TurtleGraphics {
         return this.board[this.position.getY_position()][this.position.getX_position()] == this.coloredCellChar;
     }
 
-//    boolean isColoredBoard() {
-//        for (int i = 0; i < this.board.length; i++) {
-//            for (int j = 0; j < this.board.length; j++) {
-//                if (this.board[i][j] == this.coloredCellChar && this.board[this.position.getY_position()][this.position.getX_position()] == this.penChar) {
-//                    return true;
-//                }
-//            }
-//        }
-//        return false;
-//    }
-
     void gameOver() {
         if (isTurtleOnColor()) {
             System.out.println("The game is over...");
             moveTurtle(Direction.c);
         }
     }
-
-//    void winGame() {
-//        if (isColoredBoard()) {
-//            System.out.println("You winner!!!");
-//            moveTurtle(Direction.c);
-//        }
-//    }
 }

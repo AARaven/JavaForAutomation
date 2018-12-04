@@ -40,9 +40,9 @@ class Shape {
 
     @Override
     public String toString() {
-        return String.format("\n"+"A Shape with the colour of %s and %b"+"\n"
+        return String.format("\n" + "A Shape with the colour of %s and %b" + "\n"
                 , this.colour, this.filled)
-                .replaceAll("true","filled.")
-                .replaceAll("false","not filled.");
+                .replaceAll("true", "filled.")
+                .replaceAll("false", "not filled.");
     }
 }

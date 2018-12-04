@@ -20,8 +20,8 @@ public class FindTheMinimum {
     private int second;
     private int third;
     private int fourth;
+    private int userInput;
     private boolean condition;
-    private String userInput;
 
     // TODO: refactor!!!
 
@@ -63,7 +63,7 @@ public class FindTheMinimum {
 
             try {
                 switch (finder.getUserInput()) {
-                    case ("1"):
+                    case 1:
                         System.out.println("Please enter the two values for find minor.");
 
                         finder.setUserInput(scanner);
@@ -77,7 +77,7 @@ public class FindTheMinimum {
                         System.out.println("please press 'ENTER' to continue.");
                         System.in.read();
                         break;
-                    case ("2"):
+                    case 2:
                         System.out.println("Please enter the three values for find minor.");
 
                         finder.setUserInput(scanner);
@@ -93,7 +93,7 @@ public class FindTheMinimum {
                         System.out.println("please press 'ENTER' to continue.");
                         System.in.read();
                         break;
-                    case ("3"):
+                    case 3:
                         System.out.println("Please enter the four values for find minor.");
 
                         finder.setUserInput(scanner);
@@ -111,7 +111,12 @@ public class FindTheMinimum {
                         System.out.println("please press 'ENTER' to continue.");
                         System.in.read();
                         break;
-                    case ("4"):
+
+                    case 4:
+
+                        break;
+
+                    case 5:
                         System.out.println("Exiting...");
                         System.exit(0);
                         break;
@@ -128,60 +133,62 @@ public class FindTheMinimum {
         }
     }
 
-    private int getFirst() {
+    protected int getFirst() {
         return first;
     }
 
-    private void setFirst(String first) {
-        this.first = Integer.parseInt(first);
+    protected void setFirst(int first) {
+        this.first = first;
     }
 
-    private int getSecond() {
+    protected int getSecond() {
         return second;
     }
 
-    private void setSecond(String second) {
-        this.second = Integer.parseInt(second);
+    protected void setSecond(int second) {
+        this.second = second;
     }
 
-    private int getThird() {
+    protected int getThird() {
         return third;
     }
 
-    private void setThird(String third) {
-        this.third = Integer.parseInt(third);
+    protected void setThird(int third) {
+        this.third = third;
     }
 
-    private int getFourth() {
+    protected int getFourth() {
         return this.fourth;
     }
 
-    private void setFourth(String fourth) {
-        this.fourth = Integer.parseInt(fourth);
+    protected void setFourth(int fourth) {
+        this.fourth = fourth;
     }
 
-    private String getUserInput() {
+    protected int getUserInput() {
         return this.userInput;
     }
 
-    private void setUserInput(Scanner scanner) {
-        this.userInput = scanner.nextLine();
+    protected void setUserInput(Scanner scanner) {
+        this.userInput = scanner.nextInt();
     }
 
-    private void setCondition(boolean condition) {
+    protected void setCondition(boolean condition) {
         this.condition = condition;
     }
 
-    private boolean isCondition() {
+    protected boolean isCondition() {
         return condition;
     }
 
-    private void showMenu() {
+    protected void showMenu() {
+        System.out.println("\f");
         System.out.println("*******************************************");
         System.out.println("* 1 - To find the lower of two values.    *");
         System.out.println("* 2 - To find the lower of three values.  *");
         System.out.println("* 3 - To find the lower of four values.   *");
-        System.out.println("* 4 - Exit.                               *");
+        System.out.println("* 4 - To main menu.                       *");
+        System.out.println("* 5 - Exit.                               *");
         System.out.println("*******************************************" + "\n");
     }
 }

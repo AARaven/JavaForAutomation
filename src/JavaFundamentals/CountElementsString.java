@@ -6,103 +6,126 @@ import java.util.Scanner;
  * ---------------------------------------------------------------------------------
  * <p>Java Fundamentals Practice #4 : Count elements occurrences in a String </p>
  * ---------------------------------------------------------------------------------
- * <p>Implement a program that request an input of 1 symbol form the consoles</p> <p> and counts a number
- * occurrences of this symbol in a pre-created text</p> <p>and prints it to the console.</p>
+ * <p>Implement a program that request an input of 1 symbol form the consoles</p>
+ * <p> and counts a number
+ * occurrences of this symbol in a pre-created text</p>
+ * <p>and prints it to the console.</p>
  * <p>The text may be hard-coded as a String in your code.</p>
  * ----------------------------------------------------------------------------------
  */
 
 public class CountElementsString {
 
-    static char myCharArray[];
-    static CharSequence myChar;
-    static String myString;
+    private char myCharArray[];
+    private char myChar;
+    private String userInput;
+    private String userString;
 
     public static void main(String[] args) throws Exception {
 
-        Scanner userInput = new Scanner(System.in);
-
+        Scanner scanner = new Scanner(System.in);
+        CountElementsString countElements = new CountElementsString();
 
         while (true) {
 
-            System.out.println("\f");
+            countElements.showMenu();
+            countElements.setUserInput(scanner.nextLine());
 
-            System.out.println("*******************************************");
-            System.out.println("* 1 - To create a String.                 *");
-            System.out.println("* 2 - To show the String as array.        *");
-            System.out.println("* 3 - To find the matches.                *");
-            System.out.println("* 4 - Exit.                               *");
-            System.out.println("*******************************************");
-            System.out.println();
-
-            String checkUserInput = userInput.nextLine();
-
-            switch (checkUserInput) {
+            switch (countElements.getUserInput()) {
 
                 case ("1"):
 
                     System.out.println("Enter the String");
                     System.out.println();
-                    myString = userInput.nextLine();
-                    myChar = myString;
-
+                    countElements.setUserString(scanner.nextLine());
+                    countElements.setMyCharArray(countElements.getUserString().toCharArray());
                     break;
 
                 case ("2"):
 
-                    char holeChar = ' ';
-
-                    for (int i = 0; i < myString.length(); i++) {
-                        if (myChar.charAt(i) == holeChar) {
-                            System.out.print(holeChar);
-                        }
-                        System.out.print(" " + "{" + myChar.charAt(i) + "}");
-                    }
-
-                    myCharArray = ((String) myChar).toCharArray();
-
-                    System.out.println();
-                    System.out.println("Press 'ENTER' for continue...");
+                    countElements.getChars(countElements.getMyCharArray());
+                    System.out.println("\n" + "Press 'ENTER' for continue...");
                     System.in.read();
-
-                    System.out.println();
-                    System.out.println();
                     break;
 
                 case ("3"):
 
+                    System.out.println("\n" + "What's char you'll be find?" + "\n");
+                    countElements.setMyChar(scanner.nextLine().charAt(0));
+
                     int countMatch = 0;
+                    for (char c : countElements.getMyCharArray())
+                        if (c == countElements.getMyChar()) countMatch++;
 
-                    System.out.println();
-                    System.out.println("What's char you'll be find?");
-
-                    char myCharInputForFind = userInput.nextLine().charAt(0);
-
-                    for (int i = 0; i < myCharArray.length; i++) {
-                        if (myCharArray[i] == myCharInputForFind) {
-                            countMatch++;
-                        }
-                    }
-
-                    System.out.println("We identify " + countMatch + " matches");
-                    System.out.println();
-                    System.out.println("Press 'ENTER' for continue...");
+                    System.out.println("\n" + "We identify " + countMatch + " matches" + "\n");
+                    System.out.println("Press 'ENTER' for continue..." + "\n");
                     System.in.read();
                     break;
 
                 case ("4"):
+                    break;
 
-                    System.out.println("Exiting...");
+                case ("5"):
+
+                    System.out.println("\n" + "Exiting...");
                     System.exit(0);
 
                 default:
 
-                    System.out.println("Incorrect input...");
-                    System.out.println();
-                    System.out.println("Press 'ENTER' for continue...");
+                    System.out.println("\n" + "Incorrect input..." + "\n");
+                    System.out.println("Press 'ENTER' for continue..." + "\n");
                     System.in.read();
                     break;
             }
         }
+    }
+
+    protected String getUserInput() {
+        return userInput;
+    }
+
+    protected void setUserInput(String userInput) {
+        this.userInput = userInput;
+    }
+
+    protected String getUserString() {
+        return userString;
+    }
+
+    protected void setUserString(String userString) {
+        this.userString = userString;
+    }
+
+    protected char[] getMyCharArray() {
+        return myCharArray;
+    }
+
+    protected void setMyCharArray(char[] myCharArray) {
+        this.myCharArray = myCharArray;
+    }
+
+    protected void getChars(char[] chars) {
+        for (char c : chars) {
+            System.out.print(" " + "{" + c + "}");
+        }
+    }
+
+    protected char getMyChar() {
+        return myChar;
+    }
+
+    protected void setMyChar(char myChar) {
+        this.myChar = myChar;
+    }
+
+    protected void showMenu() {
+        System.out.println("\f");
+        System.out.println("*******************************************");
+        System.out.println("* 1 - To create a String.                 *");
+        System.out.println("* 2 - To show the String as array.        *");
+        System.out.println("* 3 - To find the matches.                *");
+        System.out.println("* 4 - To main menu.                       *");
+        System.out.println("* 5 - Exit.                               *");
+        System.out.println("*******************************************" + "\n");
     }
 }

@@ -2,7 +2,7 @@ package Generics;
 
 import javafx.scene.shape.Circle;
 
-public class Pair<T1,T2>  {
+public class Pair<T1, T2> {
 
     private T1 t1;
     private T2 t2;
@@ -22,7 +22,7 @@ public class Pair<T1,T2>  {
 
     public static void main(String[] args) {
 
-        Pair <Circle,String> pair = new Pair <>(new Circle(),"simple Circle");
+        Pair<Circle, String> pair = new Pair<>(new Circle(), "simple Circle");
 
         String name = pair.getSecond();
         Circle circle = pair.getFirst();

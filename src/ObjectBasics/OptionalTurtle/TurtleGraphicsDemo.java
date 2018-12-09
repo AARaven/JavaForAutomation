@@ -39,7 +39,7 @@ public class TurtleGraphicsDemo {
                             System.out.print("\n" + "Choose the direction of movement and the number of steps: " + "\n"
                                     + "\n" + "For example: r 5 - to go 5 steps to the right." + "\n"
                                     + "c - to clean a board and start again." + "\n");
-
+// FIXME: ----------------->
                             String directionAndNumberSteps = userInput.nextLine();
                             char[] dire = directionAndNumberSteps.toCharArray();
                             int numberOfSteps = 0;
@@ -51,7 +51,7 @@ public class TurtleGraphicsDemo {
                                 direction = String.valueOf(dire[0]);
                                 numberOfSteps = Integer.parseInt(String.valueOf(dire[2]));
                             }
-
+// FIXME: -----------------> todo more then 9 steps!
 
                             switch (TurtleGraphics.Direction.valueOf(direction)) {
 
@@ -60,7 +60,6 @@ public class TurtleGraphicsDemo {
                                     for (int i = 0; i < numberOfSteps; i++) {
                                         turtle.turtleColor();
                                         turtle.moveTurtle(TurtleGraphics.Direction.u);
-                                        turtle.gameOver();
                                     }
 
                                     break;
@@ -70,7 +69,6 @@ public class TurtleGraphicsDemo {
                                     for (int i = 0; i < numberOfSteps; i++) {
                                         turtle.turtleColor();
                                         turtle.moveTurtle(TurtleGraphics.Direction.d);
-                                        turtle.gameOver();
                                     }
 
                                     break;
@@ -80,7 +78,6 @@ public class TurtleGraphicsDemo {
                                     for (int i = 0; i < numberOfSteps; i++) {
                                         turtle.turtleColor();
                                         turtle.moveTurtle(TurtleGraphics.Direction.l);
-                                        turtle.gameOver();
                                     }
 
                                     break;
@@ -90,7 +87,6 @@ public class TurtleGraphicsDemo {
                                     for (int i = 0; i < numberOfSteps; i++) {
                                         turtle.turtleColor();
                                         turtle.moveTurtle(TurtleGraphics.Direction.r);
-                                        turtle.gameOver();
                                     }
 
                                     break;

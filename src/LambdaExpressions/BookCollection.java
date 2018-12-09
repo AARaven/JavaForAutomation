@@ -46,14 +46,18 @@ public class BookCollection {
                 .map(Book::getTitle)
                 .collect(Collectors.joining(" "));
 
-        System.out.println(authorTitleBook+"\n");
+        System.out.println(authorTitleBook + "\n");
 
         books.stream()
                 .sorted(Comparator.comparing(book -> book.getAuthor().getAuthorFullName()))
-                .distinct().map(book -> book.getAuthor().getAuthorFullName().concat(" ").concat(book.getTitle()))
-                .forEach(System.out::println);
+                .distinct()
+                .map(book -> book.getAuthor().getAuthorFullName().concat(" ").concat(book.getTitle()))
+                .forEachOrdered(System.out::println);
 
-        double price = books.stream().mapToDouble(Book::getPrice).sum();
+        double price = books.stream()
+                .mapToDouble(Book::getPrice)
+                .sum();
+
         System.out.print("\n" + String.format("TOTAL : %10.2f", price));
     }
 }

@@ -1,5 +1,6 @@
 package JavaFundamentals;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -18,42 +19,51 @@ public class TowersOfHanoi {
 
     private int numberDisks;
 
-    public static void main(String[] args) throws Exception {
-
-        TowersOfHanoi towers = new TowersOfHanoi();
+    boolean start() {
 
         while (true) {
 
             Scanner scanner = new Scanner(System.in);
-
-            towers.showMenu();
+            showMenu();
 
             switch (scanner.nextLine()) {
 
                 case ("1"):
 
                     System.out.print("\n" + "Enter the number of disks : " + "\n");
-                    towers.setNumberDisks(scanner.nextInt());
+                    setNumberDisks(scanner.nextInt());
                     System.out.println();
                     break;
 
                 case ("2"):
 
                     System.out.print("Steps : ");
-                    towers.resultOfCalculation();
+                    resultOfCalculation();
                     System.out.println("Press 'ENTER' for continue...");
-                    System.in.read();
+                    try {
+                        System.in.read();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
 
                 case ("3"):
 
                     System.out.println();
-                    towers.calculationMoves(towers);
+                    calculationMoves(this);
                     System.out.println("\n" + "Press 'ENTER' for continue...");
-                    System.in.read();
+                    try {
+                        System.in.read();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
 
                 case ("4"):
+
+                    return false;
+
+                case ("5"):
 
                     System.out.println("\n" + "Exiting...");
                     System.exit(0);
@@ -63,25 +73,29 @@ public class TowersOfHanoi {
 
                     System.out.println("Incorrect input..." + "\n");
                     System.out.println("Press 'ENTER' for continue...");
-                    System.in.read();
+                    try {
+                        System.in.read();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
             }
         }
     }
 
-    int getNumberDisks() {
+    private int getNumberDisks() {
         return numberDisks;
     }
 
-    void setNumberDisks(int numberDisksInput) {
+    private void setNumberDisks(int numberDisksInput) {
         this.numberDisks = numberDisksInput;
     }
 
-    void calculationMoves(TowersOfHanoi hanoisTowers) {
+    private void calculationMoves(TowersOfHanoi hanoisTowers) {
         calculationMoves(this.numberDisks, "A", "C", "B");
     }
 
-    void calculationMoves(int numberDisks, String from, String to, String temp) {
+    private void calculationMoves(int numberDisks, String from, String to, String temp) {
         if (numberDisks != 0) {
             calculationMoves(numberDisks - 1, from, temp, to);
             System.out.println(numberDisks + " moved from " + from + " to " + to);
@@ -89,17 +103,18 @@ public class TowersOfHanoi {
         }
     }
 
-    void resultOfCalculation() {
+    private void resultOfCalculation() {
         System.out.println(((int) ((Math.pow(2, this.getNumberDisks()) - 1))) + "\n");
     }
 
-    void showMenu() {
+    private void showMenu() {
         System.out.println("\f");
         System.out.println("*********************************************************");
         System.out.println("* 1 - To set a number of disks.                         *");
         System.out.println("* 2 - To show the result of the calculation.            *");
         System.out.println("* 3 - To demonstrate the calculations from A to C.      *");
-        System.out.println("* 4 - Exit.                                             *");
+        System.out.println("* 4 - Main menu.                                        *");
+        System.out.println("* 5 - Exit.                                             *");
         System.out.println("*********************************************************" + "\n");
     }
 }

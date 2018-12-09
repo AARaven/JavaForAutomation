@@ -1,5 +1,6 @@
 package JavaFundamentals;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -14,15 +15,14 @@ import java.util.Scanner;
  * ----------------------------------------------------------------------------------
  */
 
-public class CountElementsString {
+class CountElementsString {
 
-    private char myCharArray[];
+    private char[] myCharArray;
     private char myChar;
     private String userInput;
     private String userString;
 
-    public static void main(String[] args) throws Exception {
-
+    boolean start() {
         Scanner scanner = new Scanner(System.in);
         CountElementsString countElements = new CountElementsString();
 
@@ -45,7 +45,11 @@ public class CountElementsString {
 
                     countElements.getChars(countElements.getMyCharArray());
                     System.out.println("\n" + "Press 'ENTER' for continue...");
-                    System.in.read();
+                    try {
+                        System.in.read();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
 
                 case ("3"):
@@ -59,11 +63,16 @@ public class CountElementsString {
 
                     System.out.println("\n" + "We identify " + countMatch + " matches" + "\n");
                     System.out.println("Press 'ENTER' for continue..." + "\n");
-                    System.in.read();
+                    try {
+                        System.in.read();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
 
                 case ("4"):
-                    break;
+
+                    return false;
 
                 case ("5"):
 
@@ -74,51 +83,55 @@ public class CountElementsString {
 
                     System.out.println("\n" + "Incorrect input..." + "\n");
                     System.out.println("Press 'ENTER' for continue..." + "\n");
-                    System.in.read();
+                    try {
+                        System.in.read();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
             }
         }
     }
 
-    protected String getUserInput() {
+    private String getUserInput() {
         return userInput;
     }
 
-    protected void setUserInput(String userInput) {
+    private void setUserInput(String userInput) {
         this.userInput = userInput;
     }
 
-    protected String getUserString() {
+    private String getUserString() {
         return userString;
     }
 
-    protected void setUserString(String userString) {
+    private void setUserString(String userString) {
         this.userString = userString;
     }
 
-    protected char[] getMyCharArray() {
+    private char[] getMyCharArray() {
         return myCharArray;
     }
 
-    protected void setMyCharArray(char[] myCharArray) {
+    private void setMyCharArray(char[] myCharArray) {
         this.myCharArray = myCharArray;
     }
 
-    protected void getChars(char[] chars) {
+    private void getChars(char[] chars) {
         for (char c : chars) {
             System.out.print(" " + "{" + c + "}");
         }
     }
 
-    protected char getMyChar() {
+    private char getMyChar() {
         return myChar;
     }
 
-    protected void setMyChar(char myChar) {
+    private void setMyChar(char myChar) {
         this.myChar = myChar;
     }
 
-    protected void showMenu() {
+    private void showMenu() {
         System.out.println("\f");
         System.out.println("*******************************************");
         System.out.println("* 1 - To create a String.                 *");

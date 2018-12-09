@@ -1,5 +1,6 @@
 package JavaFundamentals;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -18,19 +19,106 @@ import java.util.Scanner;
  * <p>Compare execution time for each algorithm.</p>
  * <p>-------------------------------------------------------------------</p>
  */
-public class SearchElement {
+class SearchElement {
     private int[] userArray;
     private int userInput;
 
-    protected void setUserInput(Scanner scanner) {
+    boolean start() {
+        Scanner scanner = new Scanner(System.in);
+        boolean condition = true;
+
+        while (condition) {
+
+            try {
+                showMenu();
+                setUserInput(scanner);
+
+                switch (getUserInput()) {
+
+                    case 1:
+
+                        System.out.print("Enter the size of array : ");
+                        setArrayLength(scanner);
+                        System.out.println("Enter the " + getUserArray().length + " elements of array : ");
+                        setArgumentsArray(scanner);
+                        break;
+
+                    case 2:
+
+                        System.out.println("User Array elements: ");
+                        getArgumentsArray();
+                        System.out.println("\n" + "Press 'ENTER' for continue...");
+                        System.in.read();
+                        break;
+
+                    case 3:
+
+                        showTypeSearchMenu();
+                        setUserInput(scanner);
+
+                        switch (getUserInput()) {
+
+                            case 1:
+
+                                showElementSearchMenu();
+                                setUserInput(scanner);
+                                int elementOne = oneByOneSearch(getUserInput());
+                                System.out.println("\n" + "Your number is " + elementOne + " element of array.");
+                                break;
+
+                            case 2:
+
+                                showElementSearchMenu();
+                                setUserInput(scanner);
+                                sortBubbleSort(getUserArray());
+                                int elementTwo = binarySearch(getUserInput());
+                                System.out.println("\n" + "Your number is " + elementTwo + " element of array.");
+                                break;
+
+                        }
+                        break;
+
+                    case 4:
+
+                        return false;
+
+                    case 5:
+
+                        System.out.println("Exiting ...");
+                        System.exit(0);
+                        break;
+
+                    default:
+
+                        System.out.println("Incorrect input..." + "\n");
+                        System.out.println("Press 'ENTER' for continue...");
+                        System.in.read();
+                        break;
+                }
+            } catch (Exception e) {
+                System.out.println("Incorrect input...");
+                System.out.println("Press 'ENTER' for continue...");
+                try {
+                    System.in.read();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+                condition = false;
+                System.gc();
+            }
+        }
+        return true;
+    }
+
+    private void setUserInput(Scanner scanner) {
         this.userInput = scanner.nextInt();
     }
 
-    protected int getUserInput() {
+    private int getUserInput() {
         return this.userInput;
     }
 
-    protected int oneByOneSearch(int temp) {
+    private int oneByOneSearch(int temp) {
         for (int i = 0; i < this.userArray.length; i++) {
             if (this.userArray[i] == temp) {
                 return i + 1;
@@ -39,7 +127,7 @@ public class SearchElement {
         return 0;
     }
 
-    protected int binarySearch(int temp) {
+    private int binarySearch(int temp) {
         int beginArray = 0;
         int endArray = this.userArray.length - 1;
         int middleArray = (endArray + beginArray) / 2;
@@ -56,11 +144,11 @@ public class SearchElement {
         return middleArray + 1;
     }
 
-    protected int[] getUserArray() {
+    private int[] getUserArray() {
         return this.userArray;
     }
 
-    protected int[] sortBubbleSort(int[] ints) {
+    private int[] sortBubbleSort(int[] ints) {
         int temp;
         for (int i = 0; i < ints.length; i++) {
             for (int j = 1; j <= (ints.length - 1); j++) {
@@ -74,13 +162,13 @@ public class SearchElement {
         return ints;
     }
 
-    protected void showElementSearchMenu() {
+    private void showElementSearchMenu() {
         System.out.println("\n" + " *****************************************");
         System.out.println(" * What's element need to find ?         *");
         System.out.println(" *****************************************" + "\n");
     }
 
-    protected void showTypeSearchMenu() {
+    private void showTypeSearchMenu() {
         System.out.println("\n" + " *****************************************");
         System.out.println(" * What's method you need to use ?       *");
         System.out.println(" *****************************************");
@@ -89,90 +177,14 @@ public class SearchElement {
         System.out.println(" *****************************************" + "\n");
     }
 
-    public static void main(String[] args) throws Exception {
-        Scanner scanner = new Scanner(System.in);
-        SearchElement search = new SearchElement();
-        boolean condition = true;
-
-        while (condition) {
-
-            try {
-                search.showMenu();
-                search.setUserInput(scanner);
-
-                switch (search.getUserInput()) {
-
-                    case 1:
-
-                        System.out.print("Enter the size of array : ");
-                        search.setArrayLength(scanner);
-                        System.out.println("Enter the " + search.getUserArray().length + " elements of array : ");
-                        search.setArgumentsArray(scanner);
-                        break;
-
-                    case 2:
-
-                        System.out.println("User Array elements: ");
-                        search.getArgumentsArray();
-                        System.out.println("\n" + "Press 'ENTER' for continue...");
-                        System.in.read();
-                        break;
-
-                    case 3:
-
-                        search.showTypeSearchMenu();
-                        search.setUserInput(scanner);
-
-                        switch (search.getUserInput()) {
-
-                            case 1:
-
-                                search.showElementSearchMenu();
-                                search.setUserInput(scanner);
-                                int elementOne = search.oneByOneSearch(search.getUserInput());
-                                System.out.println("\n" + "Your number is " + elementOne + " element of array.");
-                                break;
-
-                            case 2:
-
-                                search.showElementSearchMenu();
-                                search.setUserInput(scanner);
-                                search.sortBubbleSort(search.getUserArray());
-                                int elementTwo = search.binarySearch(search.getUserInput());
-                                System.out.println("\n" + "Your number is " + elementTwo + " element of array.");
-                                break;
-
-                        }
-                        break;
-
-                    case 4:
-
-                        System.out.println("Exiting ...");
-                        System.exit(0);
-                        break;
-
-                    default:
-
-                        System.out.println("Incorrect input..." + "\n");
-                        System.out.println("Press 'ENTER' for continue...");
-                        System.in.read();
-                        break;
-                }
-            } catch (Exception e) {
-                System.out.println("Incorrect input...Exiting...");
-                condition = false;
-                System.gc();
-            }
-        }
-    }
-
     private void showMenu() {
         System.out.println("\f");
         System.out.println("******************************************");
         System.out.println("* 1 - Configure array.                   *");
         System.out.println("* 2 - Output array.                      *");
         System.out.println("* 3 - Change type for search.            *");
-        System.out.println("* 4 - Exit.                              *");
+        System.out.println("* 4 - Main menu.                         *");
+        System.out.println("* 5 - Exit.                              *");
         System.out.println("******************************************" + "\n");
     }
 
@@ -192,13 +204,5 @@ public class SearchElement {
         for (int i = 0; i < this.userArray.length; i++) {
             this.userArray[i] = scanner.nextInt();
         }
-    }
-
-    private void setArgumentOfArray(int index, int value) {
-        this.userArray[index] = value;
-    }
-
-    private int getArgumentOfArray(int index) {
-        return this.userArray[index];
     }
 }

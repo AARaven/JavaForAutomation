@@ -1,5 +1,6 @@
 package JavaFundamentals;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -17,21 +18,22 @@ import java.util.Scanner;
  * --------------------------------------------------------------------------------------
  */
 
-public class SortArray {
+class SortArray {
     private int[] userArray;
     private int userInput;
 
-    void showMenu() {
+    private void showMenu() {
         System.out.println("\f");
         System.out.println(" ******************************************");
         System.out.println(" * 1 - Configure array.                   *");
         System.out.println(" * 2 - Output array.                      *");
         System.out.println(" * 3 - Sorting the array.                 *");
-        System.out.println(" * 4 - Exit.                              *");
+        System.out.println(" * 4 - Main menu.                         *");
+        System.out.println(" * 5 - Exit.                              *");
         System.out.println(" ******************************************" + "\n");
     }
 
-    void showSecondaryMenu() {
+    private void showSecondaryMenu() {
         System.out.println(" *****************************************");
         System.out.println(" * What's kind of sort you want to use?  *");
         System.out.println(" *****************************************");
@@ -40,49 +42,47 @@ public class SortArray {
         System.out.println(" *****************************************" + "\n");
     }
 
-    public static void main(String[] args) throws Exception {
-
-        SortArray sortArray = new SortArray();
+    boolean start() {
         Scanner scanner = new Scanner(System.in);
         boolean condition = true;
 
         while (condition) {
             try {
-                sortArray.showMenu();
+                showMenu();
 
-                sortArray.setUserInput(scanner);
+                setUserInput(scanner);
 
-                switch (sortArray.getUserInput()) {
+                switch (getUserInput()) {
 
                     case 1:
 
                         System.out.print("Enter the size of array : ");
-                        sortArray.setArrayLength(scanner);
-                        System.out.println("Enter the " + sortArray.getUserArray().length + " elements of array : ");
-                        sortArray.setArgumentsArray(scanner);
+                        setArrayLength(scanner);
+                        System.out.println("Enter the " + getUserArray().length + " elements of array : ");
+                        setArgumentsArray(scanner);
                         System.out.println("Array is upload :");
                         break;
 
                     case 2:
 
                         System.out.println("User Array elements: ");
-                        sortArray.getArgumentsArray();
+                        getArgumentsArray();
                         System.out.println("\n" + "Press 'ENTER' for continue...");
                         System.in.read();
                         break;
 
                     case 3:
 
-                        sortArray.showSecondaryMenu();
+                        showSecondaryMenu();
 
 
-                        sortArray.setUserInput(scanner);
+                        setUserInput(scanner);
 
-                        switch (sortArray.getUserInput()) {
+                        switch (getUserInput()) {
 
                             case 1:
 
-                                sortArray.sortBubbleSort(sortArray.getUserArray());
+                                sortBubbleSort(getUserArray());
                                 System.out.println("\n" + "Completed..." + "\n");
                                 System.out.println("Press 'ENTER' for continue...");
                                 System.in.read();
@@ -90,7 +90,7 @@ public class SortArray {
 
                             case 2:
 
-                                sortArray.sortInsertionSort(sortArray.getUserArray());
+                                sortInsertionSort(getUserArray());
                                 System.out.println("\n" + "Completed..." + "\n");
                                 System.out.println("Press 'ENTER' for continue...");
                                 System.in.read();
@@ -107,6 +107,10 @@ public class SortArray {
 
                     case 4:
 
+                        return false;
+
+                    case 5:
+
                         System.out.println("Exiting ...");
                         System.exit(0);
                         break;
@@ -119,11 +123,18 @@ public class SortArray {
                         break;
                 }
             } catch (Exception e) {
-                System.out.println("Incorrect input...Exiting...");
+                System.out.println("Incorrect input...");
+                System.out.println("Press 'ENTER' for continue...");
+                try {
+                    System.in.read();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
                 condition = false;
                 System.gc();
             }
         }
+        return true;
     }
 
     private int getUserInput() {
@@ -134,7 +145,7 @@ public class SortArray {
         this.userInput = scanner.nextInt();
     }
 
-    protected int[] sortBubbleSort(int[] ints) {
+    int[] sortBubbleSort(int[] ints) {
         int temp;
         for (int i = 0; i < ints.length; i++) {
             for (int j = 1; j <= (ints.length - 1); j++) {
@@ -148,7 +159,7 @@ public class SortArray {
         return ints;
     }
 
-    protected int[] sortInsertionSort(int[] ints) {
+    private int[] sortInsertionSort(int[] ints) {
         for (int i = 1; i < ints.length; i++) {
             int temp = ints[i];
             int j = i - 1;
@@ -161,15 +172,15 @@ public class SortArray {
         return ints;
     }
 
-    protected int[] getUserArray() {
+    private int[] getUserArray() {
         return this.userArray;
     }
 
-    protected void setArrayLength(Scanner scanner) {
+    private void setArrayLength(Scanner scanner) {
         this.userArray = new int[scanner.nextInt()];
     }
 
-    protected void getArgumentsArray() {
+    private void getArgumentsArray() {
         System.out.println();
         for (int i : this.userArray) {
             System.out.print(i + " ");
@@ -177,17 +188,9 @@ public class SortArray {
         System.out.println();
     }
 
-    protected void setArgumentsArray(Scanner scanner) {
+    private void setArgumentsArray(Scanner scanner) {
         for (int i = 0; i < this.userArray.length; i++) {
             this.userArray[i] = scanner.nextInt();
         }
-    }
-
-    private void setArgumentOfArray(int index, int value) {
-        this.userArray[index] = value;
-    }
-
-    private int getArgumentOfArray(int index) {
-        return this.userArray[index];
     }
 }

@@ -24,8 +24,8 @@ public class Pair<T1, T2> {
 
         Pair<Circle, String> pair = new Pair<>(new Circle(), "simple Circle");
 
-        String name = pair.getSecond();
         Circle circle = pair.getFirst();
+        String name = pair.getSecond();
 
         System.out.println(circle);
         System.out.println(name);

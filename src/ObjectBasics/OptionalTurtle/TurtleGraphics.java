@@ -16,7 +16,6 @@ class TurtleGraphics {
     private Position position;
 
     enum Direction {
-
         u {}, d {}, r {}, l {}, c {},
         ;
 
@@ -31,7 +30,7 @@ class TurtleGraphics {
         }
     }
 
-    protected void moveTurtle(Direction direction) {
+    void moveTurtle(Direction direction) {
 
         switch (direction) {
 
@@ -127,16 +126,5 @@ class TurtleGraphics {
 
     void turtleColor() {
         this.board[this.position.getY_position()][this.position.getX_position()] = this.coloredCellChar;
-    }
-
-    boolean isTurtleOnColor() {
-        return this.board[this.position.getY_position()][this.position.getX_position()] == this.coloredCellChar;
-    }
-
-    void gameOver() {
-        if (isTurtleOnColor()) {
-            System.out.println("The game is over...");
-            moveTurtle(Direction.c);
-        }
     }
 }

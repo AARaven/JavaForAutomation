@@ -151,11 +151,14 @@ public class Clock {
 
     public static String stringReturnClock(Clock clock) {
 
-        return String.format("%02d:%02d:%02d", clock.getHours(), clock.getMinutes(), clock.getSeconds());
+        return String.format("%02d:%02d:%02d",
+                clock.getHours(), clock.getMinutes(), clock.getSeconds());
     }
 
     public static void getTime(Clock clock) {
-        System.out.print("Time of clock : " + String.format("%02d:%02d:%02d", clock.getHours(), clock.getMinutes(), clock.getSeconds()));
+        System.out.print("Time of clock : " +
+                String.format("%02d:%02d:%02d",
+                        clock.getHours(), clock.getMinutes(), clock.getSeconds()));
     }
 
     public void tickDown() {

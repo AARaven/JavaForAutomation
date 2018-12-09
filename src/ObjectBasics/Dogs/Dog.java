@@ -12,12 +12,11 @@ public class Dog {
 
     private int randomIndexName = (int) ((Math.random() * 10) - 1);
     private int randomIndexSize = (int) (Math.random() * 3);
-    private int randomAge = (int) (((Math.random() * 10) * 2) + 1);
 
-    private String nameGenerator[] = {"Puppy", "Scooby-doo", "Rex", "Rambo", "Scotty",
+    private String[] nameGenerator = {"Puppy", "Scooby-doo", "Rex", "Rambo", "Scotty",
             "Goofy", "Snuppy", "Dr. Sheldon", "Penny"};
 
-    private String sizeGenerator[] = {"Big", "Medium", "Small"};
+    private String[] sizeGenerator = {"Big", "Medium", "Small"};
 
     private String randomName = nameGenerator[randomIndexName];
     private String randomOfSize = sizeGenerator[randomIndexSize];
@@ -61,7 +60,7 @@ public class Dog {
     Dog() {
         this.name = randomName;
         this.size = randomOfSize;
-        this.age = randomAge;
+        this.age = (int) (((Math.random() * 10) * 2) + 1);
     }
 
     void getDogDetails() {
@@ -72,11 +71,13 @@ public class Dog {
     }
 
     static void sortDogsByName(Dog[] dogs) {
-        Arrays.sort(dogs, (o1, o2) -> Collator.getInstance().compare(o1.name, o2.name));
+        Arrays.sort(dogs, (o1, o2) ->
+                Collator.getInstance().compare(o1.name, o2.name));
     }
 
     static void sortDogsBySize(Dog[] dogs) {
-        Arrays.sort(dogs, (o1, o2) -> Collator.getInstance().compare(o1.size, o2.size));
+        Arrays.sort(dogs, (o1, o2) ->
+                Collator.getInstance().compare(o1.size, o2.size));
     }
 
     private static void createDogArray(Dog[] dogs, int numberOfDogs) {
@@ -102,7 +103,7 @@ public class Dog {
         System.out.print("What's number a dogs ");
         int numberOfDogs = userInput.nextInt();
 
-        Dog myDogs[] = new Dog[numberOfDogs];
+        Dog[] myDogs = new Dog[numberOfDogs];
 
         createDogArray(myDogs, numberOfDogs);
         getDogDetailsArray(myDogs, numberOfDogs);

@@ -31,7 +31,7 @@ public class SearchElement {
         int right = ints.length;
         int middle = ( left + right ) / 2;
         
-        while ( left != right && ( right - left ) != 1 ) {
+        while ( left != right || ( right - left ) != 1 ) {
             
             if ( ints[ middle ] > value ) {
                 right = middle;

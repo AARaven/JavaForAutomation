@@ -1,196 +1,125 @@
 package JavaFundamentals;
 
-import java.io.IOException;
-import java.util.Scanner;
-
 /**
  * -------------------------------------------------------------------------------------
- * <p>Java Fundamentals Practice #3 : Sort array </p>
- * <p>Sort random array ( number of arguments should be taken from in the console)
+ * <p><h2>Java Fundamentals Practice #3 : Sort array </h2></p>
+ * <p>Sort random array ( number of arguments should be taken from in the console )
  * of integer numbers using at least 2 of the following sort algorithms:</p>
  * <p>
  * --------------------------------------------------------------------------------------
- * <p>--> Bubble sort;</p>
- * <p>--> Optimized bubble sort;</p>
- * <p>--> insertion sort;</p>
- * <p>--> Selection sort.</p>
+ * <p>--> <b>Bubble sort</b>;</p>
+ * <p>--> <b>Optimized bubble sort</b>;</p>
+ * <p>--> <b>insertion sort</b>;</p>
+ * <p>--> <b>Selection sort</b>.</p>
  * <p>
  * --------------------------------------------------------------------------------------
  */
 
-class SortArray {
-    private int[] userArray;
-    private int userInput;
-
-    private void showMenu() {
-        System.out.println("\f");
-        System.out.println(" ******************************************");
-        System.out.println(" * 1 - Configure array.                   *");
-        System.out.println(" * 2 - Output array.                      *");
-        System.out.println(" * 3 - Sorting the array.                 *");
-        System.out.println(" * 4 - Main menu.                         *");
-        System.out.println(" * 5 - Exit.                              *");
-        System.out.println(" ******************************************" + "\n");
+public class SortArray {
+    
+    private static boolean swapped;
+    
+    /**
+     * Method that take 2 indexes of elements in the array and swap it
+     *
+     * @param arr       array of integers
+     * @param firstVal  index of first element to swap
+     * @param secondVal index of second element to swap
+     */
+    private void swap( int[] arr, int firstVal, int secondVal ) {
+        int temp = arr[ firstVal ];
+        arr[ firstVal ] = arr[ secondVal ];
+        arr[ secondVal ] = temp;
     }
-
-    private void showSecondaryMenu() {
-        System.out.println(" *****************************************");
-        System.out.println(" * What's kind of sort you want to use?  *");
-        System.out.println(" *****************************************");
-        System.out.println(" * 1 - Bubble sort.                      *");
-        System.out.println(" * 2 - Insertion sort.                   *");
-        System.out.println(" *****************************************" + "\n");
+    
+    private static boolean isSwapped() {
+        return swapped;
     }
-
-    boolean start() {
-        Scanner scanner = new Scanner(System.in);
-        boolean condition = true;
-
-        while (condition) {
-            try {
-                showMenu();
-
-                setUserInput(scanner);
-
-                switch (getUserInput()) {
-
-                    case 1:
-
-                        System.out.print("Enter the size of array : ");
-                        setArrayLength(scanner);
-                        System.out.println("Enter the " + getUserArray().length + " elements of array : ");
-                        setArgumentsArray(scanner);
-                        System.out.println("Array is upload :");
-                        break;
-
-                    case 2:
-
-                        System.out.println("User Array elements: ");
-                        getArgumentsArray();
-                        System.out.println("\n" + "Press 'ENTER' for continue...");
-                        System.in.read();
-                        break;
-
-                    case 3:
-
-                        showSecondaryMenu();
-
-
-                        setUserInput(scanner);
-
-                        switch (getUserInput()) {
-
-                            case 1:
-
-                                sortBubbleSort(getUserArray());
-                                System.out.println("\n" + "Completed..." + "\n");
-                                System.out.println("Press 'ENTER' for continue...");
-                                System.in.read();
-                                break;
-
-                            case 2:
-
-                                sortInsertionSort(getUserArray());
-                                System.out.println("\n" + "Completed..." + "\n");
-                                System.out.println("Press 'ENTER' for continue...");
-                                System.in.read();
-                                break;
-
-                            default:
-
-                                System.out.println("Incorrect input..." + "\n");
-                                System.out.println("Press 'ENTER' for continue...");
-                                System.in.read();
-                                break;
-                        }
-                        break;
-
-                    case 4:
-
-                        return false;
-
-                    case 5:
-
-                        System.out.println("Exiting ...");
-                        System.exit(0);
-                        break;
-
-                    default:
-
-                        System.out.println("Incorrect input..." + "\n");
-                        System.out.println("Press 'ENTER' for continue...");
-                        System.in.read();
-                        break;
-                }
-            } catch (Exception e) {
-                System.out.println("Incorrect input...");
-                System.out.println("Press 'ENTER' for continue...");
-                try {
-                    System.in.read();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-                condition = false;
-                System.gc();
-            }
-        }
-        return true;
+    
+    private static void setSwapped( boolean value ) {
+        swapped = value;
     }
-
-    private int getUserInput() {
-        return this.userInput;
-    }
-
-    private void setUserInput(Scanner scanner) {
-        this.userInput = scanner.nextInt();
-    }
-
-    int[] sortBubbleSort(int[] ints) {
-        int temp;
-        for (int i = 0; i < ints.length; i++) {
-            for (int j = 1; j <= (ints.length - 1); j++) {
-                if (ints[j - 1] > ints[j]) {
-                    temp = ints[j - 1];
-                    ints[j - 1] = ints[j];
-                    ints[j] = temp;
+    
+    /**
+     * Method that takes the array and sort him using the 'bubble sort' algorithm
+     *
+     * @param arr array of integers
+     * @return sorted array of integers
+     */
+    public int[] bubbleSort( int[] arr ) {
+        
+        for ( int i = arr.length - 1; i > 0; i-- ) {
+            for ( int j = 0; j < i; j++ ) {
+                if ( arr[ j ] > arr[ j + 1 ] ) {
+                    swap( arr, j, j + 1 );
                 }
             }
         }
-        return ints;
+        return arr;
     }
-
-    private int[] sortInsertionSort(int[] ints) {
-        for (int i = 1; i < ints.length; i++) {
-            int temp = ints[i];
+    
+    /**
+     * Method that takes the array and sort him using the 'optimized bubble sort' algorithm
+     *
+     * @param arr array of integers
+     * @return sorted array of integers
+     */
+    public int[] optimizedBubbleSort( int[] arr ) {
+        
+        for ( int i = 1; i < arr.length - 1; i++ ) {
+            setSwapped( true );
+            for ( int j = 0; j < arr.length - i; j++ ) {
+                if ( arr[ j ] > arr[ j + 1 ] ) {
+                    swap( arr, j, j + 1 );
+                    setSwapped( false );
+                }
+            }
+            if ( isSwapped() ) break;
+        }
+        return arr;
+    }
+    
+    /**
+     * Method that takes the array and sort him using the 'insertion sort' algorithm
+     *
+     * @param arr array of integers
+     * @return sorted array of integers
+     */
+    public int[] insertionSort( int[] arr ) {
+        
+        for ( int i = 0; i < arr.length; i++ ) {
+            int temp = arr[ i ];
             int j = i - 1;
-            while ((j >= 0) && ints[j] > temp) {
-                ints[j + 1] = ints[j];
-                j--;
+            while ( j >= 0 && arr[ j ] > temp ) {
+                arr[ j + 1 ] = arr[ j ];
+                j = j - 1;
             }
-            ints[j + 1] = temp;
+            arr[ j + 1 ] = temp;
         }
-        return ints;
+        return arr;
     }
-
-    private int[] getUserArray() {
-        return this.userArray;
-    }
-
-    private void setArrayLength(Scanner scanner) {
-        this.userArray = new int[scanner.nextInt()];
-    }
-
-    private void getArgumentsArray() {
-        System.out.println();
-        for (int i : this.userArray) {
-            System.out.print(i + " ");
+    
+    /**
+     * Method that takes the array and sort him using the 'selection sort' algorithm
+     *
+     * @param arr array of integers
+     * @return sorted array of integers
+     */
+    public int[] selectionSort( int[] arr ) {
+        
+        for ( int i = 0; i < arr.length; i++ ) {
+            int min = arr[ i ];
+            int index = i;
+            for ( int j = i + 1; j < arr.length; j++ ) {
+                if ( arr[ j ] < min ) {
+                    min = arr[ j ];
+                    index = j;
+                }
+            }
+            if ( i != index ) {
+                swap( arr, i, index );
+            }
         }
-        System.out.println();
-    }
-
-    private void setArgumentsArray(Scanner scanner) {
-        for (int i = 0; i < this.userArray.length; i++) {
-            this.userArray[i] = scanner.nextInt();
-        }
+        return arr;
     }
 }

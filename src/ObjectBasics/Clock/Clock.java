@@ -1,177 +1,140 @@
 package ObjectBasics.Clock;
 
+import java.util.Objects;
+
 public class Clock {
-
-    private int hours;
-    private int minutes;
+    
+    private static final int MAX_SECONDS = 60;
+    private static final int MAX_MINUTES = 60;
+    private static final int MAX_HOURS = 24;
+    private static final int DEFAULT = 0;
+    
     private int seconds;
-
-    public Clock() {
-
-        this.hours = 12;
-        this.minutes = 0;
-        this.seconds = 0;
-    }
-
-    public Clock(int Hours, int Minutes, int Seconds) {
-
-        if (Minutes > 0) {
-            for (int i = 0; i < Seconds; i++) {
-                this.seconds++;
-                if (this.seconds % 60 == 0) {
-                    this.seconds = 0;
-                    this.minutes++;
-                    if (this.minutes % 60 == 0) {
-                        this.minutes = 0;
-                        this.hours++;
-                        if (this.hours == 24) {
-                            this.hours = 0;
-                        }
-                    }
-                }
-            }
-        }
-
-        if (Minutes > 0) {
-            for (int i = 0; i < Minutes; i++) {
-                this.minutes++;
-                if (this.minutes % 60 == 0) {
-                    this.minutes = 0;
-                    this.hours++;
-                    if (this.hours == 24) {
-                        this.hours = 0;
-                    }
-                }
-            }
-        }
-
-        if (Hours > 0) {
-            for (int i = 0; i < Hours; i++) {
-                hours++;
-                if (hours == 24) {
-                    hours = 0;
-                }
-            }
-        }
-    }
-
-    public Clock(int someValue) {
-
-        if (someValue >= 0) {
-            for (int i = 0; i < someValue; i++) {
-                this.seconds++;
-                if (this.seconds % 60 == 0) {
-                    this.seconds = 0;
-                    this.minutes++;
-                    if (this.minutes == 60) {
-                        this.minutes = 0;
-                        this.hours++;
-                        if (this.hours == 24) {
-                            this.hours = 0;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    public int getHours() {
-        return this.hours;
-    }
-
-    public int getMinutes() {
-        return this.minutes;
-    }
-
+    private int minutes;
+    private int hours;
+    
     public int getSeconds() {
         return this.seconds;
     }
-
-    public void setClock(int Seconds) {
-
-        this.hours = 0;
-        this.minutes = 0;
-        this.seconds = 0;
-
-        if (Seconds >= 0) {
-            for (int i = 0; i < Seconds; i++) {
-                this.seconds++;
-                if (this.seconds % 60 == 0) {
-                    this.seconds = 0;
-                    this.minutes++;
-                    if (this.minutes == 60) {
-                        this.minutes = 0;
-                        this.hours++;
-                        if (this.hours == 24) {
-                            this.hours = 0;
-                        }
-                    }
-                }
-            }
+    
+    public int getMinutes() {
+        return this.minutes;
+    }
+    
+    public int getHours() {
+        return this.hours;
+    }
+    
+    public void setSeconds( int seconds ) {
+        this.seconds = seconds;
+    }
+    
+    public void setMinutes( int minutes ) {
+        this.minutes = minutes;
+    }
+    
+    public void setHours( int hours ) {
+        this.hours = hours;
+    }
+    
+    private int toSeconds( int hours, int minutes, int seconds ) {
+        return seconds
+                + ( minutes * MAX_SECONDS )
+                + ( ( hours * MAX_MINUTES ) * MAX_SECONDS );
+    }
+    
+    private int toSeconds() {
+        return this.getSeconds()
+                + ( this.getMinutes() * MAX_SECONDS )
+                + ( ( this.getHours() * MAX_MINUTES ) * MAX_SECONDS );
+    }
+    
+    private void setClock( int hours, int minutes, int seconds ) {
+        setClock( toSeconds( hours, minutes, seconds ) );
+    }
+    
+    public void setClock( int seconds ) {
+        int tempMin = seconds / MAX_SECONDS;
+        int tempHour = tempMin / MAX_MINUTES;
+    
+        this.seconds = ( seconds >= MAX_SECONDS )
+                ? seconds % MAX_SECONDS
+                : seconds;
+    
+        this.minutes = ( tempMin >= MAX_MINUTES )
+                ? tempMin % MAX_MINUTES
+                : tempMin;
+    
+        this.hours = ( tempHour >= MAX_HOURS )
+                ? tempHour % MAX_HOURS
+                : tempHour;
+    }
+    
+    void addClock( Clock clock ) {
+        this.setClock( this.toSeconds() + clock.toSeconds() );
+    }
+    
+    Clock subtractClock( Clock clock ) {
+        return ( this.toSeconds() < clock.toSeconds() ) ?
+                new Clock( clock.toSeconds() - this.toSeconds() ) :
+                new Clock(this.toSeconds() - clock.toSeconds());
+    }
+    
+    void tick( int bound ) {
+        for ( int i = 0; i < bound; i++ ) {
+            this.seconds++;
+            setClock( this.getHours(), this.getMinutes(), this.getSeconds() );
+            System.out.println( this );
         }
     }
-
-    public void tick() {
-
-        System.out.print("Timer is ticking ... ");
-
-        this.seconds++;
-
-        if (this.seconds % 60 == 0) {
-            this.seconds = 0;
-            this.minutes++;
-            if (this.minutes == 60) {
-                this.minutes = 0;
-                this.hours++;
-                if (this.hours == 24) {
-                    this.hours = 0;
-                }
-            }
+    
+    void tickDown( int bound ) {
+        for ( int i = 0; i < bound; i++ ) {
+            this.seconds--;
+            setClock( this.toSeconds() );
+            System.out.println( this );
         }
     }
-
-    public void addClock(Clock clock) {
-
-        int tempHour = hours + clock.hours;
-        int tempMinutes = minutes + clock.minutes;
-        int tempSec = seconds + clock.seconds;
-
-        if ((tempSec) > 59) {
-            seconds = tempSec % 60;
-            minutes += tempSec / 60;
-            if (tempMinutes > 59) {
-                minutes = tempMinutes % 60;
-                hours += tempMinutes / 60;
-                if (tempHour > 23) {
-                    hours = tempHour % 60;
-                }
-            }
+    
+    Clock( int hours, int minutes, int seconds ) {
+        setClock( hours, minutes, seconds );
+    }
+    
+    Clock( int seconds ) {
+        setClock( seconds );
+    }
+    
+    Clock() {
+        this.setHours( 12 );
+    }
+    
+    @Override
+    public boolean equals( Object object ) {
+        if ( this == object ) {
+            return true;
         }
+        
+        if ( !( object instanceof Clock ) ) {
+            return false;
+        }
+        
+        Clock clock = ( Clock ) object;
+        return this.getSeconds() == clock.getSeconds()
+                && this.getMinutes() == clock.getMinutes()
+                && this.getHours() == clock.getHours();
     }
-
-    public static String stringReturnClock(Clock clock) {
-
-        return String.format("%02d:%02d:%02d",
-                clock.getHours(), clock.getMinutes(), clock.getSeconds());
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash( this.seconds, this.minutes, this.hours );
     }
-
-    public static void getTime(Clock clock) {
-        System.out.print("Time of clock : " +
-                String.format("%02d:%02d:%02d",
-                        clock.getHours(), clock.getMinutes(), clock.getSeconds()));
-    }
-
-    public void tickDown() {
-        this.seconds--;
-    }
-
-    public Clock subtractClock(Clock clock) {
-
-        int Hours = clock.hours - hours;
-        int Minutes = clock.minutes - minutes;
-        int Sec = clock.seconds - seconds;
-
-        return new Clock(Hours, Minutes, Sec);
+    
+    @Override
+    public String toString() {
+        return String.format( "%02d:%02d:%02d",
+                this.hours,
+                this.minutes,
+                this.seconds );
     }
 }
 

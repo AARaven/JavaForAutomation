@@ -1,118 +1,230 @@
 package ObjectBasics.Dogs;
 
-import java.text.Collator;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
-public class Dog {
-
+public class Dog implements Comparable <Dog> {
+    
     private int age;
     private String name;
-    private String size;
-
-    private int randomIndexName = (int) ((Math.random() * 10) - 1);
-    private int randomIndexSize = (int) (Math.random() * 3);
-
-    private String[] nameGenerator = {"Puppy", "Scooby-doo", "Rex", "Rambo", "Scotty",
-            "Goofy", "Snuppy", "Dr. Sheldon", "Penny"};
-
-    private String[] sizeGenerator = {"Big", "Medium", "Small"};
-
-    private String randomName = nameGenerator[randomIndexName];
-    private String randomOfSize = sizeGenerator[randomIndexSize];
-
-    static Scanner scan = new Scanner(System.in);
-
-
-    public String getRandomName() {
-        return randomName;
+    private Size size;
+    private Dog[] dogs;
+    
+    private String[] getNames() {
+        return names;
     }
-
-    public String getRandomOfSize() {
-        return randomOfSize;
+    
+    private void setNames( String[] names ) {
+        this.names = names;
     }
-
-    public void setAge(int age) {
+    
+    private String[] names = { "Sully", "Max", "Rex", "Charlie", "Buddy",
+            "Molly", "Cody", "Chloe", "Abby", "Riley" };
+    
+    private enum Size {
+        LOW( "Low" ), MIDDLE( "Middle" ), HIGH( "High" ), DEFAULT( "Default" ),
+        ;
+        
+        private String size;
+        
+        Size( String size ) {
+            this.size = size;
+        }
+        
+        public static Size generateSize() {
+            String[] sizes = { "LOW", "MIDDLE", "HIGH" };
+            int random = ( int ) ( Math.random() * 10 );
+            int index = ( random >= 0 && random <= 2 )
+                    ? random
+                    : 1;
+            
+            String size = sizes[ index ];
+            
+            return Size.valueOf( size );
+        }
+        
+        public String getSize() {
+            return this.size;
+        }
+    }
+    
+    private int getAge() {
+        return this.age;
+    }
+    
+    private void setAge( int age ) {
         this.age = age;
     }
-
-    public void setName(String name) {
+    
+    private String getName() {
+        return this.name;
+    }
+    
+    private void setName( String name ) {
         this.name = name;
     }
-
-    public void setSize(String size) {
+    
+    private Size getSize() {
+        return this.size;
+    }
+    
+    private void setSize( Size size ) {
         this.size = size;
     }
-
-    Dog(String[] args) {
-
-        for (String s : args) {
-
-            if (s == null) {
-                new Dog();
-            }
-            name = args[0];
-            size = args[1];
-            age = Integer.parseInt(args[2]);
-        }
+    
+    private Dog( String name, int age, String size ) {
+        this.setName( ( name.isEmpty() )
+                ? nameGenerator()
+                : name );
+        this.setAge( ( age >= 0 && age <= 20 )
+                ? age
+                : ageGenerator() );
+        this.setSize( ( size.isEmpty() )
+                ? Size.generateSize()
+                : Size.valueOf( size.toUpperCase() ) );
     }
-
+    
+    private String nameGenerator() {
+        int random = ( int ) ( Math.random() * 10 );
+        int index = ( random >= 0 && random <= 9 ) ? random : 5;
+        return this.names[ index ];
+    }
+    
+    private int ageGenerator() {
+        int random = new Random().nextInt( 21 );
+        int index = ( random > 0 && random <= 20 ) ? random : 15;
+        return index;
+    }
+    
     Dog() {
-        this.name = randomName;
-        this.size = randomOfSize;
-        this.age = (int) (((Math.random() * 10) * 2) + 1);
+        this.setSize( Size.generateSize() );
+        this.setAge( ageGenerator() );
+        this.setName( nameGenerator() );
     }
-
-    void getDogDetails() {
-        System.out.print("\n" + "\n" + "{" + "The name is : "
-                + name + "}" + "\t" + "{" + "The size is :" +
-                " " + size + "}" + "\t" + "{" + "The age is :" +
-                " " + age + "}" + "\n");
+    
+    Dog[] getDogs() {
+        return this.dogs;
     }
-
-    static void sortDogsByName(Dog[] dogs) {
-        Arrays.sort(dogs, (o1, o2) ->
-                Collator.getInstance().compare(o1.name, o2.name));
+    
+    Dog[] dogsGenerator( int capacity ) {
+        Dog[] temp = new Dog[ capacity ];
+        for ( int i = 0; i < capacity; i++ ) {
+            temp[ i ] = new Dog();
+        }
+        return temp;
     }
-
-    static void sortDogsBySize(Dog[] dogs) {
-        Arrays.sort(dogs, (o1, o2) ->
-                Collator.getInstance().compare(o1.size, o2.size));
+    
+    Dog[] dogCreation( Scanner scanner ) {
+        
+        System.out.println( "Enter the number of dogs: " );
+        Dog[] temp = new Dog[ Integer.parseInt( scanner.nextLine() ) ];
+        
+        for ( int i = 0; i < temp.length; i++ ) {
+            
+            System.out.print( "\nEnter the name of dog : " );
+            String scanName = scanner.nextLine();
+            
+            System.out.print( "\nEnter the size of dog : " );
+            String scanSize = scanner.nextLine();
+            
+            System.out.print( "\nEnter the age of dog : " );
+            String tempAge = scanner.nextLine();
+            int scanAge = tempAge.isEmpty() ? 21 : Integer.parseInt( tempAge );
+            
+            temp[ i ] = new Dog( scanName, scanAge, scanSize );
+        }
+        return temp;
     }
-
-    private static void createDogArray(Dog[] dogs, int numberOfDogs) {
-        for (int i = 0; i < numberOfDogs; i++) {
-            dogs[i] = new Dog();
+    
+    void printArrayOfDogs( Dog[] dogs ) {
+        for ( Dog d : dogs ) {
+            System.out.println( d );
         }
     }
-
-    static void getDogDetailsArray(Dog[] dogs, int numberOfDogs) {
-        for (int i = 0; i < numberOfDogs; i++) {
-            dogs[i].getDogDetails();
+    
+    void sortByAge( Dog[] dogs, String ordering ) {
+        
+        switch ( ordering ) {
+            case ( "natural" ):
+                Arrays.sort( dogs, Comparator.comparingInt( Dog::getAge ) );
+                break;
+            
+            case ( "reverse" ):
+                Arrays.sort( dogs, Comparator.comparingInt( Dog::getAge ).reversed() );
+                break;
+            
+            default:
+                Arrays.sort( dogs, Comparator.comparingInt( Dog::getAge ) );
         }
     }
-
-    public static void incorrectInput() {
-        System.out.print("\n" + "Incorrect input..." + "\n");
+    
+    void sortBySize( Dog[] dogs, String ordering ) {
+        
+        switch ( ordering ) {
+            case ( "natural" ):
+                Arrays.sort( dogs, Comparator.comparing( Dog::getSize ) );
+                break;
+            
+            case ( "reverse" ):
+                Arrays.sort( dogs, Comparator.comparing( Dog::getSize ).reversed() );
+                break;
+            
+            default:
+                Arrays.sort( dogs, Comparator.comparing( Dog::getSize ) );
+        }
     }
-
-    public static void main(String[] args) {
-
-        Scanner userInput = new Scanner(System.in);
-
-        System.out.print("What's number a dogs ");
-        int numberOfDogs = userInput.nextInt();
-
-        Dog[] myDogs = new Dog[numberOfDogs];
-
-        createDogArray(myDogs, numberOfDogs);
-        getDogDetailsArray(myDogs, numberOfDogs);
-
-        sortDogsByName(myDogs);
-        getDogDetailsArray(myDogs, numberOfDogs);
-
-        sortDogsBySize(myDogs);
-        getDogDetailsArray(myDogs, numberOfDogs);
+    
+    void sortByName( Dog[] dogs, String ordering ) {
+        switch ( ordering ) {
+            case ( "natural" ):
+                Arrays.sort( dogs, Comparator.comparing( Dog::getName ) );
+                break;
+            
+            case ( "reverse" ):
+                Arrays.sort( dogs, Comparator.comparing( Dog::getName ).reversed() );
+                break;
+            
+            default:
+                Arrays.sort( dogs, Comparator.comparing( Dog::getName ) );
+        }
+    }
+    
+    void setDogs( Dog[] dogs ) {
+        this.dogs = dogs;
+    }
+    
+    @Override
+    public boolean equals( Object obj ) {
+        
+        if ( obj == this ) {
+            return true;
+        }
+        
+        if ( !( obj instanceof Dog ) ) {
+            return false;
+        }
+        
+        Dog dog = ( Dog ) obj;
+        return this.name.equals( dog.name )
+                && this.size.equals( dog.size )
+                && this.age == dog.age;
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash( this.name, this.size, this.age );
+    }
+    
+    @Override
+    public String toString() {
+        return String.format( " { Name: %-8s}  |  { Size: %-7s}  |  { Age:%-3d} ",
+                this.getName(),
+                this.getSize().getSize(),
+                this.getAge() );
+    }
+    
+    @Override
+    public int compareTo( Dog dog ) {
+        return String.CASE_INSENSITIVE_ORDER.compare( this.name, dog.name );
     }
 }
 

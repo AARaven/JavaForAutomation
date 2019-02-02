@@ -1,69 +1,95 @@
 package InheritanceAndPolymorphism.CircleAndCylinder;
 
-class Circle {
+import java.util.Objects;
 
+class Circle {
+    
     static final double DEFAULT_RADIUS = 5.0;
-    static final double PI = Math.PI;
     protected double radius;
     protected Colour colour;
-
-    protected enum Colour {
-        BLACK("Black colour"), RED("Red colour"), YELLOW("Yellow colour"), DEFAULT("Default colour"),
-        WHITE("White colour"), GREEN("Green colour"), PURPLE("Purple colour"), ORANGE("Orange colour");
-
-        protected String choiceColour;
-
-        Colour(String colour) {
-            this.choiceColour = colour;
+    
+    public enum Colour {
+        BLACK( "Black colour" ), RED( "Red colour" ), YELLOW( "Yellow colour" ), DEFAULT( "Default colour" ),
+        WHITE( "White colour" ), GREEN( "Green colour" ), PURPLE( "Purple colour" ), ORANGE( "Orange colour" );
+        
+        private String color;
+        
+        Colour( String color ) {
+            this.color = color;
         }
-
-        protected String getChoiceColour() {
-            return choiceColour;
+        
+        public String getColor() {
+            return color;
         }
-
-        protected void setChoiceColour(Colour colour) {
-            this.choiceColour = colour.name();
+        
+        public void setColor( Colour colour ) {
+            this.color = colour.name();
         }
     }
-
+    
     Circle() {
         this.radius = DEFAULT_RADIUS;
         this.colour = Colour.DEFAULT;
     }
-
-    Circle(double radius) {
+    
+    Circle( double radius ) {
         this.radius = radius;
         this.colour = Colour.DEFAULT;
     }
-
-    Circle(double radius, Colour colour) {
+    
+    Circle( double radius, Colour colour ) {
         this.radius = radius;
-        this.colour = Colour.valueOf(colour.name());
+        this.colour = colour;
     }
-
+    
     protected double getRadius() {
-        return radius;
+        return this.radius;
     }
-
+    
     protected double getArea() {
-        return (PI * (Math.pow(this.getRadius(), 2)));
+        return ( Math.PI * ( Math.pow( this.getRadius(), 2 ) ) );
     }
-
-    protected String getColour() {
-        return this.colour.getChoiceColour();
+    
+    protected Colour getColour() {
+        return this.colour;
     }
-
-    protected void setRadius(double radius) {
+    
+    protected void setRadius( double radius ) {
         this.radius = radius;
     }
-
-    protected void setColour(Colour colour) {
-        this.colour.choiceColour = colour.choiceColour;
+    
+    protected void setColour( Colour colour ) {
+        this.colour.color = colour.color;
     }
-
+    
+    @Override
+    public boolean equals( Object object ) {
+        
+        if ( this == object ) {
+            return true;
+        }
+        
+        if ( !( object instanceof Circle ) ) {
+            return false;
+        }
+        
+        Circle circle = ( Circle ) object;
+        return this.getRadius() == circle.getRadius()
+                && this.getColour().equals( circle.getColour() );
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash( this.getRadius(), this.getColour() );
+    }
+    
     @Override
     public String toString() {
-        return String.format("\n" + "The radius of circle is : %.1f" + "\n" + "The colour of circle is : %s" +
-                "\n" + "The area of circle is : %.1f" + "\n", radius, colour.choiceColour, getArea());
+        return String.format( "\nThe radius of circle is : %.1f " +
+                        "\nThe colour of circle is : %s" +
+                        "\nThe area of circle is : %.1f\n",
+                this.getRadius(),
+                this.getColour().getColor(),
+                this.getArea() );
     }
 }

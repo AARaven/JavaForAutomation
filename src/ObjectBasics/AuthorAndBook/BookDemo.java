@@ -6,5 +6,7 @@ public class BookDemo {
         Author exampleAuthor = new Author("Russel", "Winderand");
         Book exampleBook = new Book("Developing Java Software", exampleAuthor, 79.75);
         exampleBook.getBookDetails();
+        System.out.println(exampleAuthor);
+        System.out.println(exampleBook);
     }
 }

@@ -24,7 +24,7 @@ public class DemoClass {
         Cylinder cylinder2 = new Cylinder(6, 4);
         System.out.print(cylinder2.toString());
 
-        Cylinder cylinder3 = new Cylinder(2, 5, Cylinder.Colour.PURPLE);
+        Cylinder cylinder3 = new Cylinder(2, 5, Circle.Colour.PURPLE);
         System.out.print(cylinder3.toString());
     }
 }

@@ -1,5 +1,7 @@
 package InnerAndAbstractClassesAndInterfaces.AbstractShapes;
 
+import java.util.Objects;
+
 class Rectangle extends Shape {
 
     protected double width;
@@ -47,12 +49,33 @@ class Rectangle extends Shape {
     }
 
     void printLengthOfCircumference() {
-        System.out.printf("The rectangle has no circumference !!! " + "\n");
+        System.out.println("The rectangle has no circumference !!! \n");
     }
 
     @Override
     public String toString() {
         return String.format("A Rectangle with width = %.1f and length = %.1f , which a subclass of %s"
                 , this.width, this.length, super.toString());
+    }
+    
+    @Override
+    public boolean equals( Object obj ) {
+        
+        if ( this == obj ) {
+            return true;
+        }
+    
+        if ( !( obj instanceof Rectangle ) ) {
+            return false;
+        }
+    
+        Rectangle rectangle = ( Rectangle ) obj;
+        return this.length == rectangle.length
+                && this.width == rectangle.width;
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash( this.length, this.width );
     }
 }

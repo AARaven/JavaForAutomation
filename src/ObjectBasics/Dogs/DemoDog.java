@@ -57,7 +57,7 @@ class DemoDog {
                     case ( "1" ):
                         demo.showRandomMenu();
                         dog.setDogs(
-                                dog.dogCreation( utils.getScan() ) );
+                                dog.dogsCreator( utils.getScan() ) );
                         System.out.println(
                                 "\nPress 'ENTER' for continue ...\n" );
                         System.in.read();
@@ -73,7 +73,7 @@ class DemoDog {
                     
                     case ( "3" ):
                         
-                        dog.printArrayOfDogs( dog.getDogs() );
+                        dog.printDogs( dog.getDogs() );
                         System.out.println(
                                 "\nPress 'ENTER' for continue ...\n" );
                         System.in.read();

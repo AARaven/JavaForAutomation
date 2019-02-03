@@ -4,42 +4,24 @@ import java.util.Objects;
 
 class Circle {
     
-    static final double DEFAULT_RADIUS = 5.0;
+    protected static final double DEFAULT_RADIUS = 5.0;
+    
     protected double radius;
     protected Colour colour;
     
-    public enum Colour {
-        BLACK( "Black colour" ), RED( "Red colour" ), YELLOW( "Yellow colour" ), DEFAULT( "Default colour" ),
-        WHITE( "White colour" ), GREEN( "Green colour" ), PURPLE( "Purple colour" ), ORANGE( "Orange colour" );
-        
-        private String color;
-        
-        Colour( String color ) {
-            this.color = color;
-        }
-        
-        public String getColor() {
-            return color;
-        }
-        
-        public void setColor( Colour colour ) {
-            this.color = colour.name();
-        }
+    protected Circle() {
+        this.setRadius( DEFAULT_RADIUS );
+        this.setColour( Colour.DEFAULT );
     }
     
-    Circle() {
-        this.radius = DEFAULT_RADIUS;
-        this.colour = Colour.DEFAULT;
+    protected Circle( double radius ) {
+        this.setRadius( radius );
+        this.setColour( Colour.DEFAULT );
     }
     
-    Circle( double radius ) {
-        this.radius = radius;
-        this.colour = Colour.DEFAULT;
-    }
-    
-    Circle( double radius, Colour colour ) {
-        this.radius = radius;
-        this.colour = colour;
+    protected Circle( double radius, Colour colour ) {
+        this.setRadius( radius );
+        this.setColour( colour );
     }
     
     protected double getRadius() {
@@ -59,7 +41,7 @@ class Circle {
     }
     
     protected void setColour( Colour colour ) {
-        this.colour.color = colour.color;
+        this.colour = colour;
     }
     
     @Override
@@ -80,16 +62,18 @@ class Circle {
     
     @Override
     public int hashCode() {
-        return Objects.hash( this.getRadius(), this.getColour() );
+        return Objects.hash(
+                this.getRadius(),
+                this.getColour() );
     }
     
     @Override
     public String toString() {
-        return String.format( "\nThe radius of circle is : %.1f " +
-                        "\nThe colour of circle is : %s" +
-                        "\nThe area of circle is : %.1f\n",
+        return String.format( "\nThe radius of circle is : %.1f\n" +
+                        "The colour of circle is : %s\n" +
+                        "The area of circle is : %.1f\n",
                 this.getRadius(),
-                this.getColour().getColor(),
+                this.getColour().getDescription(),
                 this.getArea() );
     }
 }

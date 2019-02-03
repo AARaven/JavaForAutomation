@@ -12,70 +12,72 @@ public class MovablePoint implements Movable {
     private int xSpeed;
     private int ySpeed;
     
-    protected MovablePoint( int x, int y ) {
-        this.x = x;
-        this.y = y;
-        this.xSpeed = DEFAULT_X_SPEED;
-        this.ySpeed = DEFAULT_Y_SPEED;
-    }
-    
-    protected MovablePoint( int x, int y, int xSpeed, int ySpeed ) {
-        this.x = x;
-        this.y = y;
-        this.xSpeed = xSpeed;
-        this.ySpeed = ySpeed;
-    }
-    
-    protected int getX() {
-        return x;
-    }
-    
-    protected int getY() {
-        return y;
-    }
-    
-    protected int getxSpeed() {
-        return xSpeed;
-    }
-    
-    protected int getySpeed() {
-        return ySpeed;
-    }
-    
-    protected void setX( int x ) {
-        this.x = x;
-    }
-    
-    protected void setY( int y ) {
-        this.y = y;
-    }
-    
-    protected void setxSpeed( int xSpeed ) {
+    private void setXSpeed( int xSpeed ) {
         this.xSpeed = xSpeed;
     }
     
-    protected void setySpeed( int ySpeed ) {
+    private void setYSpeed( int ySpeed ) {
         this.ySpeed = ySpeed;
+    }
+    
+    int getX() {
+        return this.x;
+    }
+    
+    void setX( int x ) {
+        this.x = x;
+    }
+    
+    int getY() {
+        return this.y;
+    }
+    
+    void setY( int y ) {
+        this.y = y;
+    }
+    
+    int getXSpeed() {
+        return this.xSpeed;
+    }
+    
+    int getYSpeed() {
+        return this.ySpeed;
+    }
+    
+    MovablePoint( int x, int y ) {
+        this.setX( x );
+        this.setY( y );
+        
+        this.setXSpeed( DEFAULT_X_SPEED );
+        this.setYSpeed( DEFAULT_Y_SPEED );
+    }
+    
+    MovablePoint( int x, int y, int xSpeed, int ySpeed ) {
+        this.setX( x );
+        this.setY( y );
+        
+        this.setXSpeed( xSpeed );
+        this.setYSpeed( ySpeed );
     }
     
     @Override
     public void moveUp() {
-        this.y += this.ySpeed;
+        this.setY( this.getY() + this.getYSpeed() );
     }
     
     @Override
     public void moveDown() {
-        this.y -= this.ySpeed;
-    }
-    
-    @Override
-    public void moveLeft() {
-        this.x -= this.xSpeed;
+        this.setY( this.getY() - this.getYSpeed() );
     }
     
     @Override
     public void moveRight() {
-        this.x += this.xSpeed;
+        this.setX( this.getX() + this.getXSpeed() );
+    }
+    
+    @Override
+    public void moveLeft() {
+        this.setX( this.getX() - this.getXSpeed() );
     }
     
     @Override
@@ -92,18 +94,24 @@ public class MovablePoint implements Movable {
         MovablePoint point = ( MovablePoint ) object;
         return this.getX() == point.getX()
                 && this.getY() == point.getY()
-                && this.getxSpeed() == point.getxSpeed()
-                && this.getySpeed() == point.getySpeed();
+                && this.getXSpeed() == point.getXSpeed()
+                && this.getYSpeed() == point.getYSpeed();
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash( this.getX(), this.getY(), this.getxSpeed(), this.getySpeed() );
+        return Objects.hash(
+                this.getX(),
+                this.getY(),
+                this.getXSpeed(),
+                this.getYSpeed() );
     }
     
     @Override
     public String toString() {
-        return String.format( "The point x with coordinates : " +
-                "%d and point y with coordinates : %d .", this.x, this.y );
+        return String.format( "Point x coordinates : { %d }" +
+                        "\nPoint y coordinates : { %d } .\n",
+                this.getX(),
+                this.getY() );
     }
 }

@@ -4,11 +4,11 @@ import java.util.Arrays;
 
 class TurtleGraphics {
     
-    private static final int X_DEFAULT_BOARD = 9;
-    private static final int Y_DEFAULT_BOARD = 9;
-    private static final char DEFAULT_CELL_CHAR = '.';
-    private static final char DEFAULT_COLORED_CELL_CHAR = 'o';
-    private static final char DEFAULT_PEN_CHAR = 'x';
+    private static final char DEFAULT_COLORED_CELL_CHAR =   'o';
+    private static final char DEFAULT_CELL_CHAR =           '.';
+    private static final char DEFAULT_PEN_CHAR =            'x';
+    private static final int X_DEFAULT_BOARD =                9;
+    private static final int Y_DEFAULT_BOARD =                9;
     
     private char[][] board;
     private char cellChar;

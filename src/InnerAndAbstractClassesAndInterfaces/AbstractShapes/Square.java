@@ -4,60 +4,64 @@ import java.util.Objects;
 
 class Square extends Rectangle {
     
-    protected Square() {
-        this.width = DEFAULT_WIDTH;
-        this.length = DEFAULT_LENGTH;
+    private static final double DEFAULT_SIDE = 0;
+    
+    private double side;
+    
+    private double getSide() {
+        return this.side;
     }
     
-    protected Square( double side ) {
-        this.width = side;
-        this.length = side;
+    private void setSide( double side ) {
+        this.side = side;
     }
     
-    private Square( double side, String colour, boolean filled ) {
-        this.width = side;
-        this.length = side;
+    Square() {
+        this.setSide( DEFAULT_SIDE );
     }
     
-    private void setLength( double side ) {
-        this.length = side;
-        this.width = side;
-    }
-    
-    private void setWidth( double side ) {
-        this.width = side;
-        this.length = side;
+    Square( double side ) {
+        this.setSide( side );
     }
     
     @Override
-    public void printLengthOfCircumference() {
-        System.out.print( "The square has no circumference !!! " + "\n" );
+    double getPerimeter() {
+        return 4 * getSide();
+    }
+    
+    @Override
+    double getArea() {
+        return Math.pow( getSide(), 2 );
+    }
+    
+    @Override
+    boolean isInside( double x, double y ) {
+        return x < getSide() && y < getSide();
+    }
+    
+    @Override
+    public boolean equals( Object object ) {
+        
+        if ( this == object ) {
+            return true;
+        }
+        
+        if ( !( object instanceof Square ) ) {
+            return false;
+        }
+        
+        Square square = ( Square ) object;
+        return this.getSide() == square.getSide();
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash( this.getSide() );
     }
     
     @Override
     public String toString() {
         return String.format( "A Square with side = %.1f , which is a subclass of %s"
-                , this.length, super.toString() );
-    }
-    
-    @Override
-    public boolean equals( Object obj ) {
-        
-        if ( this == obj ) {
-            return true;
-        }
-        
-        if ( !( obj instanceof Square ) ) {
-            return false;
-        }
-        
-        Square square = ( Square ) obj;
-        return this.length == square.length
-                && this.width == square.width;
-    }
-    
-    @Override
-    public int hashCode() {
-        return Objects.hash( this.length, this.width );
+                , this.getSide(), super.toString() );
     }
 }

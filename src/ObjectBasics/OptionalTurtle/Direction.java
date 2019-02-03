@@ -6,8 +6,7 @@ public enum Direction {
         @Override
         void move( TurtleGraphics turtle, int steps ) {
             turtle.moveTurtle( this, steps );
-            System.out.printf( "\nMove %d steps '%s'" +
-                            "\n",
+            System.out.printf( "\nMove %d steps '%s'\n",
                     steps,
                     this.getDescription() );
         }
@@ -19,8 +18,7 @@ public enum Direction {
         @Override
         void move( TurtleGraphics turtle, int steps ) {
             turtle.moveTurtle( this, steps );
-            System.out.printf( "\nMove %d steps '%s'" +
-                            "\n",
+            System.out.printf( "\nMove %d steps '%s'\n",
                     steps,
                     this.getDescription() );
         }
@@ -32,8 +30,7 @@ public enum Direction {
         @Override
         void move( TurtleGraphics turtle, int steps ) {
             turtle.moveTurtle( this, steps );
-            System.out.printf( "\nMove %d steps '%s'" +
-                            "\n",
+            System.out.printf( "\nMove %d steps '%s'\n",
                     steps,
                     this.getDescription() );
         }
@@ -45,8 +42,7 @@ public enum Direction {
         @Override
         void move( TurtleGraphics turtle, int steps ) {
             turtle.moveTurtle( this, steps );
-            System.out.printf( "\nMove %d steps '%s'" +
-                            "\n",
+            System.out.printf( "\nMove %d steps '%s'\n",
                     steps,
                     this.getDescription() );
         }
@@ -63,12 +59,20 @@ public enum Direction {
         void clearBoard( TurtleGraphics turtle ) {
             turtle.moveTurtle( this, 0 );
             System.out.println( "\nBoard is clean. " +
-                    "\nTurtle moved on start position.\n" );
+                                "\nTurtle moved on start position.\n" );
         }
     },
     ;
     
-    String description;
+    private String description;
+    
+    private void setDescription( String description ) {
+        this.description = description;
+    }
+    
+    String getDescription() {
+        return this.description;
+    }
     
     Direction( String direction ) {
         this.description = direction;
@@ -77,12 +81,4 @@ public enum Direction {
     abstract void move( TurtleGraphics turtle, int steps );
     
     abstract void clearBoard( TurtleGraphics turtle );
-    
-    public String getDescription() {
-        return this.description;
-    }
-    
-    public void setDescription( String description ) {
-        this.description = description;
-    }
 }

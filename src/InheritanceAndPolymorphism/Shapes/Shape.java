@@ -1,48 +1,39 @@
 package InheritanceAndPolymorphism.Shapes;
 
+import InheritanceAndPolymorphism.CircleAndCylinder.Colour;
+
 class Shape {
-
-    static final double PI = Math.PI;
-    boolean filled;
-    String colour;
-
-    protected static final boolean DEFAULT_FILLED = true;
-    protected boolean falseFilled = false;
-
-    protected static final String DEFAULT_COLOUR = "green";
-    protected String redColour = "red";
-
-    Shape() {
-        this.filled = DEFAULT_FILLED;
-        this.colour = DEFAULT_COLOUR;
-    }
-
-    private Shape(boolean filled, String colour) {
-        this.filled = filled;
-        this.colour = colour;
-    }
-
-    private boolean isFilled() {
+    
+    protected boolean filled;
+    protected Colour colour;
+    
+    protected boolean isFilled() {
         return this.filled;
     }
-
-    private String getColour() {
-        return this.colour;
-    }
-
-    private void setFilled(boolean filled) {
+    
+    protected void setFilled( boolean filled ) {
         this.filled = filled;
     }
-
-    private void setColour(String colour) {
+    
+    protected Colour getColour() {
+        return this.colour;
+    }
+    
+    protected void setColour( Colour colour ) {
         this.colour = colour;
     }
-
+    
+    Shape() {
+        this.setColour( Colour.DEFAULT );
+        this.setFilled( false );
+    }
+    
     @Override
     public String toString() {
-        return String.format("\n" + "A Shape with the colour of %s and %b" + "\n"
-                , this.colour, this.filled)
-                .replaceAll("true", "filled.")
-                .replaceAll("false", "not filled.");
+        return String.format( "Shape with the colour of %s and %b",
+                this.colour,
+                this.filled )
+                .replaceAll( "true", "filled." )
+                .replaceAll( "false", "not filled." );
     }
 }

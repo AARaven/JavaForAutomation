@@ -11,26 +11,26 @@ public class DemoSearchAnElement {
     
     private void showElementSearchMenu() {
         System.out.println( "\n*****************************************" +
-                "\n* What's element need to find ?         *" +
-                "\n*****************************************\n" );
+                            "\n* What's element need to find ?         *" +
+                            "\n*****************************************\n" );
     }
     
     private void showTypeSearchMenu() {
         System.out.println( " \n*****************************************" +
-                "\n* What's method you need to use ?       *" +
-                "\n*****************************************" +
-                "\n* 1 - One by one.                       *" +
-                "\n* 2 - Binary.                           *" +
-                "\n*****************************************\n" );
+                             "\n* What's method you need to use ?       *" +
+                             "\n*****************************************" +
+                             "\n* 1 - One by one.                       *" +
+                             "\n* 2 - Binary.                           *" +
+                             "\n*****************************************\n" );
     }
     
     private void showMenu() {
         System.out.println( "\f\n******************************************" +
-                "\n* 1 - Configure array.                   *" +
-                "\n* 2 - Output array.                      *" +
-                "\n* 3 - Change type for search.            *" +
-                "\n* 4 - Exit.                              *" +
-                "\n******************************************\n" );
+                              "\n* 1 - Configure array.                   *" +
+                              "\n* 2 - Output array.                      *" +
+                              "\n* 3 - Change type for search.            *" +
+                              "\n* 4 - Exit.                              *" +
+                              "\n******************************************\n" );
     }
     
     public static void main( String[] args ) {
@@ -86,7 +86,7 @@ public class DemoSearchAnElement {
                              */
                             default:
                                 System.out.println( "\nIncorrect input ... " +
-                                        "\nPlease, press 'Enter' to continue ...\n" );
+                                                    "\nPlease, press 'Enter' to continue ...\n" );
                                 System.in.read();
                         }
                         
@@ -103,14 +103,14 @@ public class DemoSearchAnElement {
                      */
                     default:
                         System.out.println( "\nIncorrect input ... " +
-                                "\nPlease, press 'Enter' to continue ...\n" );
+                                            "\nPlease, press 'Enter' to continue ...\n" );
                         System.in.read();
                 }
                 
             } catch
             ( IOException | InputMismatchException e ) {
                 System.out.printf( "\nIncorrect input ... %s " +
-                        "\nPlease, press 'Enter' to continue ... \n", e.getMessage() );
+                                   "\nPlease, press 'Enter' to continue ... \n", e.getMessage() );
             }
         }
         

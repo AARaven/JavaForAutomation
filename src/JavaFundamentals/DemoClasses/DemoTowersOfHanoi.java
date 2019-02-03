@@ -9,13 +9,12 @@ import java.util.InputMismatchException;
 public class DemoTowersOfHanoi {
     
     private void showMenu() {
-        System.out.println(
-                "\f\n*********************************************************" +
-                        "\n* 1 - To set a number of disks.                         *" +
-                        "\n* 2 - To show the result of the calculation.            *" +
-                        "\n* 3 - To demonstrate the calculations from A to C.      *" +
-                        "\n* 4 - Exit.                                             *" +
-                        "\n*********************************************************\n" );
+        System.out.println( "\f\n*********************************************************" +
+                              "\n* 1 - To set a number of disks.                         *" +
+                              "\n* 2 - To show the result of the calculation.            *" +
+                              "\n* 3 - To demonstrate the calculations from A to C.      *" +
+                              "\n* 4 - Exit.                                             *" +
+                              "\n*********************************************************\n" );
     }
     
     public static void main( String[] args ) {
@@ -61,14 +60,14 @@ public class DemoTowersOfHanoi {
                     default:
                         
                         System.out.println( "\nIncorrect input ... " +
-                                "\nPlease, press 'Enter' to continue ...\n" );
+                                            "\nPlease, press 'Enter' to continue ...\n" );
                         System.in.read();
                         break;
                 }
             } catch
             ( IOException | InputMismatchException e ) {
                 System.out.printf( "\nIncorrect input ... %s " +
-                        "\nPlease, press 'Enter' to continue ... \n", e.getMessage() );
+                                   "\nPlease, press 'Enter' to continue ... \n", e.getMessage() );
             }
         }
     }

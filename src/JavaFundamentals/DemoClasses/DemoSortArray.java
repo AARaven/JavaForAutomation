@@ -13,11 +13,11 @@ public class DemoSortArray {
      */
     private void showMenu() {
         System.out.println( "\f\n******************************************" +
-                "\n* 1 - Configure array.                   *" +
-                "\n* 2 - Output array.                      *" +
-                "\n* 3 - Sorting the array.                 *" +
-                "\n* 4 - Exit.                              *" +
-                "\n******************************************\n" );
+                              "\n* 1 - Configure array.                   *" +
+                              "\n* 2 - Output array.                      *" +
+                              "\n* 3 - Sorting the array.                 *" +
+                              "\n* 4 - Exit.                              *" +
+                              "\n******************************************\n" );
     }
     
     /**
@@ -25,13 +25,13 @@ public class DemoSortArray {
      */
     private void showSecondaryMenu() {
         System.out.println( "\n*****************************************" +
-                "\n* What's type of sort you want to use?  *" +
-                "\n*****************************************" +
-                "\n* 1 - Bubble sort.                      *" +
-                "\n* 2 - Optimized bubble sort.            *" +
-                "\n* 3 - Insertion sort.                   *" +
-                "\n* 4 - Selection sort.                   *" +
-                "\n*****************************************\n" );
+                            "\n* What's type of sort you want to use?  *" +
+                            "\n*****************************************" +
+                            "\n* 1 - Bubble sort.                      *" +
+                            "\n* 2 - Optimized bubble sort.            *" +
+                            "\n* 3 - Insertion sort.                   *" +
+                            "\n* 4 - Selection sort.                   *" +
+                            "\n*****************************************\n" );
     }
     
     public static void main( String[] args ) {
@@ -91,13 +91,13 @@ public class DemoSortArray {
                                 
                                 default:
                                     System.out.println( "\nIncorrect input ... " +
-                                            "\nPlease, press 'Enter' to continue ..." );
+                                                        "\nPlease, press 'Enter' to continue ..." );
                                     System.in.read();
                             }
                             
                         } catch ( NullPointerException e ) {
                             System.out.printf( "\nSorry, array is not created ... %s" +
-                                            "\nPlease, create an array and try again.\n",
+                                               "\nPlease, create an array and try again.\n",
                                     e.getLocalizedMessage() );
                         }
                         
@@ -112,14 +112,14 @@ public class DemoSortArray {
                     default:
                         
                         System.out.println( "\nIncorrect input ... " +
-                                "\nPlease, press 'Enter' to continue ...\n" );
+                                            "\nPlease, press 'Enter' to continue ...\n" );
                         System.in.read();
                 }
                 
             } catch
             ( IOException | InputMismatchException e ) {
                 System.out.printf( "\nIncorrect input ... %s " +
-                        "\nPlease, press 'Enter' to continue ... \n", e.getMessage() );
+                                   "\nPlease, press 'Enter' to continue ... \n", e.getMessage() );
             }
         }
     }

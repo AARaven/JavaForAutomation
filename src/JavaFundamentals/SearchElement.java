@@ -30,6 +30,8 @@ public class SearchElement {
         int left = 0;
         int right = ints.length;
         int middle = ( left + right ) / 2;
+    
+        long binaryStart = System.nanoTime();
         
         while ( left != right || ( right - left ) != 1 ) {
             
@@ -44,12 +46,16 @@ public class SearchElement {
             }
         }
         
+        long binaryEnd = System.nanoTime();
+        
         if ( ints[ middle ] == value ) {
             System.out.printf( "\nElement '%d' stay on '%d' position in array.\n",
                     value,
                     middle + 1 );
+            System.out.printf( "Execution time : %d ns",  binaryEnd - binaryStart );
         } else {
             System.out.printf( "\nSorry, element '%d' is not present in the array.\n", value );
+            System.out.printf( "Execution time : %d ns",  binaryEnd - binaryStart );
         }
     }
     
@@ -65,20 +71,27 @@ public class SearchElement {
         int position;
         boolean isPresent = false;
         
+        long regularStart = System.nanoTime();
+        
         for ( int i = 0; i < ints.length; i++ ) {
             
             if ( ints[ i ] == value ) {
+                long regularEnd = System.nanoTime();
                 position = i + 1;
                 isPresent = true;
                 System.out.printf( "\nElement '%d' stay on '%d' position in array. '%s'\n",
                         value,
                         position, isPresent );
+                System.out.printf( "Execution time : %d ns",  regularEnd - regularStart );
             }
         }
         
+        long regularEnd = System.nanoTime();
+    
         if ( !isPresent ) {
             System.out.printf( "\nSorry, element '%d' is not present in the array. '%s'\n",
                     value, isPresent );
+            System.out.printf( "Execution time : %d ns",  regularEnd - regularStart );
         }
     }
 }

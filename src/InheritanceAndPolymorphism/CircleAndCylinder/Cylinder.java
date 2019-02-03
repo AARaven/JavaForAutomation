@@ -1,39 +1,46 @@
 package InheritanceAndPolymorphism.CircleAndCylinder;
 
+import java.util.Objects;
+
 class Cylinder extends Circle {
     
     private static final double DEFAULT_HEIGHT = 5.0;
+    
     private double height;
-    
-    Cylinder() {
-        this.radius = DEFAULT_RADIUS;
-        this.height = DEFAULT_HEIGHT;
-        this.colour = Colour.DEFAULT;
-    }
-    
-    Cylinder( double radius ) {
-        this.radius = radius;
-        this.height = DEFAULT_HEIGHT;
-    }
-    
-    Cylinder( double radius, double height ) {
-        this.radius = radius;
-        this.height = height;
-        this.colour = Colour.DEFAULT;
-    }
-    
-    Cylinder( double radius, double height, Colour colour ) {
-        this.radius = radius;
-        this.height = height;
-        this.colour = Colour.valueOf( colour.name() );
-    }
     
     private double getHeight() {
         return this.height;
     }
     
+    private void setHeight( double height ) {
+        this.height = height;
+    }
+    
     private double getVolume() {
         return ( ( ( 2 * Math.PI * this.getRadius() * this.getHeight() ) + 2 * super.getArea() ) );
+    }
+    
+    Cylinder() {
+        this.setRadius( DEFAULT_RADIUS );
+        this.setHeight( DEFAULT_HEIGHT );
+        this.setColour( Colour.DEFAULT );
+    }
+    
+    Cylinder( double radius ) {
+        this.setRadius( radius );
+        this.setHeight( DEFAULT_HEIGHT );
+        this.setColour( Colour.DEFAULT );
+    }
+    
+    Cylinder( double radius, double height ) {
+        super( radius );
+        this.setHeight( height );
+        this.setColour( Colour.DEFAULT );
+    }
+    
+    Cylinder( double radius, double height, Colour colour ) {
+        super( radius, colour );
+        this.setHeight( height );
     }
     
     @Override
@@ -44,10 +51,6 @@ class Cylinder extends Circle {
     @Override
     protected Colour getColour() {
         return this.colour;
-    }
-    
-    protected void setHeight( double height ) {
-        this.height = height;
     }
     
     @Override
@@ -76,16 +79,30 @@ class Cylinder extends Circle {
         }
         
         Cylinder cylinder = ( Cylinder ) object;
-        return this.getHeight() == cylinder.getHeight();
+        return this.getHeight() == cylinder.getHeight()
+                && this.getRadius() == cylinder.getRadius()
+                && this.getColour() == cylinder.getColour();
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                this.getRadius(),
+                this.getHeight(),
+                this.getColour() );
     }
     
     @Override
     public String toString() {
-        return String.format( "\n" + "The base-radius of cylinder is : %.1f" + "\n"
-                        + "The height of cylinder is : %.1f" + "\n"
-                        + "The colour of cylinder is : %s" + "\n"
-                        + "The surface-area of cylinder is : %.1f" + "\n"
-                        + "The volume of cylinder is : %.1f" + "\n"
-                , this.getRadius(), this.getHeight(), this.getColour().getColor(), this.getArea(), this.getVolume() );
+        return String.format( "\nThe base-radius of cylinder is : %.1f\n"
+                        + "The height of cylinder is : %.1f\n"
+                        + "The colour of cylinder is : %s\n"
+                        + "The surface-area of cylinder is : %.1f\n"
+                        + "The volume of cylinder is : %.1f\n",
+                this.getRadius(),
+                this.getHeight(),
+                this.getColour().getDescription(),
+                this.getArea(),
+                this.getVolume() );
     }
 }

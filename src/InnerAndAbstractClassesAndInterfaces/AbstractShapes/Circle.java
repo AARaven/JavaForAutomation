@@ -4,12 +4,29 @@ import java.util.Objects;
 
 class Circle extends Shape {
     
-    private static final double DEFAULT_RADIUS = 1.0;
     private static final int DEFAULT_X = 1;
     private static final int DEFAULT_Y = 1;
-    private double radius;
+    private static final double DEFAULT_RADIUS = 1.0;
+    
     private double x_coordinate;
     private double y_coordinate;
+    private double radius;
+    
+    private double getX_coordinate() {
+        return this.x_coordinate;
+    }
+    
+    private double getY_coordinate() {
+        return this.y_coordinate;
+    }
+    
+    private void setX_coordinate( double x_coordinate ) {
+        this.x_coordinate = x_coordinate;
+    }
+    
+    private void setY_coordinate( double y_coordinate ) {
+        this.y_coordinate = y_coordinate;
+    }
     
     private double getRadius() {
         return this.radius;
@@ -19,16 +36,16 @@ class Circle extends Shape {
         this.radius = radius;
     }
     
-    protected Circle() {
-        this.radius = DEFAULT_RADIUS;
-        this.x_coordinate = DEFAULT_X;
-        this.y_coordinate = DEFAULT_Y;
+    Circle() {
+        this.setRadius( DEFAULT_RADIUS );
+        this.setX_coordinate( DEFAULT_X );
+        this.setY_coordinate( DEFAULT_Y );
     }
     
-    protected Circle( double radius ) {
-        this.radius = radius;
-        this.x_coordinate = DEFAULT_X;
-        this.y_coordinate = DEFAULT_Y;
+    Circle( double radius ) {
+        this.setRadius( radius );
+        this.setX_coordinate( DEFAULT_X );
+        this.setY_coordinate( DEFAULT_Y );
     }
     
     double getArea() {
@@ -36,40 +53,38 @@ class Circle extends Shape {
     }
     
     boolean isInside( double x, double y ) {
-        return ( Math.pow( ( x - this.x_coordinate ), 2 ) +
-                ( Math.pow( ( y - this.y_coordinate ), 2 ) ) ) <= ( Math.pow( this.radius, 2 ) );
-    }
-    
-    @Override
-    void printLengthOfCircumference() {
-        System.out.printf( "The length of circumference is : %.1f\n", ( 2 * Math.PI * this.radius ) );
+        return ( Math.pow( ( x - this.getX_coordinate() ), 2 ) +
+                ( Math.pow( ( y - this.getY_coordinate() ), 2 ) ) ) <= ( Math.pow( this.getRadius(), 2 ) );
     }
     
     @Override
     double getPerimeter() {
-        return Double.parseDouble( "The circle has no perimeter!!!" );
+        return 2 * Math.PI * this.getRadius();
     }
     
     @Override
-    public boolean equals( Object obj ) {
+    public boolean equals( Object object ) {
         
-        if ( this == obj ) {
+        if ( this == object ) {
             return true;
         }
         
-        if ( !( obj instanceof Circle ) ) {
+        if ( !( object instanceof Circle ) ) {
             return false;
         }
         
-        Circle circle = ( Circle ) obj;
-        return this.radius == circle.radius
-                && this.x_coordinate == circle.x_coordinate
-                && this.y_coordinate == circle.y_coordinate;
+        Circle circle = ( Circle ) object;
+        return this.getRadius() == circle.getRadius()
+                && this.getX_coordinate() == circle.getX_coordinate()
+                && this.getY_coordinate() == circle.getY_coordinate();
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash( this.radius, this.x_coordinate, this.y_coordinate );
+        return Objects.hash(
+                this.getRadius(),
+                this.getX_coordinate(),
+                this.getY_coordinate() );
     }
     
     @Override

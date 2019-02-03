@@ -9,12 +9,13 @@ public class DemoTurtleGraphics {
     
     private void showTitleMenu() {
         System.out.println( "\f\n*********************************************" +
-                "\n* 1 - Play with turtle.                     *" +
-                "\n* 2 - Exit.                                 *" +
-                "\n*********************************************\n" );
+                              "\n* 1 - Play with turtle.                     *" +
+                              "\n* 2 - Exit.                                 *" +
+                              "\n*********************************************\n" );
     }
     
     public static void main( String[] args ) throws Exception {
+        
         DemoTurtleGraphics demo = new DemoTurtleGraphics();
         Utils utils = new Utils();
         TurtleGraphics turtle;
@@ -28,7 +29,7 @@ public class DemoTurtleGraphics {
                 case ( "1" ):
                     
                     System.out.println( "\n'1' - to start the game with default properties. " +
-                            "\n'2' - to change the game board." );
+                                        "\n'2' - to change the game board." );
                     
                     switch ( utils.getScan().next() ) {
                         
@@ -39,7 +40,7 @@ public class DemoTurtleGraphics {
                         
                         case ( "2" ):
                             System.out.println( "\nConfigure your board: " +
-                                    "\nFor example: 20 20 . x o" );
+                                                "\nFor example: 20 20 . x o" );
                             
                             turtle = new TurtleGraphics(
                                     utils.getScan().nextInt(),
@@ -64,9 +65,9 @@ public class DemoTurtleGraphics {
                             turtle.showBoard();
                             
                             System.out.println( "\nChoose the description of movement and the number of steps: " +
-                                    "\nFor example: 'r 5' - to go 5 steps to the right." +
-                                    "\n'c' - to clean a board and start again." +
-                                    "\n'exit' - exit from the program\n" );
+                                                "\nFor example: 'r 5' - to go 5 steps to the right." +
+                                                "\n'c' - to clean a board and start again." +
+                                                "\n'exit' - exit from the program\n" );
                             
                             switch ( utils.getScan().next() ) {
                                 
@@ -107,14 +108,14 @@ public class DemoTurtleGraphics {
                                 
                                 default:
                                     System.out.println( "\nIncorrect input ... " +
-                                            "\nPlease, press 'Enter' to continue ...\n" );
+                                                        "\nPlease, press 'Enter' to continue ...\n" );
                                     System.in.read();
                             }
                             
                         } catch
                         ( IOException | InputMismatchException e ) {
                             System.out.printf( "\nIncorrect input ... %s " +
-                                    "\nPlease, press 'Enter' to continue ... \n", e.getMessage() );
+                                               "\nPlease, press 'Enter' to continue ... \n", e.getMessage() );
                         }
                     }
                 
@@ -125,7 +126,7 @@ public class DemoTurtleGraphics {
                 
                 default:
                     System.out.println( "\nIncorrect input ... " +
-                            "\nPlease, press 'Enter' to continue ...\n" );
+                                        "\nPlease, press 'Enter' to continue ...\n" );
                     System.in.read();
             }
         }

@@ -13,11 +13,11 @@ public class DemoFindTheMinimum {
      */
     private void showMenu() {
         System.out.println( "\f\n*******************************************" +
-                "\n* 1 - To find the lower of two values.    *" +
-                "\n* 2 - To find the lower of three values.  *" +
-                "\n* 3 - To find the lower of four values.   *" +
-                "\n* 4 - Exit.                               *" +
-                "\n*******************************************\n" );
+                              "\n* 1 - To find the lower of two values.    *" +
+                              "\n* 2 - To find the lower of three values.  *" +
+                              "\n* 3 - To find the lower of four values.   *" +
+                              "\n* 4 - Exit.                               *" +
+                              "\n*******************************************\n" );
     }
     
     public static void main( String[] args ) {
@@ -79,13 +79,13 @@ public class DemoFindTheMinimum {
                      */
                     default:
                         System.out.println( "\nIncorrect input ... " +
-                                "\nPlease, press 'ENTER' to continue." );
+                                            "\nPlease, press 'ENTER' to continue." );
                         System.in.read();
                 }
             } catch
             ( IOException | InputMismatchException e ) {
                 System.out.printf( "\nIncorrect input ... %s " +
-                        "\nPress 'Enter' to continue ...", e.getMessage() );
+                                   "\nPress 'Enter' to continue ...", e.getMessage() );
             }
         }
     }

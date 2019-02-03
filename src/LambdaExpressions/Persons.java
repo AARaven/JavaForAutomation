@@ -12,26 +12,23 @@ public class Persons {
         
         ArrayList <Person> persons = new ArrayList <>();
         
-        for ( int i = 0; i < 20; i++ ) {
+        for ( int i = 0; i < 15; i++ ) {
             persons.add( new Person() );
         }
         
-        System.out.println( "Person list : \n" );
+        System.out.println( "Person list :\n" );
+        persons.forEach(
+                person -> System.out.printf( "{%2d Person : %-9s}\n", persons.indexOf( person ) + 1, person ) );
         
-        for ( Person p : persons ) {
-            System.out.println( p );
-        }
-        
-        
-        ArrayList <String> pers = persons.stream()
-                .filter( p -> ( 20 < p.getAge() ) && ( p.getAge() < 30 ) )
-                .map( Person::getName )
-                .map( String::toUpperCase )
+        ArrayList <String> sortedPerson = persons.stream()
+                .filter( p -> ( ( 20 < p.getAge() ) && ( p.getAge() < 30 ) ) )
+                .map( Person::getName ).map( String::toUpperCase )
                 .distinct()
                 .sorted( Comparator.comparing( String::length ) )
                 .collect( Collectors.toCollection( ArrayList::new ) );
         
-        System.out.printf( "\nThe stream : \n%s.\n", pers );
-        
+        System.out.println( "\nAfter sort : \n" );
+        sortedPerson.forEach
+                ( person -> System.out.printf( "{%2d Person : %-6s}\n", sortedPerson.indexOf( person ) + 1, person ) );
     }
 }

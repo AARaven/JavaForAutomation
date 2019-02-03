@@ -1,59 +1,72 @@
 package InheritanceAndPolymorphism.Shapes;
 
+import InheritanceAndPolymorphism.CircleAndCylinder.Colour;
+
+import java.util.Objects;
+
 class Circle extends Shape {
-
-    private double radius;
+    
     private static final double DEFAULT_RADIUS = 1.0;
-
-    protected Circle() {
-        this.radius = DEFAULT_RADIUS;
-        this.colour = DEFAULT_COLOUR;
-        this.filled = DEFAULT_FILLED;
-    }
-
-    protected Circle(double radius) {
-        this.radius = radius;
-        this.filled = DEFAULT_FILLED;
-        this.colour = DEFAULT_COLOUR;
-    }
-
-    protected Circle(double radius, String colour, boolean filled) {
-        this.radius = radius;
-        this.colour = colour;
-        this.filled = filled;
-    }
-
+    
+    private double radius;
+    
     private double getRadius() {
         return this.radius;
     }
-
-    private String getColour() {
-        return this.colour;
-    }
-
-    private boolean isFilled() {
-        return this.filled;
-    }
-
-    private void setRadius(double radius) {
+    
+    private void setRadius( double radius ) {
         this.radius = radius;
     }
-
-    private void setColour(String colour) {
-        this.colour = colour;
+    
+    double getArea() {
+        return ( Math.PI * ( Math.pow( this.getRadius(), 2 ) ) );
     }
-
-    private void setFilled(boolean filled) {
-        this.filled = filled;
+    
+    Circle() {
+        super();
+        this.setRadius( DEFAULT_RADIUS );
     }
-
-    protected double getArea() {
-        return (PI * (Math.pow(this.getRadius(), 2)));
+    
+    Circle( double radius ) {
+        super();
+        this.setRadius( radius );
     }
-
+    
+    Circle( double radius, Colour colour, boolean filled ) {
+        this.setRadius( radius );
+        this.setColour( colour );
+        this.setFilled( filled );
+    }
+    
+    @Override
+    public boolean equals( Object object ) {
+        
+        if ( this == object ) {
+            return true;
+        }
+        
+        if ( !( object instanceof Circle ) ) {
+            return false;
+        }
+        
+        Circle circle = ( Circle ) object;
+        return this.getRadius() == circle.getRadius()
+                && this.isFilled() == circle.isFilled()
+                && this.getColour().equals( circle.getColour() );
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                this.getRadius(),
+                this.isFilled() );
+    }
+    
     @Override
     public String toString() {
-        return String.format("A Circle with radius = %.1f , which is a subclass of %s"
-                , this.getRadius(), super.toString());
+        return String.format( "A Circle with radius = %.1f ;" +
+                        "\nwhich is a subclass of %s",
+                this.getRadius(),
+                super.toString() );
     }
 }

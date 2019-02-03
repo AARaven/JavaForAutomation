@@ -17,8 +17,10 @@ public class Dog implements Comparable <Dog> {
         this.names = names;
     }
     
-    private String[] names = { "Sully", "Max", "Rex", "Charlie", "Buddy",
-            "Molly", "Cody", "Chloe", "Abby", "Riley" };
+    private String[] names = {
+            "Abby", "Buddy", "Charlie", "Chloe",
+            "Cody", "Max", "Molly", "Rex",
+            "Riley", "Sully", };
     
     private enum Size {
         LOW( "Low" ), MIDDLE( "Middle" ), HIGH( "High" ), DEFAULT( "Default" ),
@@ -105,6 +107,10 @@ public class Dog implements Comparable <Dog> {
         return this.dogs;
     }
     
+    void setDogs( Dog[] dogs ) {
+        this.dogs = dogs;
+    }
+    
     Dog[] dogsGenerator( int capacity ) {
         Dog[] temp = new Dog[ capacity ];
         for ( int i = 0; i < capacity; i++ ) {
@@ -113,7 +119,7 @@ public class Dog implements Comparable <Dog> {
         return temp;
     }
     
-    Dog[] dogCreation( Scanner scanner ) {
+    Dog[] dogsCreator( Scanner scanner ) {
         
         System.out.println( "Enter the number of dogs: " );
         Dog[] temp = new Dog[ Integer.parseInt( scanner.nextLine() ) ];
@@ -133,12 +139,6 @@ public class Dog implements Comparable <Dog> {
             temp[ i ] = new Dog( scanName, scanAge, scanSize );
         }
         return temp;
-    }
-    
-    void printArrayOfDogs( Dog[] dogs ) {
-        for ( Dog d : dogs ) {
-            System.out.println( d );
-        }
     }
     
     void sortByAge( Dog[] dogs, String ordering ) {
@@ -188,30 +188,35 @@ public class Dog implements Comparable <Dog> {
         }
     }
     
-    void setDogs( Dog[] dogs ) {
-        this.dogs = dogs;
+    void printDogs( Dog[] dogs ) {
+        for ( Dog d : dogs ) {
+            System.out.println( d );
+        }
     }
     
     @Override
-    public boolean equals( Object obj ) {
+    public boolean equals( Object object ) {
         
-        if ( obj == this ) {
+        if ( object == this ) {
             return true;
         }
         
-        if ( !( obj instanceof Dog ) ) {
+        if ( !( object instanceof Dog ) ) {
             return false;
         }
         
-        Dog dog = ( Dog ) obj;
-        return this.name.equals( dog.name )
-                && this.size.equals( dog.size )
-                && this.age == dog.age;
+        Dog dog = ( Dog ) object;
+        return this.getName().equals( dog.getName() )
+                && this.getSize().equals( dog.getSize() )
+                && this.getAge() == dog.getAge();
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash( this.name, this.size, this.age );
+        return Objects.hash(
+                this.getName(),
+                this.getSize(),
+                this.getAge() );
     }
     
     @Override

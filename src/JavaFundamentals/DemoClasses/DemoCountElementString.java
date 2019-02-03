@@ -10,11 +10,11 @@ public class DemoCountElementString {
     
     private void showMenu() {
         System.out.println( "\f\n*******************************************" +
-                "\n* 1 - To create a String.                 *" +
-                "\n* 2 - To show the String as array.        *" +
-                "\n* 3 - To find the matches.                *" +
-                "\n* 4 - Exit.                               *" +
-                "\n*******************************************\n" );
+                              "\n* 1 - To create a String.                 *" +
+                              "\n* 2 - To show the String as array.        *" +
+                              "\n* 3 - To find the matches.                *" +
+                              "\n* 4 - Exit.                               *" +
+                              "\n*******************************************\n" );
     }
     
     public static void main( String[] args ) {
@@ -53,14 +53,14 @@ public class DemoCountElementString {
                     
                     default:
                         System.out.println( "\nIncorrect input ... " +
-                                "\nPlease, press 'Enter' to continue ...\n" );
+                                            "\nPlease, press 'Enter' to continue ...\n" );
                         System.in.read();
                 }
                 
             } catch
             ( IOException | InputMismatchException e ) {
                 System.out.printf( "\nIncorrect input ... %s " +
-                        "\nPlease, press 'Enter' to continue ... \n", e.getMessage() );
+                                   "\nPlease, press 'Enter' to continue ... \n", e.getMessage() );
             }
         }
     }

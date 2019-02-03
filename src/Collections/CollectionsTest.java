@@ -4,100 +4,73 @@ import java.util.*;
 
 public class CollectionsTest {
     
-    private static void fillList( List<Person> list ,int bound) {
+    private static <T extends Collection> void fillCollection( T collection, int bound ) {
         for ( int i = 0; i < bound; i++ ) {
-            list.add( new Person() );
+            collection.add( new Person() );
         }
     }
     
-    private static void fillQueue( Queue <Person> queue, int bound ) {
+    private static <T extends Map> void fillMap( T map, int bound ) {
         for ( int i = 0; i < bound; i++ ) {
-            queue.add( new Person() );
-        }
-    }
-    
-    private static void fillDeque( Deque <Person> deque, int bound ) {
-        for ( int i = 0; i < bound; i++ ) {
-            deque.add( new Person() );
-        }
-    }
-    
-    private static void fillSet( Set <Person> set, int bound ) {
-        for ( int i = 0; i < bound; i++ ) {
-            set.add( new Person() );
-        }
-    }
-    
-    private static void fillMap( Map <Integer, Person> map, int bound ) {
-        for ( int i = 0; i < bound; i++ ) {
-            map.put( new Person().getAge(), new Person() );
-        }
-    }
-    
-    private static void fillStack( Stack <Person> stack, int bound ) {
-        for ( int i = 0; i < bound; i++ ) {
-            stack.push( new Person() );
-        }
-    }
-    
-    private static void fillVector( Vector <Person> vector, int bound ) {
-        for ( int i = 0; i < bound; i++ ) {
-            vector.add( new Person() );
+            map.put( new Random().nextInt( 100 ), new Person() );
         }
     }
     
     public static void main( String[] args ) {
         
+        //List:
+        
         ArrayList <Person> arrayList = new ArrayList <>();
-        fillList( arrayList,5 );
-        System.out.printf("This is an ArrayList : %s \n",arrayList);
-    
-    
-        LinkedList <Person> linkedList = new LinkedList <>();
-        fillList( linkedList,5 );
-        System.out.printf("This is a LinkedList : %s \n",linkedList);
-        
-        ArrayDeque <Person> arrayDeque = new ArrayDeque <>();
-        fillDeque( arrayDeque,5 );
-        System.out.printf("This is a ArrayDeque : %s \n",arrayDeque);
-        
-        PriorityQueue <Person> priorityQueue = new PriorityQueue <>();
-        fillQueue( priorityQueue,5 );
-        System.out.printf("This is a PriorityDeque : %s \n",priorityQueue);
-        
-        Stack <Person> stack = new Stack <>();
-        fillStack( stack,5 );
-        System.out.printf("This is a Stack : %s \n",stack);
+        fillCollection( arrayList, 5 );
+        System.out.printf( "\nArrayList : %s \n", arrayList );
         
         Vector <Person> vector = new Vector <>();
-        fillVector( vector, 5 );
-        System.out.printf("This is a Vector : %s \n",vector);
+        fillCollection( vector, 5 );
+        System.out.printf( "\nVector : %s \n", vector );
         
+        //Deque:
+        ArrayDeque <Person> arrayDeque = new ArrayDeque <>();
+        fillCollection( arrayDeque, 5 );
+        System.out.printf( "\nArrayDeque : %s \n", arrayDeque );
+        
+        
+        //List&&Deque :
+        LinkedList <Person> linkedList = new LinkedList <>();
+        fillCollection( linkedList, 5 );
+        System.out.printf( "\nLinkedList : %s \n", linkedList );
+        
+        //Set:
         
         HashSet <Person> hashSet = new HashSet <>();
-        fillSet( hashSet,5 );
-        System.out.printf("This is a HashSet : %s \n",hashSet);
-        
-        TreeSet <Person> treeSet = new TreeSet <>();
-        fillSet( treeSet, 5 );
-        System.out.printf("This is a TreeSet : %s \n",treeSet);
+        fillCollection( hashSet, 5 );
+        System.out.printf( "\nHashSet : %s \n", hashSet );
         
         LinkedHashSet <Person> linkedHashSet = new LinkedHashSet <>();
-        fillSet( linkedHashSet,5 );
-        System.out.printf("This is a LinkedHashSet : %s \n",linkedHashSet);
+        fillCollection( linkedHashSet, 5 );
+        System.out.printf( "\nLinkedHashSet : %s \n", linkedHashSet );
+    
         
+        //Navigable set:
+        TreeSet <Person> treeSet = new TreeSet <>();
+        fillCollection( treeSet, 5 );
+        System.out.printf( "\nTreeSet : %s \n", treeSet );
+        
+        //Map:
         
         HashMap <Integer, Person> hashMap = new HashMap <>();
-        fillMap( hashMap,5 );
-        System.out.printf("This is a HashMap : %s \n",hashMap);
-        
-        TreeMap <Integer, Person> treeMap = new TreeMap <>();
-        fillMap( treeMap,5 );
-        System.out.printf("This is a TreeMap : %s \n",treeMap);
-        
+        fillMap( hashMap, 5 );
+        System.out.printf( "\nHashMap : %s \n", hashMap );
+    
         LinkedHashMap <Integer, Person> linkedHashMap = new LinkedHashMap <>();
-        fillMap( linkedHashMap,5 );
-        System.out.printf("This is a LinkedHashMap : %s \n",linkedHashMap);
+        fillMap( linkedHashMap, 5 );
+        System.out.printf( "\nLinkedHashMap : %s \n", linkedHashMap );
+        
+        //Navigable map:
+        TreeMap <Integer, Person> treeMap = new TreeMap <>();
+        fillMap( treeMap, 5 );
+        System.out.printf( "\nTreeMap : %s \n", treeMap );
+        
+       
         
     }
 }

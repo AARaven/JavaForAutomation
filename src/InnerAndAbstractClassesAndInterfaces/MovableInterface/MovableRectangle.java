@@ -4,64 +4,72 @@ import java.util.Objects;
 
 public class MovableRectangle implements Movable {
     
-    protected MovablePoint topLeft;
-    protected MovablePoint bottomRight;
+    private MovablePoint topLeft;
+    private MovablePoint bottomRight;
     
-    MovableRectangle(/*MovablePoint A, */MovablePoint b,/* MovablePoint C,*/ MovablePoint d ) {
-        this.topLeft = b;
-        this.bottomRight = d;
-    }
-    
-    public MovablePoint getTopLeft() {
+    private MovablePoint getTopLeft() {
         return this.topLeft;
     }
     
-    public MovablePoint getBottomRight() {
+    private MovablePoint getBottomRight() {
         return this.bottomRight;
     }
     
-    public int getTopX() {
+    private void setTopLeft( MovablePoint topLeft ) {
+        this.topLeft = topLeft;
+    }
+    
+    private void setBottomRight( MovablePoint bottomRight ) {
+        this.bottomRight = bottomRight;
+    }
+    
+    private int getTopX() {
         return topLeft.getX();
     }
     
-    public int getTopY() {
+    private int getTopY() {
         return topLeft.getY();
     }
     
-    public int getBottomX() {
+    private int getBottomX() {
         return bottomRight.getX();
     }
     
-    public int getBottomY() {
+    private int getBottomY() {
         return bottomRight.getY();
+    }
+    
+    MovableRectangle( MovablePoint topLeft, MovablePoint bottomRight ) {
+        this.setTopLeft( topLeft );
+        this.setBottomRight( bottomRight );
     }
     
     @Override
     public void moveUp() {
-        System.out.println( "\n" + "the rect is moveUp:" + "\n" );
-        this.topLeft.setY( this.topLeft.getY() + this.topLeft.getySpeed() );
-        this.bottomRight.setY( this.bottomRight.getY() + this.bottomRight.getySpeed() );
+        this.getTopLeft().setY( this.getTopLeft().getY() + this.getTopLeft().getYSpeed() );
+        this.getBottomRight().setY( this.getBottomRight().getY() + this.getBottomRight().getYSpeed() );
+        System.out.printf("\nMove up : \n%s",this);
     }
     
     @Override
     public void moveDown() {
-        System.out.println( "\n" + "the rect is moveDown:" + "\n" );
-        this.topLeft.setY( this.topLeft.getY() - this.topLeft.getySpeed() );
-        this.bottomRight.setY( this.bottomRight.getY() - this.bottomRight.getySpeed() );
+        this.getTopLeft().setY( this.getTopLeft().getY() - this.getTopLeft().getYSpeed() );
+        this.getBottomRight().setY( this.getBottomRight().getY() - this.getBottomRight().getYSpeed() );
+        System.out.printf("\nMove down : \n%s",this);
     }
     
     @Override
     public void moveLeft() {
-        System.out.println( "\n" + "the rect is moveLeft:" + "\n" );
-        this.topLeft.setX( this.topLeft.getX() - this.topLeft.getxSpeed() );
-        this.bottomRight.setX( this.bottomRight.getX() - this.bottomRight.getxSpeed() );
+        this.getTopLeft().setX( this.getTopLeft().getX() - this.getTopLeft().getXSpeed() );
+        this.getBottomRight().setX( this.getBottomRight().getX() - this.getBottomRight().getXSpeed() );
+        System.out.printf("\nMove left : \n%s",this);
     }
     
     @Override
     public void moveRight() {
-        System.out.println( "\n" + "the rect is moveRight:" + "\n" );
-        this.topLeft.setX( this.topLeft.getX() + this.topLeft.getxSpeed() );
-        this.bottomRight.setX( this.bottomRight.getX() + this.bottomRight.getxSpeed() );
+        this.getTopLeft().setX( this.getTopLeft().getX() + this.getTopLeft().getXSpeed() );
+        this.getBottomRight().setX( this.getBottomRight().getX() + this.getBottomRight().getXSpeed() );
+        System.out.printf("\nMove right : \n%s",this);
     }
     
     @Override
@@ -82,12 +90,17 @@ public class MovableRectangle implements Movable {
     
     @Override
     public int hashCode() {
-        return Objects.hash( this.getTopLeft(), this.getBottomRight() );
+        return Objects.hash(
+                this.getTopLeft(),
+                this.getBottomRight() );
     }
     
     @Override
     public String toString() {
-        return String.format( "This rect left topside is: x: %d and y: %d and bottom side is - x: %d and  y: %d."
-                , this.topLeft.getX(), this.topLeft.getY(), this.bottomRight.getX(), this.bottomRight.getY() );
+        return String.format( "Left topside { %d | %d } \nBottom side { %d | %d }.\n",
+                this.getTopLeft().getX(),
+                this.getTopLeft().getY(),
+                this.getBottomRight().getX(),
+                this.getBottomRight().getY() );
     }
 }

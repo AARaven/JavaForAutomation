@@ -4,48 +4,46 @@ import java.util.Objects;
 
 public class Clock {
     
-    private static final int MAX_SECONDS = 60;
-    private static final int MAX_MINUTES = 60;
-    private static final int MAX_HOURS = 24;
-    private static final int DEFAULT = 0;
+    private static final int DEFAULT_HOURS =    12;
+    private static final int MAX_SECONDS =      60;
+    private static final int MAX_MINUTES =      60;
+    private static final int MAX_HOURS =        24;
     
     private int seconds;
     private int minutes;
     private int hours;
     
-    public int getSeconds() {
+    private int getSeconds() {
         return this.seconds;
     }
     
-    public int getMinutes() {
+    private int getMinutes() {
         return this.minutes;
     }
     
-    public int getHours() {
+    private int getHours() {
         return this.hours;
     }
     
-    public void setSeconds( int seconds ) {
+    private void setSeconds( int seconds ) {
         this.seconds = seconds;
     }
     
-    public void setMinutes( int minutes ) {
+    private void setMinutes( int minutes ) {
         this.minutes = minutes;
     }
     
-    public void setHours( int hours ) {
+    private void setHours( int hours ) {
         this.hours = hours;
     }
     
     private int toSeconds( int hours, int minutes, int seconds ) {
-        return seconds
-                + ( minutes * MAX_SECONDS )
+        return seconds + ( minutes * MAX_SECONDS )
                 + ( ( hours * MAX_MINUTES ) * MAX_SECONDS );
     }
     
     private int toSeconds() {
-        return this.getSeconds()
-                + ( this.getMinutes() * MAX_SECONDS )
+        return this.getSeconds() + ( this.getMinutes() * MAX_SECONDS )
                 + ( ( this.getHours() * MAX_MINUTES ) * MAX_SECONDS );
     }
     
@@ -53,21 +51,22 @@ public class Clock {
         setClock( toSeconds( hours, minutes, seconds ) );
     }
     
-    public void setClock( int seconds ) {
-        int tempMin = seconds / MAX_SECONDS;
-        int tempHour = tempMin / MAX_MINUTES;
-    
-        this.seconds = ( seconds >= MAX_SECONDS )
+    private void setClock( int seconds ) {
+        
+        int tempMinutes = seconds / MAX_SECONDS;
+        int tempHours = tempMinutes / MAX_MINUTES;
+        
+        this.setSeconds( ( seconds >= MAX_SECONDS )
                 ? seconds % MAX_SECONDS
-                : seconds;
-    
-        this.minutes = ( tempMin >= MAX_MINUTES )
-                ? tempMin % MAX_MINUTES
-                : tempMin;
-    
-        this.hours = ( tempHour >= MAX_HOURS )
-                ? tempHour % MAX_HOURS
-                : tempHour;
+                : seconds );
+        
+        this.setMinutes( ( tempMinutes >= MAX_MINUTES )
+                ? tempMinutes % MAX_MINUTES
+                : tempMinutes );
+        
+        this.setHours( ( tempHours >= MAX_HOURS )
+                ? tempHours % MAX_HOURS
+                : tempHours );
     }
     
     void addClock( Clock clock ) {
@@ -75,15 +74,15 @@ public class Clock {
     }
     
     Clock subtractClock( Clock clock ) {
-        return ( this.toSeconds() < clock.toSeconds() ) ?
-                new Clock( clock.toSeconds() - this.toSeconds() ) :
-                new Clock(this.toSeconds() - clock.toSeconds());
+        return ( this.toSeconds() < clock.toSeconds()
+                ? new Clock( clock.toSeconds() - this.toSeconds() )
+                : new Clock( this.toSeconds() - clock.toSeconds() ) );
     }
     
     void tick( int bound ) {
         for ( int i = 0; i < bound; i++ ) {
             this.seconds++;
-            setClock( this.getHours(), this.getMinutes(), this.getSeconds() );
+            setClock( this.toSeconds() );
             System.out.println( this );
         }
     }
@@ -105,11 +104,12 @@ public class Clock {
     }
     
     Clock() {
-        this.setHours( 12 );
+        this.setHours( DEFAULT_HOURS );
     }
     
     @Override
     public boolean equals( Object object ) {
+        
         if ( this == object ) {
             return true;
         }
@@ -126,15 +126,18 @@ public class Clock {
     
     @Override
     public int hashCode() {
-        return Objects.hash( this.seconds, this.minutes, this.hours );
+        return Objects.hash(
+                this.getSeconds(),
+                this.getMinutes(),
+                this.getHours() );
     }
     
     @Override
     public String toString() {
         return String.format( "%02d:%02d:%02d",
-                this.hours,
-                this.minutes,
-                this.seconds );
+                this.getHours(),
+                this.getMinutes(),
+                this.getSeconds() );
     }
 }
 

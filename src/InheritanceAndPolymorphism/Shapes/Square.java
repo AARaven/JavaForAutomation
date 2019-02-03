@@ -1,39 +1,76 @@
 package InheritanceAndPolymorphism.Shapes;
 
+import InheritanceAndPolymorphism.CircleAndCylinder.Colour;
+
+import java.util.Objects;
+
 class Square extends Rectangle {
-
-    protected Square() {
-        this.width = DEFAULT_WIDTH;
-        this.length = DEFAULT_LENGTH;
+    
+    private static final double DEFAULT_SIDE = 0;
+    
+    private double side;
+    
+    private double getSide() {
+        return this.side;
     }
-
-    private Square(double side) {
-        this.width = side;
-        this.length = side;
-        this.colour = DEFAULT_COLOUR;
-        this.filled = DEFAULT_FILLED;
+    
+    private void setSide( double side ) {
+        this.side = side;
     }
-
-    private Square(double side, String colour, boolean filled) {
-        this.width = side;
-        this.length = side;
-        this.colour = colour;
-        this.filled = filled;
+    
+    Square() {
+        this.setSide( DEFAULT_SIDE );
+        this.setColour( Colour.DEFAULT );
+        this.setFilled( true );
+        
     }
-
-    private void setLength(double side) {
-        this.length = side;
-        this.width = side;
+    
+    Square( double side ) {
+        this.setSide( side );
+        this.setColour( Colour.DEFAULT );
+        this.setFilled( true );
     }
-
-    private void setWidth(double side) {
-        this.width = side;
-        this.length = side;
+    
+    Square( double side, Colour colour, boolean filled ) {
+        this.setSide( side );
+        this.setColour( colour );
+        this.setFilled( filled );
     }
-
+    
+    @Override
+    protected double getPerimeter() {
+        return 4 * this.getSide();
+    }
+    
+    @Override
+    public boolean equals( Object object ) {
+        if ( this == object ) {
+            return true;
+        }
+        
+        if ( !( object instanceof Square ) ) {
+            return false;
+        }
+        
+        Square square = ( Square ) object;
+        return this.getSide() == square.getSide()
+                && this.isFilled() == square.isFilled()
+                && this.getColour().equals( square.getColour() );
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                this.getSide(),
+                this.getColour(),
+                this.isFilled() );
+    }
+    
     @Override
     public String toString() {
-        return String.format("A Square with side = %.1f , which is a subclass of %s"
-                , this.length, super.toString());
+        return String.format( "A Square with side = %.1f ;" +
+                        "\nwhich is a subclass of %s",
+                this.getSide(),
+                super.toString() );
     }
 }

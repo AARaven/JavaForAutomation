@@ -1,41 +1,34 @@
 package InheritanceAndPolymorphism.Shapes;
 
+import InheritanceAndPolymorphism.CircleAndCylinder.Colour;
+
 public class DemoClass {
-
-    public static void iterateArrayShapes(Shape[] shapes) {
-        for (int i = 0; i < shapes.length; i++) {
-            if (shapes[i] instanceof Circle) {
-                System.out.print(shapes[i].toString());
-                System.out.print("The my area is : " + ((Circle) shapes[i]).getArea() + "\n\n");
-            } else if (shapes[i] instanceof Rectangle) {
-                System.out.print(shapes[i].toString());
-                System.out.print("The my perimeter is : " + ((Rectangle) shapes[i]).getPerimeter() + "\n\n");
+    
+    public static void main( String[] args ) {
+        
+        Shape[] shapes = new Shape[]{
+                new Rectangle( 2, 4 ),
+                new Circle( 5, Colour.PURPLE, true ),
+                new Square( 4 ) };
+        
+        for ( Shape s : shapes ) {
+            
+            if ( s instanceof Circle ) {
+                
+                System.out.println( s );
+                System.out.printf( "Area : %.2f\n\n", ( ( Circle ) s ).getArea() );
+                
+            } else if ( s instanceof Rectangle ) {
+                
+                System.out.println( s );
+                System.out.printf( "Perimeter : %.2f\n\n", ( ( Rectangle ) s ).getPerimeter() );
+                
+            } else {
+                
+                System.out.println( s );
+                System.out.printf( "Perimeter : %.2f\n\n", ( ( Square ) s ).getPerimeter() );
+                
             }
         }
-    }
-
-    public static void iterateForEachShapes(Shape[] shapes) {
-        for (Shape s : shapes) {
-            if (s instanceof Circle) {
-                System.out.print(s.toString());
-                System.out.print("The my area is : " +
-                        ((Circle) s).getArea() + "\n\n");
-            } else if (s instanceof Rectangle) {
-                System.out.print(s.toString());
-                System.out.print("The my perimeter is : " +
-                        ((Rectangle) s).getPerimeter() + "\n\n");
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-
-        Shape[] shapes = new Shape[3];
-        shapes[0] = new Rectangle();
-        shapes[1] = new Circle();
-        shapes[2] = new Square();
-
-        iterateArrayShapes(shapes);
-        iterateForEachShapes(shapes);
     }
 }

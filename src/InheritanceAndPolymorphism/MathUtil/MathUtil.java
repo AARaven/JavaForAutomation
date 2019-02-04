@@ -2,6 +2,7 @@ package InheritanceAndPolymorphism.MathUtil;
 
 class MathUtil {
     
+    // FIXME: 04.02.2019
     //for integers :
     static int minAtArray( int[] ints ) {
         int min = ints[ 0 ];
@@ -48,12 +49,12 @@ class MathUtil {
     
     //for integers :
     static int nextAfterAtArray( int[] ints, int var ) {
-        int verCount = 0;
+        int verCount     = 0;
         int verNextCount = 0;
         
         for ( int i = 1; i < ints.length; i++ ) {
             int temp = ints[ i ];
-            int j = i - 1;
+            int j    = i - 1;
             
             while ( ( j >= 0 ) && ints[ j ] > temp ) {
                 ints[ j + 1 ] = ints[ j ];
@@ -78,12 +79,12 @@ class MathUtil {
         
         if ( verCount == 0 ) {
             System.out.printf( "\n" + "The integer argument %d is not found in the array."
-                    + "\n", var );
+                               + "\n", var );
             return 0;
             
         } else if ( verNextCount == 0 ) {
             System.out.printf( "\nThe next max value for %d is not found in the array." +
-                    "\n%d - max value in this array.\n", var, var );
+                               "\n%d - max value in this array.\n", var, var );
             return 0;
         }
         return var;
@@ -91,12 +92,12 @@ class MathUtil {
     
     //for doubles :
     static double nextAfterAtArray( double[] doubles, double var ) {
-        int verCount = 0;
+        int verCount     = 0;
         int verNextCount = 0;
         
         for ( int i = 1; i < doubles.length; i++ ) {
             double temp = doubles[ i ];
-            int j = i - 1;
+            int    j    = i - 1;
             
             while ( ( j >= 0 ) && doubles[ j ] > temp ) {
                 doubles[ j + 1 ] = doubles[ j ];
@@ -104,13 +105,13 @@ class MathUtil {
             }
             doubles[ j + 1 ] = temp;
         }
-    
+        
         for ( double d : doubles ) {
             if ( d == var ) {
                 verCount++;
             }
         }
-    
+        
         for ( double d : doubles ) {
             if ( d > var ) {
                 verNextCount++;
@@ -121,11 +122,11 @@ class MathUtil {
         
         if ( verCount == 0 ) {
             System.out.printf( "\n" + "The double argument %.2f is not found in the array."
-                    + "\n", var );
+                               + "\n", var );
             return 0;
         } else if ( verNextCount == 0 ) {
             System.out.printf( "\n" + "The next max value for %.2f is not found in the array."
-                    + "\n" + "%.2f - max value in this array." + "\n", var, var );
+                               + "\n" + "%.2f - max value in this array." + "\n", var, var );
             return 0;
         }
         return var;

@@ -30,6 +30,7 @@ public class Author {
     
     @Override
     public boolean equals( Object object ) {
+        
         if ( object == this ) {
             return true;
         }
@@ -40,20 +41,19 @@ public class Author {
         
         Author author = ( Author ) object;
         return this.getFirstName().equals( author.getFirstName() )
-                && this.getLastName().equals( author.getLastName() );
+               && this.getLastName().equals( author.getLastName() );
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-                this.getFirstName(),
-                this.getLastName() );
+        return Objects.hash( this.getFirstName(),
+                             this.getLastName() );
     }
     
     @Override
     public String toString() {
         return String.format( "%s %s",
-                this.getFirstName(),
-                this.getLastName() );
+                              this.getFirstName(),
+                              this.getLastName() );
     }
 }

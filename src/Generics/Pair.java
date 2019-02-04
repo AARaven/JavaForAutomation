@@ -1,6 +1,6 @@
 package Generics;
 
-public class Pair<T1, T2> {
+public class Pair< T1, T2 > {
     
     private T1 t1;
     private T2 t2;
@@ -28,11 +28,14 @@ public class Pair<T1, T2> {
     
     public static void main( String[] args ) {
         
-        Pair <Integer, String> pair = new Pair <>( 20, "Circle" );
+        Pair < Integer, String > pair = new Pair <>( 20, "Circle" );
         
         Integer value = pair.getFirst();
-        String name = pair.getSecond();
+        String  name  = pair.getSecond();
         
-        System.out.printf( "\nFirst : %d  \nSecond : %s\n", value, name );
+        System.out.printf(
+                "\nFirst : %d  " +
+                "\nSecond : %s" +
+                "\n", value, name );
     }
 }

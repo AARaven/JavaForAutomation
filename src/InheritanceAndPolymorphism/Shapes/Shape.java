@@ -5,7 +5,7 @@ import InheritanceAndPolymorphism.CircleAndCylinder.Colour;
 class Shape {
     
     protected boolean filled;
-    protected Colour colour;
+    protected Colour  colour;
     
     protected boolean isFilled() {
         return this.filled;
@@ -31,9 +31,8 @@ class Shape {
     @Override
     public String toString() {
         return String.format( "Shape with the colour of %s and %b",
-                this.colour,
-                this.filled )
-                .replaceAll( "true", "filled." )
-                .replaceAll( "false", "not filled." );
+                              this.colour, this.filled )
+                     .replaceAll( "true", "filled." )
+                     .replaceAll( "false", "not filled." );
     }
 }

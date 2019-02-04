@@ -55,25 +55,24 @@ public class Book {
         
         Book book = ( Book ) object;
         return this.getAuthor().equals( book.getAuthor() )
-                && this.getTitle().equals( book.getTitle() )
-                && this.getPrice() == book.getPrice();
+               && this.getTitle().equals( book.getTitle() )
+               && this.getPrice() == book.getPrice();
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-                this.getAuthor(),
-                this.getTitle(),
-                this.getPrice() );
+        return Objects.hash( this.getAuthor(),
+                             this.getTitle(),
+                             this.getPrice() );
     }
     
     @Override
     public String toString() {
         return String.format( "The book title is : %s " +
-                        "\nThe book author is : %s " +
-                        "\nThe book price is : %.2f",
-                this.getTitle(),
-                this.getAuthor(),
-                this.getPrice() );
+                              "\nThe book author is : %s " +
+                              "\nThe book price is : %.2f",
+                              this.getTitle(),
+                              this.getAuthor(),
+                              this.getPrice() );
     }
 }

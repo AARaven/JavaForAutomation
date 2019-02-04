@@ -8,17 +8,19 @@ import java.util.InputMismatchException;
 public class DemoTurtleGraphics {
     
     private void showTitleMenu() {
-        System.out.println( "\f\n*********************************************" +
-                              "\n* 1 - Play with turtle.                     *" +
-                              "\n* 2 - Exit.                                 *" +
-                              "\n*********************************************\n" );
+        System.out.println(
+                "\f\n*********************************************" +
+                "\n* 1 - Play with turtle.                     *" +
+                "\n* 2 - Exit.                                 *" +
+                "\n*********************************************" +
+                "\n" );
     }
     
     public static void main( String[] args ) throws Exception {
         
-        DemoTurtleGraphics demo = new DemoTurtleGraphics();
-        Utils utils = new Utils();
-        TurtleGraphics turtle;
+        DemoTurtleGraphics demo  = new DemoTurtleGraphics();
+        Utils              utils = new Utils();
+        TurtleGraphics     turtle;
         
         while ( true ) {
             
@@ -64,69 +66,73 @@ public class DemoTurtleGraphics {
                             turtle.showTurtle();
                             turtle.showBoard();
                             
-                            System.out.println( "\nChoose the description of movement and the number of steps: " +
-                                                "\nFor example: 'r 5' - to go 5 steps to the right." +
-                                                "\n'c' - to clean a board and start again." +
-                                                "\n'exit' - exit from the program\n" );
+                            System.out.println(
+                                    "\nChoose the description of movement and the number of " +
+                                    "steps: " +
+                                    "\nFor example: 'r 5' - to go 5 steps to the right." +
+                                    "\n'c' - to clean a board and start again." +
+                                    "\n'exit' - exit from the program" +
+                                    "\n" );
                             
                             switch ( utils.getScan().next() ) {
                                 
                                 case ( "u" ):
                                     turtle.setDirection( Direction.UP );
-                                    turtle.getDirection()
-                                            .move( turtle, utils.getScan().nextInt() );
+                                    turtle.getDirection().move( turtle, utils.getScan().nextInt() );
                                     break;
                                 
                                 case ( "d" ):
                                     turtle.setDirection( Direction.DOWN );
-                                    turtle.getDirection()
-                                            .move( turtle, utils.getScan().nextInt() );
+                                    turtle.getDirection().move( turtle, utils.getScan().nextInt() );
                                     break;
                                 
                                 case ( "l" ):
                                     turtle.setDirection( Direction.LEFT );
-                                    turtle.getDirection()
-                                            .move( turtle, utils.getScan().nextInt() );
+                                    turtle.getDirection().move( turtle, utils.getScan().nextInt() );
                                     break;
                                 
                                 case ( "r" ):
                                     turtle.setDirection( Direction.RIGHT );
-                                    turtle.getDirection()
-                                            .move( turtle, utils.getScan().nextInt() );
+                                    turtle.getDirection().move( turtle, utils.getScan().nextInt() );
                                     break;
                                 
                                 case ( "c" ):
                                     turtle.setDirection( Direction.CLEAR );
-                                    turtle.getDirection()
-                                            .clearBoard( turtle );
+                                    turtle.getDirection().clearBoard( turtle );
                                     break;
                                 
                                 case ( "exit" ):
-                                    System.out.print( "\nExiting ...\n" );
+                                    System.out.print( "\nExiting ..." +
+                                                      "\n" );
                                     System.exit( 0 );
                                     break;
                                 
                                 default:
                                     System.out.println( "\nIncorrect input ... " +
-                                                        "\nPlease, press 'Enter' to continue ...\n" );
+                                                        "\nPlease, press 'Enter' to continue ..." +
+                                                        "\n" );
                                     System.in.read();
                             }
                             
                         } catch
                         ( IOException | InputMismatchException e ) {
                             System.out.printf( "\nIncorrect input ... %s " +
-                                               "\nPlease, press 'Enter' to continue ... \n", e.getMessage() );
+                                               "\nPlease, press 'Enter' to continue ... " +
+                                               "\n",
+                                               e.getMessage() );
                         }
                     }
                 
                 case ( "2" ):
-                    System.out.print( "\nExiting ...\n" );
+                    System.out.print( "\nExiting ..." +
+                                      "\n" );
                     System.exit( 0 );
                     break;
                 
                 default:
                     System.out.println( "\nIncorrect input ... " +
-                                        "\nPlease, press 'Enter' to continue ...\n" );
+                                        "\nPlease, press 'Enter' to continue ..." +
+                                        "\n" );
                     System.in.read();
             }
         }

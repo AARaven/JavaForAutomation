@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Utils {
     
     private Scanner scan = new Scanner( System.in );
-    private int[] array;
+    private int[]   array;
     
     private void fillArray() {
         for ( int i = 0; i < this.array.length; i++ ) {

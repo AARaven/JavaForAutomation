@@ -12,18 +12,20 @@ public class DemoFindTheMinimum {
      * Main menu
      */
     private void showMenu() {
-        System.out.println( "\f\n*******************************************" +
-                              "\n* 1 - To find the lower of two values.    *" +
-                              "\n* 2 - To find the lower of three values.  *" +
-                              "\n* 3 - To find the lower of four values.   *" +
-                              "\n* 4 - Exit.                               *" +
-                              "\n*******************************************\n" );
+        System.out.println(
+                "\f\n*******************************************" +
+                "\n* 1 - To find the lower of two values.    *" +
+                "\n* 2 - To find the lower of three values.  *" +
+                "\n* 3 - To find the lower of four values.   *" +
+                "\n* 4 - Exit.                               *" +
+                "\n*******************************************\n" );
     }
     
     public static void main( String[] args ) {
-        DemoFindTheMinimum demo = new DemoFindTheMinimum();
-        FindTheMinimum find = new FindTheMinimum();
-        Utils utils = new Utils();
+        
+        DemoFindTheMinimum demo  = new DemoFindTheMinimum();
+        FindTheMinimum     find  = new FindTheMinimum();
+        Utils              utils = new Utils();
         
         while ( true ) {
             
@@ -37,8 +39,8 @@ public class DemoFindTheMinimum {
                     case ( "1" ):
                         System.out.println( "\nPlease, enter the two values for find lowest." );
                         System.out.printf( "\nThe min is : %d.",
-                                find.min( utils.getScan().nextInt(),
-                                        utils.getScan().nextInt() ) );
+                                           find.min( utils.getScan().nextInt(),
+                                                     utils.getScan().nextInt() ) );
                         System.out.println( "\nplease, press 'ENTER' to continue." );
                         System.in.read();
                         break;
@@ -48,9 +50,9 @@ public class DemoFindTheMinimum {
                     case ( "2" ):
                         System.out.println( "\nPlease, enter the three values for find lowest." );
                         System.out.printf( "\nThe min is : %d.",
-                                find.min( utils.getScan().nextInt(),
-                                        utils.getScan().nextInt(),
-                                        utils.getScan().nextInt() ) );
+                                           find.min( utils.getScan().nextInt(),
+                                                     utils.getScan().nextInt(),
+                                                     utils.getScan().nextInt() ) );
                         System.out.println( "\nplease, press 'ENTER' to continue." );
                         System.in.read();
                         break;
@@ -60,10 +62,10 @@ public class DemoFindTheMinimum {
                     case ( "3" ):
                         System.out.println( "\nPlease, enter the four values for find lowest." );
                         System.out.printf( "\nThe min is : %d.",
-                                find.min( utils.getScan().nextInt(),
-                                        utils.getScan().nextInt(),
-                                        utils.getScan().nextInt(),
-                                        utils.getScan().nextInt() ) );
+                                           find.min( utils.getScan().nextInt(),
+                                                     utils.getScan().nextInt(),
+                                                     utils.getScan().nextInt(),
+                                                     utils.getScan().nextInt() ) );
                         System.out.println( "\nplease, press 'ENTER' to continue." );
                         System.in.read();
                         break;
@@ -85,7 +87,8 @@ public class DemoFindTheMinimum {
             } catch
             ( IOException | InputMismatchException e ) {
                 System.out.printf( "\nIncorrect input ... %s " +
-                                   "\nPress 'Enter' to continue ...", e.getMessage() );
+                                   "\nPress 'Enter' to continue ...",
+                                   e.getMessage() );
             }
         }
     }

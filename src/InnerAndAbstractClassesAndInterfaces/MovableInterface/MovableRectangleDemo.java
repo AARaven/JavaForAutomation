@@ -4,11 +4,11 @@ public class MovableRectangleDemo {
     
     public static void main( String[] args ) {
         
-        MovablePoint pointB = new MovablePoint( 1, 2 );
-        MovablePoint pointD = new MovablePoint( 1, 4 );
-        MovableRectangle movableRect = new MovableRectangle( pointB, pointD );
+        MovableRectangle movableRect =
+                new MovableRectangle( new MovablePoint( 1, 2 ),
+                                      new MovablePoint( 1, 4 ) );
         
-        System.out.println( movableRect);
+        System.out.println( movableRect );
         
         movableRect.moveDown();
         movableRect.moveUp();

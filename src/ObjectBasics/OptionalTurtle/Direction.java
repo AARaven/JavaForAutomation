@@ -6,9 +6,8 @@ public enum Direction {
         @Override
         void move( TurtleGraphics turtle, int steps ) {
             turtle.moveTurtle( this, steps );
-            System.out.printf( "\nMove %d steps '%s'\n",
-                    steps,
-                    this.getDescription() );
+            System.out.printf( "\nMove %d steps '%s'" +
+                               "\n", steps, this.getDescription() );
         }
         
         @Override
@@ -18,9 +17,8 @@ public enum Direction {
         @Override
         void move( TurtleGraphics turtle, int steps ) {
             turtle.moveTurtle( this, steps );
-            System.out.printf( "\nMove %d steps '%s'\n",
-                    steps,
-                    this.getDescription() );
+            System.out.printf( "\nMove %d steps '%s'" +
+                               "\n", steps, this.getDescription() );
         }
         
         @Override
@@ -30,9 +28,8 @@ public enum Direction {
         @Override
         void move( TurtleGraphics turtle, int steps ) {
             turtle.moveTurtle( this, steps );
-            System.out.printf( "\nMove %d steps '%s'\n",
-                    steps,
-                    this.getDescription() );
+            System.out.printf( "\nMove %d steps '%s'" +
+                               "\n", steps, this.getDescription() );
         }
         
         @Override
@@ -42,9 +39,8 @@ public enum Direction {
         @Override
         void move( TurtleGraphics turtle, int steps ) {
             turtle.moveTurtle( this, steps );
-            System.out.printf( "\nMove %d steps '%s'\n",
-                    steps,
-                    this.getDescription() );
+            System.out.printf( "\nMove %d steps '%s'" +
+                               "\n", steps, this.getDescription() );
         }
         
         @Override
@@ -59,7 +55,8 @@ public enum Direction {
         void clearBoard( TurtleGraphics turtle ) {
             turtle.moveTurtle( this, 0 );
             System.out.println( "\nBoard is clean. " +
-                                "\nTurtle moved on start position.\n" );
+                                "\nTurtle moved on start position." +
+                                "\n" );
         }
     },
     ;

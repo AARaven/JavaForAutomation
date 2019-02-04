@@ -4,9 +4,9 @@ import java.util.Objects;
 
 class Circle extends Shape {
     
-    private static final int DEFAULT_X = 1;
-    private static final int DEFAULT_Y = 1;
     private static final double DEFAULT_RADIUS = 1.0;
+    private static final int    DEFAULT_X      = 1;
+    private static final int    DEFAULT_Y      = 1;
     
     private double x_coordinate;
     private double y_coordinate;
@@ -54,7 +54,8 @@ class Circle extends Shape {
     
     boolean isInside( double x, double y ) {
         return ( Math.pow( ( x - this.getX_coordinate() ), 2 ) +
-                ( Math.pow( ( y - this.getY_coordinate() ), 2 ) ) ) <= ( Math.pow( this.getRadius(), 2 ) );
+                 ( Math.pow( ( y - this.getY_coordinate() ), 2 ) ) ) <= ( Math.pow(
+                this.getRadius(), 2 ) );
     }
     
     @Override
@@ -75,16 +76,15 @@ class Circle extends Shape {
         
         Circle circle = ( Circle ) object;
         return this.getRadius() == circle.getRadius()
-                && this.getX_coordinate() == circle.getX_coordinate()
-                && this.getY_coordinate() == circle.getY_coordinate();
+               && this.getX_coordinate() == circle.getX_coordinate()
+               && this.getY_coordinate() == circle.getY_coordinate();
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-                this.getRadius(),
-                this.getX_coordinate(),
-                this.getY_coordinate() );
+        return Objects.hash( this.getRadius(),
+                             this.getX_coordinate(),
+                             this.getY_coordinate() );
     }
     
     @Override

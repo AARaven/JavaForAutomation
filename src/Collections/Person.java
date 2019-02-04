@@ -2,11 +2,14 @@ package Collections;
 
 import java.util.*;
 
-public class Person implements Comparable <Person> {
+public class Person implements Comparable < Person > {
     
-    private int age;
-    private String name;
-    private String[] names = { "Sid", "Joey", "Paul", "Chris", "Jim", "Craig", "Shawn", "Mick", "Corey" };
+    private int      age;
+    private String   name;
+    private String[] names =
+            { "Sid", "Joey", "Paul",
+              "Chris", "Jim", "Craig",
+              "Shawn", "Mick", "Corey" };
     
     public int getAge() {
         return this.age;
@@ -29,25 +32,25 @@ public class Person implements Comparable <Person> {
         this.name = name;
     }
     
-    private static List <Person> toUniqueList( List <Person> list ) {
-        HashSet <Person> set = new HashSet <Person>( list );
-        return new ArrayList <Person>( set );
+    private static List < Person > toUniqueList( List < Person > list ) {
+        HashSet < Person > set = new HashSet < Person >( list );
+        return new ArrayList < Person >( set );
     }
     
-    private static boolean compareTwoLists( List <Person> list1, List <Person> list2 ) {
+    private static boolean compareTwoLists( List < Person > list1, List < Person > list2 ) {
         if ( list1.size() == list2.size() ) {
             return list1.equals( list2 );
         }
         return false;
     }
     
-    public static void fillList( List <Person> list, int bound ) {
+    public static void fillList( List < Person > list, int bound ) {
         for ( int i = 0; i < bound; i++ ) {
             list.add( new Person() );
         }
     }
     
-    private static void printList( List <Person> p ) {
+    private static void printList( List < Person > p ) {
         System.out.printf( "(List size : %d) \n\n", p.size() );
         
         for ( Person person : p ) {
@@ -62,6 +65,7 @@ public class Person implements Comparable <Person> {
     
     @Override
     public boolean equals( Object object ) {
+        
         if ( this == object ) {
             return true;
         }
@@ -71,50 +75,54 @@ public class Person implements Comparable <Person> {
         }
         
         Person person = ( Person ) object;
-        return this.name.equals( person.name )
-                && this.age == person.age;
+        return this.getName().equals( person.getName() )
+               && this.getAge() == person.getAge();
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash( this.name, this.age );
+        return Objects.hash( this.getName(), this.getAge() );
     }
     
     @Override
     public int compareTo( Person person ) {
-        return this.age - person.age;
+        return this.getAge() - person.getAge();
     }
     
     public static void main( String[] args ) {
         
-        List <Person> persons = new ArrayList <>();
-        List <Person> uniqueList;
+        List < Person > persons = new ArrayList <>();
+        List < Person > uniqueList;
         
         fillList( persons, 25 );
         
         System.out.println( "ArrayList  : \n" );
         printList( persons );
         
-        System.out.println( "\n" + "Sort without comparator : " + "\n" );
+        System.out.println( "\nSort without comparator : " +
+                            "\n" );
         Collections.sort( persons );
         printList( persons );
         
-        System.out.println( "\n" + "With comparator : " + "\n" );
+        System.out.println( "\nWith comparator : " +
+                            "\n" );
         persons.sort( Comparator.comparing( o2 -> o2.getName() ) );
         printList( persons );
         
-        System.out.println( "\n" + "Unique method :" + "\n" );
+        System.out.println( "\nUnique method :" +
+                            "\n" );
         uniqueList = toUniqueList( persons );
         printList( uniqueList );
         
-        System.out.println( "\n" + "Equals of Two : " + " " );
-        System.out.printf( "The result of compare two lists is : %s \n",
-                compareTwoLists( persons, uniqueList ) );
+        System.out.println( "\nEquals of Two : " );
+        System.out.printf( "The result of compare two lists is : %s " +
+                           "\n", compareTwoLists( persons, uniqueList ) );
         
-        System.out.printf( "Lists sizes is : %d | %d \n",
-                persons.size(), uniqueList.size() );
+        System.out.printf( "Lists sizes is : %d | %d " +
+                           "\n", persons.size(), uniqueList.size() );
         
-        System.out.println( "\n" + "Sort array list now : " + "\n" );
+        System.out.println( "\nSort array list now : " +
+                            "\n" );
         persons.sort( ( Comparator.comparing( o -> o.getName() ) ) );
         printList( persons );
     }

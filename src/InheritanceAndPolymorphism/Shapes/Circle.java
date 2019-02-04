@@ -51,22 +51,20 @@ class Circle extends Shape {
         
         Circle circle = ( Circle ) object;
         return this.getRadius() == circle.getRadius()
-                && this.isFilled() == circle.isFilled()
-                && this.getColour().equals( circle.getColour() );
+               && this.isFilled() == circle.isFilled()
+               && this.getColour().equals( circle.getColour() );
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-                this.getRadius(),
-                this.isFilled() );
+        return Objects.hash( this.getRadius(), this.isFilled() );
     }
     
     @Override
     public String toString() {
         return String.format( "A Circle with radius = %.1f ;" +
-                        "\nwhich is a subclass of %s",
-                this.getRadius(),
-                super.toString() );
+                              "\nwhich is a subclass of %s",
+                              this.getRadius(),
+                              super.toString() );
     }
 }

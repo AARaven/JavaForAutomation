@@ -9,35 +9,42 @@ import java.util.InputMismatchException;
 
 public class DemoSearchAnElement {
     
-    private void showElementSearchMenu() {
-        System.out.println( "\n*****************************************" +
-                            "\n* What's element need to find ?         *" +
-                            "\n*****************************************\n" );
+    private void showMenu() {
+        System.out.println(
+                "\f\n******************************************" +
+                "\n* 1 - Configure array.                   *" +
+                "\n* 2 - Output array.                      *" +
+                "\n* 3 - Change type for search.            *" +
+                "\n* 4 - Exit.                              *" +
+                "\n******************************************" +
+                "\n" );
     }
     
     private void showTypeSearchMenu() {
-        System.out.println( " \n*****************************************" +
-                             "\n* What's method you need to use ?       *" +
-                             "\n*****************************************" +
-                             "\n* 1 - One by one.                       *" +
-                             "\n* 2 - Binary.                           *" +
-                             "\n*****************************************\n" );
+        System.out.println(
+                "\n*****************************************" +
+                "\n* What's method you need to use ?       *" +
+                "\n*****************************************" +
+                "\n* 1 - One by one.                       *" +
+                "\n* 2 - Binary.                           *" +
+                "\n*****************************************" +
+                "\n" );
     }
     
-    private void showMenu() {
-        System.out.println( "\f\n******************************************" +
-                              "\n* 1 - Configure array.                   *" +
-                              "\n* 2 - Output array.                      *" +
-                              "\n* 3 - Change type for search.            *" +
-                              "\n* 4 - Exit.                              *" +
-                              "\n******************************************\n" );
+    private void showElementSearchMenu() {
+        System.out.println(
+                "\n*****************************************" +
+                "\n* What's element need to find ?         *" +
+                "\n*****************************************" +
+                "\n" );
     }
     
     public static void main( String[] args ) {
-        DemoSearchAnElement demo = new DemoSearchAnElement();
-        SearchElement search = new SearchElement();
-        SortArray sort = new SortArray();
-        Utils utils = new Utils();
+        
+        DemoSearchAnElement demo   = new DemoSearchAnElement();
+        SearchElement       search = new SearchElement();
+        SortArray           sort   = new SortArray();
+        Utils               utils  = new Utils();
         
         while ( true ) {
             
@@ -70,7 +77,8 @@ public class DemoSearchAnElement {
                              */
                             case ( "1" ):
                                 demo.showElementSearchMenu();
-                                search.regularSearch( utils.getArray(), utils.getScan().nextInt() );
+                                search.regularSearch( utils.getArray(),
+                                                      utils.getScan().nextInt() );
                                 break;
                             /*
                              * case 2: using the 'bubble sort' and 'binary search' algorithms
@@ -79,23 +87,25 @@ public class DemoSearchAnElement {
                             case ( "2" ):
                                 demo.showElementSearchMenu();
                                 sort.bubbleSort( utils.getArray() );
-                                search.binarySearch( utils.getArray(), utils.getScan().nextInt() );
+                                search.binarySearch( utils.getArray(),
+                                                     utils.getScan().nextInt() );
                                 break;
                             /*
                              * default section
                              */
                             default:
                                 System.out.println( "\nIncorrect input ... " +
-                                                    "\nPlease, press 'Enter' to continue ...\n" );
+                                                    "\nPlease, press 'Enter' to continue ..." +
+                                                    "\n" );
                                 System.in.read();
                         }
-                        
                         break;
                     /*
                      * case 4: exit point from program
                      */
                     case ( "4" ):
-                        System.out.println( "\nExiting ... \n" );
+                        System.out.println( "\nExiting ... " +
+                                            "\n" );
                         System.exit( 0 );
                         break;
                     /*
@@ -103,14 +113,16 @@ public class DemoSearchAnElement {
                      */
                     default:
                         System.out.println( "\nIncorrect input ... " +
-                                            "\nPlease, press 'Enter' to continue ...\n" );
+                                            "\nPlease, press 'Enter' to continue ..." +
+                                            "\n" );
                         System.in.read();
                 }
                 
             } catch
             ( IOException | InputMismatchException e ) {
                 System.out.printf( "\nIncorrect input ... %s " +
-                                   "\nPlease, press 'Enter' to continue ... \n", e.getMessage() );
+                                   "\nPlease, press 'Enter' to continue ... " +
+                                   "\n", e.getMessage() );
             }
         }
         

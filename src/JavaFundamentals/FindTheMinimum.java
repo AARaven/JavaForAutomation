@@ -8,8 +8,10 @@ package JavaFundamentals;
  * <p>
  * ---------------------------------------------------------------------------------------
  * <p>--> The method that takes 2 integer arguments and returns the lowest; </p>
- * <p>--> The method that takes 3 integer arguments and returns the lowest ( using the first method );</p>
- * <p>--> The method that takes 4 integer arguments and returns the lowest ( using previous method );</p>
+ * <p>--> The method that takes 3 integer arguments and returns the lowest ( using the first
+ * method );</p>
+ * <p>--> The method that takes 4 integer arguments and returns the lowest ( using previous
+ * method );</p>
  * <p>
  * ---------------------------------------------------------------------------------------
  */
@@ -24,9 +26,9 @@ public class FindTheMinimum {
      * @return lowest value
      */
     public int min( int first, int second ) {
-        return  ( first < second )
-                ? first
-                : second;
+        return ( first < second )
+               ? first
+               : second;
     }
     
     /**
@@ -39,8 +41,8 @@ public class FindTheMinimum {
      */
     public int min( int first, int second, int third ) {
         return ( ( min( first, second ) ) < third )
-                ? min( first, second )
-                : third;
+               ? min( first, second )
+               : third;
     }
     
     /**
@@ -54,7 +56,7 @@ public class FindTheMinimum {
      */
     public int min( int first, int second, int third, int fourth ) {
         return ( ( min( first, second, third ) ) < fourth
-                ? min( first, second, third )
-                : fourth );
+                 ? min( first, second, third )
+                 : fourth );
     }
 }

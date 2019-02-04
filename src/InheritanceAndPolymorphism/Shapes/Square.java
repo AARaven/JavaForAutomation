@@ -54,23 +54,22 @@ class Square extends Rectangle {
         
         Square square = ( Square ) object;
         return this.getSide() == square.getSide()
-                && this.isFilled() == square.isFilled()
-                && this.getColour().equals( square.getColour() );
+               && this.isFilled() == square.isFilled()
+               && this.getColour().equals( square.getColour() );
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-                this.getSide(),
-                this.getColour(),
-                this.isFilled() );
+        return Objects.hash( this.getSide(),
+                             this.getColour(),
+                             this.isFilled() );
     }
     
     @Override
     public String toString() {
         return String.format( "A Square with side = %.1f ;" +
-                        "\nwhich is a subclass of %s",
-                this.getSide(),
-                super.toString() );
+                              "\nwhich is a subclass of %s",
+                              this.getSide(),
+                              super.toString() );
     }
 }

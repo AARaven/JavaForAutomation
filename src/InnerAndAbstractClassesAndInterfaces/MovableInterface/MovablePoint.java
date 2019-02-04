@@ -93,25 +93,25 @@ public class MovablePoint implements Movable {
         
         MovablePoint point = ( MovablePoint ) object;
         return this.getX() == point.getX()
-                && this.getY() == point.getY()
-                && this.getXSpeed() == point.getXSpeed()
-                && this.getYSpeed() == point.getYSpeed();
+               && this.getY() == point.getY()
+               && this.getXSpeed() == point.getXSpeed()
+               && this.getYSpeed() == point.getYSpeed();
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-                this.getX(),
-                this.getY(),
-                this.getXSpeed(),
-                this.getYSpeed() );
+        return Objects.hash( this.getX(),
+                             this.getY(),
+                             this.getXSpeed(),
+                             this.getYSpeed() );
     }
     
     @Override
     public String toString() {
         return String.format( "Point x coordinates : { %d }" +
-                        "\nPoint y coordinates : { %d } .\n",
-                this.getX(),
-                this.getY() );
+                              "\nPoint y coordinates : { %d } ." +
+                              "\n",
+                              this.getX(),
+                              this.getY() );
     }
 }

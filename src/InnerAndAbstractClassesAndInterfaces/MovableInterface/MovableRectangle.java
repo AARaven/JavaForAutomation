@@ -47,29 +47,37 @@ public class MovableRectangle implements Movable {
     @Override
     public void moveUp() {
         this.getTopLeft().setY( this.getTopLeft().getY() + this.getTopLeft().getYSpeed() );
-        this.getBottomRight().setY( this.getBottomRight().getY() + this.getBottomRight().getYSpeed() );
-        System.out.printf("\nMove up : \n%s",this);
+        this.getBottomRight().setY(
+                this.getBottomRight().getY() + this.getBottomRight().getYSpeed() );
+        System.out.printf( "\nMove up : " +
+                           "\n%s", this );
     }
     
     @Override
     public void moveDown() {
         this.getTopLeft().setY( this.getTopLeft().getY() - this.getTopLeft().getYSpeed() );
-        this.getBottomRight().setY( this.getBottomRight().getY() - this.getBottomRight().getYSpeed() );
-        System.out.printf("\nMove down : \n%s",this);
+        this.getBottomRight().setY(
+                this.getBottomRight().getY() - this.getBottomRight().getYSpeed() );
+        System.out.printf( "\nMove down : " +
+                           "\n%s", this );
     }
     
     @Override
     public void moveLeft() {
         this.getTopLeft().setX( this.getTopLeft().getX() - this.getTopLeft().getXSpeed() );
-        this.getBottomRight().setX( this.getBottomRight().getX() - this.getBottomRight().getXSpeed() );
-        System.out.printf("\nMove left : \n%s",this);
+        this.getBottomRight().setX(
+                this.getBottomRight().getX() - this.getBottomRight().getXSpeed() );
+        System.out.printf( "\nMove left : " +
+                           "\n%s", this );
     }
     
     @Override
     public void moveRight() {
         this.getTopLeft().setX( this.getTopLeft().getX() + this.getTopLeft().getXSpeed() );
-        this.getBottomRight().setX( this.getBottomRight().getX() + this.getBottomRight().getXSpeed() );
-        System.out.printf("\nMove right : \n%s",this);
+        this.getBottomRight().setX(
+                this.getBottomRight().getX() + this.getBottomRight().getXSpeed() );
+        System.out.printf( "\nMove right : " +
+                           "\n%s", this );
     }
     
     @Override
@@ -85,22 +93,22 @@ public class MovableRectangle implements Movable {
         
         MovableRectangle rectangle = ( MovableRectangle ) object;
         return this.getTopLeft().equals( rectangle.getTopLeft() )
-                && this.getBottomRight().equals( rectangle.getBottomRight() );
+               && this.getBottomRight().equals( rectangle.getBottomRight() );
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-                this.getTopLeft(),
-                this.getBottomRight() );
+        return Objects.hash( this.getTopLeft(), this.getBottomRight() );
     }
     
     @Override
     public String toString() {
-        return String.format( "Left topside { %d | %d } \nBottom side { %d | %d }.\n",
-                this.getTopLeft().getX(),
-                this.getTopLeft().getY(),
-                this.getBottomRight().getX(),
-                this.getBottomRight().getY() );
+        return String.format( "Left topside { %d | %d } " +
+                              "\nBottom side { %d | %d }." +
+                              "\n",
+                              this.getTopLeft().getX(),
+                              this.getTopLeft().getY(),
+                              this.getBottomRight().getX(),
+                              this.getBottomRight().getY() );
     }
 }

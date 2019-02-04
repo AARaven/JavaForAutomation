@@ -12,57 +12,56 @@ public class BookCollection {
     
     public static void main( String[] args ) {
         
-        ArrayList <Book> books = new ArrayList <>();
+        ArrayList < Book > books = new ArrayList <>();
         
-        Author eckel = new Author( "Bruce", "Eckel" );
+        Author eckel  = new Author( "Bruce", "Eckel" );
         Author sierra = new Author( "Kathy", "Sierra" );
-        Author bloch = new Author( "Josh", "Bloch" );
+        Author bloch  = new Author( "Josh", "Bloch" );
         Author fowler = new Author( "Martin", "Fowler" );
         
         Book thinkingJava = new Book( "'Thinking in Java'",
-                eckel, 37.00 );
+                                      eckel, 37.00 );
         
         Book thinkingCpp = new Book( "'Thinking in C++'",
-                eckel, 37.90 );
-    
+                                     eckel, 37.90 );
+        
         Book headsFirstJava = new Book( "'Heads First Java 2nd Edition'",
-                sierra, 34.50 );
-    
+                                        sierra, 34.50 );
+        
         Book effectiveJava = new Book( "'Effective Java: Programming Language Guide'",
-                bloch, 39.90 );
+                                       bloch, 39.90 );
         
         Book refactoring = new Book( "'Refactoring: Improving the Design of Existing Code'",
-                fowler, 36.50 );
-    
-        books.addAll(
-                Arrays.asList(
-                        thinkingJava,
-                        thinkingCpp,
-                        headsFirstJava,
-                        effectiveJava,
-                        refactoring ) );
+                                     fowler, 36.50 );
+        
+        books.addAll( Arrays.asList( thinkingJava, thinkingCpp,
+                                     headsFirstJava, effectiveJava,
+                                     refactoring ) );
         
         books.stream()
-                .max( Comparator.comparing( Book::getPrice ) )
-                .ifPresent( Book::getBookDetails );
+             .max( Comparator.comparing( Book::getPrice ) )
+             .ifPresent( Book::getBookDetails );
         
         String titles = books.stream()
-                .filter( book -> book.getAuthor().equals( eckel ) )
-                .map( Book::getTitle )
-                .collect( Collectors.joining( "," ) );
+                             .filter( book -> book.getAuthor().equals( eckel ) )
+                             .map( Book::getTitle )
+                             .collect( Collectors.joining( "," ) );
         
-        System.out.printf( "\n%s books : %s\n\n", eckel, titles );
+        System.out.printf( "\n%s books : %s" +
+                           "\n" +
+                           "\n", eckel, titles );
         
         books.stream()
-                .sorted( Comparator.comparing( book -> book.getAuthor().toString() ) )
-                .distinct()
-                .map( book -> book.getAuthor().toString().concat( " " ).concat( book.getTitle() ) )
-                .forEachOrdered( System.out::println );
+             .sorted( Comparator.comparing( book -> book.getAuthor().toString() ) )
+             .distinct()
+             .map( book -> book.getAuthor().toString().concat( " " ).concat( book.getTitle() ) )
+             .forEachOrdered( System.out::println );
         
         double sumPrices = books.stream()
-                .mapToDouble( Book::getPrice )
-                .sum();
+                                .mapToDouble( Book::getPrice )
+                                .sum();
         
-        System.out.printf( "\nTOTAL : { %.2f }\n", sumPrices );
+        System.out.printf( "\nTOTAL : { %.2f }" +
+                           "\n", sumPrices );
     }
 }

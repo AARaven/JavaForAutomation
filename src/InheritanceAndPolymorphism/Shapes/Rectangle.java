@@ -7,7 +7,7 @@ import java.util.Objects;
 class Rectangle extends Shape {
     
     private static final double DEFAULT_LENGTH = 1.0;
-    private static final double DEFAULT_WIDTH = 1.0;
+    private static final double DEFAULT_WIDTH  = 1.0;
     
     private double width;
     private double length;
@@ -64,26 +64,25 @@ class Rectangle extends Shape {
         
         Rectangle rectangle = ( Rectangle ) object;
         return this.getLength() == rectangle.getLength()
-                && this.getWidth() == rectangle.getWidth()
-                && this.isFilled() == rectangle.isFilled()
-                && this.getColour().equals( rectangle.getColour() );
+               && this.getWidth() == rectangle.getWidth()
+               && this.isFilled() == rectangle.isFilled()
+               && this.getColour().equals( rectangle.getColour() );
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-                this.getLength(),
-                this.getWidth(),
-                this.getColour(),
-                this.isFilled() );
+        return Objects.hash( this.getLength(),
+                             this.getWidth(),
+                             this.getColour(),
+                             this.isFilled() );
     }
     
     @Override
     public String toString() {
         return String.format( "A Rectangle with width = %.1f and length = %.1f ;" +
-                        "\nwhich a subclass of %s",
-                this.getWidth(),
-                this.getLength(),
-                super.toString() );
+                              "\nwhich a subclass of %s",
+                              this.getWidth(),
+                              this.getLength(),
+                              super.toString() );
     }
 }

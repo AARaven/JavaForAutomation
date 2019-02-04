@@ -4,11 +4,14 @@ package JavaFundamentals;
  * <p>----------------------------------------------------------------</p>
  * <p><h2>Java Fundamentals Practice #5 (Optional) : Towers of Hanoi</h2></p>
  * <p>----------------------------------------------------------------</p>
- * <p>There are 3 sticks "A", "B", "C". On the "A"<p> stick there are "n"(this number should be taken
- * from the console)</p><p> disks, represented by integers from 1 to N ( where 1 is smallest and n is the
- * biggest).</p><p> You should move the tower from "A" to "C" following the rule that each implement</p>
- * <p>a program that will take the number of disks and print the steps</p><p> required to move the tower
- * to the "C" stick</p> <p>(<b>example: " 1 moved from "A" to "C"</b>).</p>
+ * <p>There are 3 sticks "A", "B", "C". On the "A"<p> stick there are "n"(this number should be
+ * taken
+ * from the console)</p><p> disks, represented by integers from 1 to N ( where 1 is smallest and
+ * n is the
+ * biggest).</p>
+ * <p> You should move the tower from "A" to "C" following the rule that each implement
+ * a program that will take the number of disks and print the steps</p><p> required to move
+ * the tower to the "C" stick</p> <p>(<b>example: " 1 moved from "A" to "C"</b>).</p>
  * <p>----------------------------------------------------------------</p>
  */
 

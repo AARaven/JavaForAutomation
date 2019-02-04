@@ -70,6 +70,7 @@ class Cylinder extends Circle {
     
     @Override
     public boolean equals( Object object ) {
+        
         if ( this == object ) {
             return true;
         }
@@ -80,29 +81,29 @@ class Cylinder extends Circle {
         
         Cylinder cylinder = ( Cylinder ) object;
         return this.getHeight() == cylinder.getHeight()
-                && this.getRadius() == cylinder.getRadius()
-                && this.getColour() == cylinder.getColour();
+               && this.getRadius() == cylinder.getRadius()
+               && this.getColour() == cylinder.getColour();
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-                this.getRadius(),
-                this.getHeight(),
-                this.getColour() );
+        return Objects.hash( this.getRadius(),
+                             this.getHeight(),
+                             this.getColour() );
     }
     
     @Override
     public String toString() {
-        return String.format( "\nThe base-radius of cylinder is : %.1f\n"
-                        + "The height of cylinder is : %.1f\n"
-                        + "The colour of cylinder is : %s\n"
-                        + "The surface-area of cylinder is : %.1f\n"
-                        + "The volume of cylinder is : %.1f\n",
-                this.getRadius(),
-                this.getHeight(),
-                this.getColour().getDescription(),
-                this.getArea(),
-                this.getVolume() );
+        return String.format( "\nThe base-radius of cylinder is : %.1f" +
+                              "\nThe height of cylinder is : %.1f" +
+                              "\nThe colour of cylinder is : %s" +
+                              "\nThe surface-area of cylinder is : %.1f" +
+                              "\nThe volume of cylinder is : %.1f" +
+                              "\n",
+                              this.getRadius(),
+                              this.getHeight(),
+                              this.getColour().getDescription(),
+                              this.getArea(),
+                              this.getVolume() );
     }
 }

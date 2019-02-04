@@ -2,12 +2,12 @@ package ObjectBasics.Dogs;
 
 import java.util.*;
 
-public class Dog implements Comparable <Dog> {
+public class Dog implements Comparable < Dog > {
     
-    private int age;
+    private int    age;
     private String name;
-    private Size size;
-    private Dog[] dogs;
+    private Size   size;
+    private Dog[]  dogs;
     
     private String[] getNames() {
         return names;
@@ -18,12 +18,14 @@ public class Dog implements Comparable <Dog> {
     }
     
     private String[] names = {
-            "Abby", "Buddy", "Charlie", "Chloe",
-            "Cody", "Max", "Molly", "Rex",
-            "Riley", "Sully", };
+            "Abby", "Buddy", "Charlie",
+            "Chloe", "Cody", "Max",
+            "Molly", "Rex", "Riley",
+            "Sully", };
     
     private enum Size {
-        LOW( "Low" ), MIDDLE( "Middle" ), HIGH( "High" ), DEFAULT( "Default" ),
+        LOW( "Low" ), MIDDLE( "Middle" ),
+        HIGH( "High" ), DEFAULT( "Default" ),
         ;
         
         private String size;
@@ -33,11 +35,11 @@ public class Dog implements Comparable <Dog> {
         }
         
         public static Size generateSize() {
-            String[] sizes = { "LOW", "MIDDLE", "HIGH" };
-            int random = ( int ) ( Math.random() * 10 );
+            String[] sizes  = { "LOW", "MIDDLE", "HIGH" };
+            int      random = ( int ) ( Math.random() * 10 );
             int index = ( random >= 0 && random <= 2 )
-                    ? random
-                    : 1;
+                        ? random
+                        : 1;
             
             String size = sizes[ index ];
             
@@ -75,25 +77,27 @@ public class Dog implements Comparable <Dog> {
     
     private Dog( String name, int age, String size ) {
         this.setName( ( name.isEmpty() )
-                ? nameGenerator()
-                : name );
+                      ? nameGenerator()
+                      : name );
+        
         this.setAge( ( age >= 0 && age <= 20 )
-                ? age
-                : ageGenerator() );
+                     ? age
+                     : ageGenerator() );
+        
         this.setSize( ( size.isEmpty() )
-                ? Size.generateSize()
-                : Size.valueOf( size.toUpperCase() ) );
+                      ? Size.generateSize()
+                      : Size.valueOf( size.toUpperCase() ) );
     }
     
     private String nameGenerator() {
         int random = ( int ) ( Math.random() * 10 );
-        int index = ( random >= 0 && random <= 9 ) ? random : 5;
+        int index  = ( random >= 0 && random <= 9 ) ? random : 5;
         return this.names[ index ];
     }
     
     private int ageGenerator() {
         int random = new Random().nextInt( 21 );
-        int index = ( random > 0 && random <= 20 ) ? random : 15;
+        int index  = ( random > 0 && random <= 20 ) ? random : 15;
         return index;
     }
     
@@ -134,7 +138,10 @@ public class Dog implements Comparable <Dog> {
             
             System.out.print( "\nEnter the age of dog : " );
             String tempAge = scanner.nextLine();
-            int scanAge = tempAge.isEmpty() ? 21 : Integer.parseInt( tempAge );
+            
+            int scanAge = tempAge.isEmpty()
+                          ? 21
+                          : Integer.parseInt( tempAge );
             
             temp[ i ] = new Dog( scanName, scanAge, scanSize );
         }
@@ -142,7 +149,6 @@ public class Dog implements Comparable <Dog> {
     }
     
     void sortByAge( Dog[] dogs, String ordering ) {
-        
         switch ( ordering ) {
             case ( "natural" ):
                 Arrays.sort( dogs, Comparator.comparingInt( Dog::getAge ) );
@@ -158,7 +164,6 @@ public class Dog implements Comparable <Dog> {
     }
     
     void sortBySize( Dog[] dogs, String ordering ) {
-        
         switch ( ordering ) {
             case ( "natural" ):
                 Arrays.sort( dogs, Comparator.comparing( Dog::getSize ) );
@@ -195,6 +200,11 @@ public class Dog implements Comparable <Dog> {
     }
     
     @Override
+    public int compareTo( Dog dog ) {
+        return String.CASE_INSENSITIVE_ORDER.compare( this.name, dog.name );
+    }
+    
+    @Override
     public boolean equals( Object object ) {
         
         if ( object == this ) {
@@ -207,29 +217,23 @@ public class Dog implements Comparable <Dog> {
         
         Dog dog = ( Dog ) object;
         return this.getName().equals( dog.getName() )
-                && this.getSize().equals( dog.getSize() )
-                && this.getAge() == dog.getAge();
+               && this.getSize().equals( dog.getSize() )
+               && this.getAge() == dog.getAge();
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-                this.getName(),
-                this.getSize(),
-                this.getAge() );
+        return Objects.hash( this.getName(),
+                             this.getSize(),
+                             this.getAge() );
     }
     
     @Override
     public String toString() {
         return String.format( " { Name: %-8s}  |  { Size: %-7s}  |  { Age:%-3d} ",
-                this.getName(),
-                this.getSize().getSize(),
-                this.getAge() );
-    }
-    
-    @Override
-    public int compareTo( Dog dog ) {
-        return String.CASE_INSENSITIVE_ORDER.compare( this.name, dog.name );
+                              this.getName(),
+                              this.getSize().getSize(),
+                              this.getAge() );
     }
 }
 

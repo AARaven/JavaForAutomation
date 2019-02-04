@@ -89,7 +89,7 @@ public class SortArray {
         
         for ( int i = 0; i < arr.length; i++ ) {
             int temp = arr[ i ];
-            int j = i - 1;
+            int j    = i - 1;
             while ( j >= 0 && arr[ j ] > temp ) {
                 arr[ j + 1 ] = arr[ j ];
                 j = j - 1;
@@ -108,7 +108,7 @@ public class SortArray {
     public int[] selectionSort( int[] arr ) {
         
         for ( int i = 0; i < arr.length; i++ ) {
-            int min = arr[ i ];
+            int min   = arr[ i ];
             int index = i;
             for ( int j = i + 1; j < arr.length; j++ ) {
                 if ( arr[ j ] < min ) {

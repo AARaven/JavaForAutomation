@@ -57,23 +57,24 @@ class Circle {
         
         Circle circle = ( Circle ) object;
         return this.getRadius() == circle.getRadius()
-                && this.getColour().equals( circle.getColour() );
+               && this.getColour().equals( circle.getColour() );
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(
-                this.getRadius(),
-                this.getColour() );
+        return Objects.hash( this.getRadius(), this.getColour() );
     }
     
     @Override
     public String toString() {
-        return String.format( "\nThe radius of circle is : %.1f\n" +
-                        "The colour of circle is : %s\n" +
-                        "The area of circle is : %.1f\n",
-                this.getRadius(),
-                this.getColour().getDescription(),
-                this.getArea() );
+        return String.format( "\nThe radius of circle is : %.1f" +
+                              "\n" +
+                              "The colour of circle is : %s" +
+                              "\n" +
+                              "The area of circle is : %.1f" +
+                              "\n",
+                              this.getRadius(),
+                              this.getColour().getDescription(),
+                              this.getArea() );
     }
 }
